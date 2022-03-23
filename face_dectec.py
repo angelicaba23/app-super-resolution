@@ -29,7 +29,6 @@ def faceDetection(input_image_path):
 
   image_landmarks = cv2.imread(input_image_path)
   names = [] 
-  img_cancel  = Image.open("cancelar.png")
   for detections in detections:
     x = int(detections[0])
     y = int(detections[1])
@@ -37,7 +36,7 @@ def faceDetection(input_image_path):
     h = int(detections[3])
     cv2.rectangle(image_landmarks, (x, y), (w, h), (0, 255, 0), 2)
     print(x, y, w, h)
-    cv2.putText(image_landmarks, 'X', (w-6, y+6),cv2.FONT_HERSHEY_SIMPLEX,1, (0, 0,255), 3,cv2.LINE_AA )
+    cv2.putText(image_landmarks, 'X', (w-10, y+10),cv2.FONT_HERSHEY_SIMPLEX,1, (0, 0,255), 3,cv2.LINE_AA )
     image = Image.open(input_image_path)
     st.image(crop_object(image, detections, num, names))
 
