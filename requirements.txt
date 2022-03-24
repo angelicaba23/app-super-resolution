@@ -1,4 +1,4 @@
-face_detection==0.2.1
+face_detection==0.2.2
 opencv-python-headless==4.5.5.64
 Pillow==9.0.1
 streamlit==1.7.0
