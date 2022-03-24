@@ -1,8 +1,7 @@
 import cv2
 import face_detection
 import streamlit as st
-from PIL import Image, ImageDraw
-from PIL import ImageOps
+from PIL import Image
 
 print(face_detection.available_detectors)
 detector = face_detection.build_detector(

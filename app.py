@@ -1,12 +1,7 @@
 #!pip install git+https://github.com/hukkelas/DSFD-Pytorch-Inference.git
-from io import StringIO
-import cv2
-from face_dectec import crop_object, faceDetection
-from streamlit_cropper import st_cropper
-import streamlit as st
-import numpy as np
 
-from PIL import Image
+from face_dectec import faceDetection
+import streamlit as st
 
 from save_img import save_image
 
