@@ -24,18 +24,12 @@
         "angle": 54.39,
         "flipX": false,
         "flipY": false,
-        "opacity": 1,
+        "opacity": 50,
         "shadow": null,
         "visible": true,
         "backgroundColor": "",
         "fillRule": "nonzero",
         "paintFirst": "fill",
-        "globalCompositeOperation": "source-over",
-        "skewX": 0,
-        "skewY": 0,
-        "radius": 45.510987684294435,
-        "startAngle": 0,
-        "endAngle": 6.283185307179586
       }
     ]
   }
