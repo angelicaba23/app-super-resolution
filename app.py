@@ -74,8 +74,8 @@ if image_file is not None:
         for col in objects.select_dtypes(include=['object']).columns:
             objects[col] = objects[col].astype("str")
         st.dataframe(objects)
-    else:
-      st.write("NO PERSON DETECTED")
+  else:
+    st.write("NO PERSON DETECTED")
 
 
 
