@@ -32,10 +32,11 @@ if image_file is not None:
   json_data = json.load(a_file)
   a_file.close()
 
-  json_data['objects'][0]['left'] = 3
-  json_data['objects'][0]['top'] = 3
-  json_data['objects'][0]['width'] = 3
-  json_data['objects'][0]['height']= 3
+  json_data['objects'][0]['left'] = 30
+  json_data['objects'][0]['top'] = 30
+  json_data['objects'][0]['width'] = 30
+  json_data['objects'][0]['height']= 30
+  json_data['objects'][0]['fill'] = "#00ff0050"
 
   a_file = open("saved_state.json", "w")
   json.dump(json_data, a_file)
