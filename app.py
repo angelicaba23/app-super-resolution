@@ -16,10 +16,28 @@ if image_file is not None:
   img_file = "uploaded_image/" + image_file.name
   st.image(img_file)
   [img_faces, num, names] = faceDetection(img_file)
-  st.write(num)
-  st.write(names)
+  #st.write(num)
+  #st.write(names)
   st.image(img_faces)
-  st.image(names[0])
+  #st.image(names[0])
+
+  bg_image = Image.open(img_file)
+  label_color = (
+      st.sidebar.color_picker("Annotation color: ", "#EA1010") + "77"
+  )  # for alpha from 00 to FF
+  label = st.sidebar.text_input("Label", "Default")
+  mode = "transform" if st.sidebar.checkbox("Move ROIs", False) else "rect"
+
+  canvas_result = st_canvas(
+      fill_color=label_color,
+      stroke_width=3,
+      background_image=bg_image,
+      height=320,
+      width=512,
+      drawing_mode=mode,
+      key="color_annotation_app",
+  )
+
 
 
 
