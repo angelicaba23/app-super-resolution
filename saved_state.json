@@ -27,6 +27,33 @@
         "backgroundColor": "",
         "fillRule": "nonzero",
         "paintFirst": "fill"
+      },
+      {
+        "type": "rect",
+        "version": "4.4.0",
+        "left": 1,
+        "top": 1,
+        "width": 91,
+        "height": 91,
+        "fill": "#00ff0050",
+        "stroke": "#00ff00",
+        "strokeWidth": 3,
+        "strokeDashArray": null,
+        "strokeLineCap": "butt",
+        "strokeDashOffset": 0,
+        "strokeLineJoin": "miter",
+        "strokeUniform": false,
+        "strokeMiterLimit": 4,
+        "scaleX": 1,
+        "scaleY": 1,
+        "flipX": false,
+        "flipY": false,
+        "opacity": 50,
+        "shadow": null,
+        "visible": true,
+        "backgroundColor": "",
+        "fillRule": "nonzero",
+        "paintFirst": "fill"
       }
     ]
   }
