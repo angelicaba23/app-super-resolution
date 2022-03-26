@@ -32,7 +32,7 @@ if image_file is not None:
   with open("saved_state.json", "r") as f:   saved_state = json.load(f)
   objects=saved_state['objects']
   st.write(objects)
-  height=objects['width']
+  height=objects[0]['width']
   st.write(height)
   label_color = (
       st.sidebar.color_picker("Annotation color: ", "#00ff00") + "50"
