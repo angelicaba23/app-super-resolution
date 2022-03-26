@@ -32,8 +32,8 @@ if image_file is not None:
       stroke_width=3,
       stroke_color="#00ff00",
       background_image=bg_image,
-      height=320,
-      width=512,
+      height=bg_image.height,
+      width=bg_image.width,
       drawing_mode=mode,
       key="color_annotation_app",
   )
