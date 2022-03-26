@@ -29,7 +29,7 @@
         "visible": true,
         "backgroundColor": "",
         "fillRule": "nonzero",
-        "paintFirst": "fill",
+        "paintFirst": "fill"
       }
     ]
   }
