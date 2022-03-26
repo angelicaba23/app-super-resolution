@@ -30,26 +30,21 @@ bg_color = "#eee"
 
 # Create a canvas component
 if image_file is not None:
-  canvas_result = st_canvas(
-      fill_color="rgba(255, 165, 0, 0.3)",  # Fixed fill color with some opacity
-      stroke_width=stroke_width,
-      stroke_color=stroke_color,
-      background_color=bg_color,
-      background_image=Image.open(image_file) if image_file else None,
-      update_streamlit=realtime_update,
-      height=150,
-      drawing_mode=drawing_mode,
-      #point_display_radius=point_display_radius if drawing_mode == 'point' else 0,
-      key="canvas",
-  )
+  bg_image = Image.open(img_file)
+  label_color = (
+      st.sidebar.color_picker("Annotation color: ", "#EA1010") + "77"
+  )  # for alpha from 00 to FF
+  label = st.sidebar.text_input("Label", "Default")
+  mode = "transform" if st.sidebar.checkbox("Move ROIs", False) else "rect"
 
-  # Do something interesting with the image data and paths
-  if canvas_result.image_data is not None:
-      st.image(canvas_result.image_data)
-  if canvas_result.json_data is not None:
-      objects = pd.json_normalize(canvas_result.json_data["objects"])
-      for col in objects.select_dtypes(include=["object"]).columns:
-          objects[col] = objects[col].astype("str")
-      st.dataframe(objects)
+  canvas_result = st_canvas(
+      fill_color=label_color,
+      stroke_width=3,
+      background_image=bg_image,
+      height=320,
+      width=512,
+      drawing_mode=mode,
+      key="color_annotation_app",
+  )
 
 
