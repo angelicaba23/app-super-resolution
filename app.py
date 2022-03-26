@@ -32,6 +32,8 @@ if image_file is not None:
 )
   mode = "transform" if tool_mode=="move" else "rect"
 
+  st.write(label_color)
+
   canvas_result = st_canvas(
       fill_color=label_color,
       stroke_width=3,
