@@ -25,7 +25,10 @@ if image_file is not None:
       st.sidebar.color_picker("Annotation color: ", "#00ff00") + "50"
   )  # for alpha from 00 to FF
   label = st.sidebar.text_input("Label", "Default")
-  mode = "transform" if st.sidebar.checkbox("Move ROIs", False) else "rect"
+  tool_mode = st.sidebar.selectbox(
+    "Select tool:", ("draw", "move")
+)
+  mode = "transform" if tool_mode=="move" else "rect"
 
   canvas_result = st_canvas(
       fill_color=label_color,
