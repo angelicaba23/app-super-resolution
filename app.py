@@ -29,7 +29,8 @@ if image_file is not None:
 
   canvas_result = st_canvas(
       fill_color=label_color,
-      stroke_width=1,
+      stroke_width=3,
+      stroke_color="#00ff00",
       background_image=bg_image,
       height=320,
       width=512,
