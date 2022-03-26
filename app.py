@@ -37,7 +37,7 @@ if image_file is not None:
   json_data['objects'][0]['width'] = 3
   json_data['objects'][0]['height']= 3
 
-  a_file = open("sample_file.json", "w")
+  a_file = open("saved_state.json", "w")
   json.dump(json_data, a_file)
   a_file.close()
 
