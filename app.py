@@ -8,13 +8,12 @@ import pandas as pd
 from PIL import Image
 from streamlit_drawable_canvas import st_canvas
 
-
 image_file = st.file_uploader("Upload Image", type=["png","jpg","jpeg"])
 if image_file is not None:
   save_image(image_file, image_file.name)
 
   img_file = "uploaded_image/" + image_file.name
-  st.image(img_file)
+  #st.image(img_file)
   [img_faces, num, names] = faceDetection(img_file)
   #st.write(num)
   #st.write(names)
