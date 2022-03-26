@@ -28,15 +28,23 @@ if image_file is not None:
   #st.image(img_faces)
   #st.image(names[0])
   #save_image(img_faces, "img_faces.png")
-  bg_image = Image.open(img_file)
-  with open("saved_state.json", "r") as f:   saved_state = json.load(f)
-  objects_left=saved_state['objects'][0]['left']
-  objects_top=saved_state['objects'][0]['top']
-  objects_width=saved_state['objects'][0]['width']
-  objects_height=saved_state['objects'][0]['height']
+  a_file = open("saved_state.json", "r")
+  json_data = json.load(a_file)
+  a_file.close()
 
-  #height=objects[0]['width']
-  st.write(objects_left,objects_top,objects_width,objects_height)
+  json_data['objects'][0]['left'] = 3
+  json_data['objects'][0]['top'] = 3
+  json_data['objects'][0]['width'] = 3
+  json_data['objects'][0]['height']= 3
+
+  a_file = open("sample_file.json", "w")
+  json.dump(json_data, a_file)
+  a_file.close()
+
+  with open("saved_state.json", "r") as f:   saved_state = json.load(f)
+  st.write(saved_state['objects'][0]['left'],saved_state['objects'][0]['top'],saved_state['objects'][0]['width'],saved_state['objects'][0]['height'])
+  
+  bg_image = Image.open(img_file)
   label_color = (
       st.sidebar.color_picker("Annotation color: ", "#00ff00") + "50"
   )  # for alpha from 00 to FF
