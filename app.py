@@ -27,8 +27,9 @@ if image_file is not None:
   #st.write(names)
   #st.image(img_faces)
   #st.image(names[0])
-  save_image(img_faces, "img_faces.png")
-  bg_image = Image.open("uploaded_image/img_faces.png")
+  #save_image(img_faces, "img_faces.png")
+  st.write(type(img_faces))
+  bg_image = img_faces
   #with open("saved_state.json", "r") as f:
   #    saved_state = json.load(f)
   label_color = (
