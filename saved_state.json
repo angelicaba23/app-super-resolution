@@ -2,7 +2,7 @@
     "version": "4.4.0",
     "objects": [
       {
-        "type": "circle",
+        "type": "rect",
         "version": "4.4.0",
         "originX": "left",
         "originY": "center",
@@ -10,8 +10,8 @@
         "top": 197,
         "width": 91.02,
         "height": 91.02,
-        "fill": "rgba(255, 165, 0, 0.2)",
-        "stroke": "black",
+        "fill": "rgba(255,75,75)",
+        "stroke": "rgba(255,75,75)",
         "strokeWidth": 5,
         "strokeDashArray": null,
         "strokeLineCap": "butt",
