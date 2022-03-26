@@ -1,4 +1,5 @@
 #!pip install git+https://github.com/hukkelas/DSFD-Pytorch-Inference.git
+import json
 import streamlit as st
 
 from face_dectec import faceDetection
@@ -21,6 +22,8 @@ if image_file is not None:
   #st.image(names[0])
 
   bg_image = Image.open(img_file)
+  with open("saved_state.json", "r") as f:
+      saved_state = json.load(f)
   label_color = (
       st.sidebar.color_picker("Annotation color: ", "#00ff00") + "50"
   )  # for alpha from 00 to FF
@@ -36,6 +39,7 @@ if image_file is not None:
       background_image=bg_image,
       height=bg_image.height,
       width=bg_image.width,
+      initial_drawing=saved_state,
       drawing_mode=mode,
       key="color_annotation_app",
   )
