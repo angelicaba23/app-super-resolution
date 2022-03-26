@@ -22,7 +22,7 @@ if image_file is not None:
 
   bg_image = Image.open(img_file)
   label_color = (
-      st.sidebar.color_picker("Annotation color: ", "#00ff00") + "77"
+      st.sidebar.color_picker("Annotation color: ", "#00ff00") + "50"
   )  # for alpha from 00 to FF
   label = st.sidebar.text_input("Label", "Default")
   mode = "transform" if st.sidebar.checkbox("Move ROIs", False) else "rect"
