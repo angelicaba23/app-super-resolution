@@ -14,7 +14,7 @@ if image_file is not None:
   save_image(image_file, image_file.name)
 
   img_file = "uploaded_image/" + image_file.name
-  
+  st.image(img_file)
   [img_faces, num, names] = faceDetection(img_file)
   st.write(num)
   st.write(names)
@@ -29,7 +29,7 @@ stroke_color = "#000000"
 bg_color = "#eee"
 
 # Create a canvas component
-if image_file is not None:
+if img_file is not None:
   bg_image = Image.open(img_file)
   label_color = (
       st.sidebar.color_picker("Annotation color: ", "#EA1010") + "77"

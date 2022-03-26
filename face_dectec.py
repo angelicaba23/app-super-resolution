@@ -60,8 +60,8 @@ def faceDetection(input_image_path):
     print(x, y, w, h)
     cv2.putText(image_landmarks, 'X', (w-10, y+10),cv2.FONT_HERSHEY_SIMPLEX,1, (0, 0,255), 3,cv2.LINE_AA )
     image = Image.open(input_image_path)
-    st.image(crop_object(image, detections, num, names))
-
+    #st.image(crop_object(image, detections, num, names)
+    #crop_object(image, detections, num, names)
     num+=1
   image_landmarks = cv2.cvtColor(image_landmarks, cv2.COLOR_BGR2RGB)
   return image_landmarks, num, names
