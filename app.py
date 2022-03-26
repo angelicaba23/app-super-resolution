@@ -24,7 +24,6 @@ if image_file is not None:
   label_color = (
       st.sidebar.color_picker("Annotation color: ", "#00ff00") + "50"
   )  # for alpha from 00 to FF
-  label = st.sidebar.text_input("Label", "Default")
   tool_mode = st.sidebar.selectbox(
     "Select tool:", ("draw", "move")
 )
