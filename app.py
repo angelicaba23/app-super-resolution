@@ -22,14 +22,14 @@ if image_file is not None:
 
   bg_image = Image.open(img_file)
   label_color = (
-      st.sidebar.color_picker("Annotation color: ", "#EA1010") + "77"
+      st.sidebar.color_picker("Annotation color: ", "#00ff00") + "77"
   )  # for alpha from 00 to FF
   label = st.sidebar.text_input("Label", "Default")
   mode = "transform" if st.sidebar.checkbox("Move ROIs", False) else "rect"
 
   canvas_result = st_canvas(
       fill_color=label_color,
-      stroke_width=3,
+      stroke_width=1,
       background_image=bg_image,
       height=320,
       width=512,
