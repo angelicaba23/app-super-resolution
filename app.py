@@ -28,52 +28,55 @@ if image_file is not None:
   #st.image(img_faces)
   #st.image(names[0])
   #save_image(img_faces, "img_faces.png")
-  a_file = open("saved_state.json", "r")
-  json_data = json.load(a_file)
-  a_file.close()
+  if len(names) >= 1:
+    a_file = open("saved_state.json", "r")
+    json_data = json.load(a_file)
+    a_file.close()
 
-  json_data['objects'][0]['left'] = 30
-  json_data['objects'][0]['top'] = 30
-  json_data['objects'][0]['width'] = 30
-  json_data['objects'][0]['height']= 30
-  json_data['objects'][0]['fill'] = "#00ff0050"
+    json_data['objects'][0]['left'] = 30
+    json_data['objects'][0]['top'] = 30
+    json_data['objects'][0]['width'] = 30
+    json_data['objects'][0]['height']= 30
+    json_data['objects'][0]['fill'] = "#00ff0050"
 
-  a_file = open("saved_state.json", "w")
-  json.dump(json_data, a_file)
-  a_file.close()
+    a_file = open("saved_state.json", "w")
+    json.dump(json_data, a_file)
+    a_file.close()
 
-  with open("saved_state.json", "r") as f:   saved_state = json.load(f)
-  st.write(saved_state['objects'][0]['left'],saved_state['objects'][0]['top'],saved_state['objects'][0]['width'],saved_state['objects'][0]['height'])
-  
-  bg_image = Image.open(img_file)
-  label_color = (
-      st.sidebar.color_picker("Annotation color: ", "#00ff00") + "50"
-  )  # for alpha from 00 to FF
-  tool_mode = st.sidebar.selectbox(
-    "Select tool:", ("draw", "move")
-)
-  mode = "transform" if tool_mode=="move" else "rect"
-
-  st.write(label_color)
-
-  canvas_result = st_canvas(
-      fill_color=label_color,
-      stroke_width=3,
-      stroke_color="#00ff00",
-      background_image=bg_image,
-      height=bg_image.height,
-      width=bg_image.width,
-      initial_drawing=saved_state,
-      drawing_mode=mode,
-      key="color_annotation_app",
+    with open("saved_state.json", "r") as f:   saved_state = json.load(f)
+    st.write(saved_state['objects'][0]['left'],saved_state['objects'][0]['top'],saved_state['objects'][0]['width'],saved_state['objects'][0]['height'])
+    
+    bg_image = Image.open(img_file)
+    label_color = (
+        st.sidebar.color_picker("Annotation color: ", "#00ff00") + "50"
+    )  # for alpha from 00 to FF
+    tool_mode = st.sidebar.selectbox(
+      "Select tool:", ("draw", "move")
   )
+    mode = "transform" if tool_mode=="move" else "rect"
 
-  if canvas_result.json_data is not None:
-      objects = pd.json_normalize(canvas_result.json_data["objects"]) # need to convert obj to str because PyArrow
-      for col in objects.select_dtypes(include=['object']).columns:
-          objects[col] = objects[col].astype("str")
-      st.dataframe(objects)
-  
+    st.write(label_color)
+
+    canvas_result = st_canvas(
+        fill_color=label_color,
+        stroke_width=3,
+        stroke_color="#00ff00",
+        background_image=bg_image,
+        height=bg_image.height,
+        width=bg_image.width,
+        initial_drawing=saved_state,
+        drawing_mode=mode,
+        key="color_annotation_app",
+    )
+
+    if canvas_result.json_data is not None:
+        objects = pd.json_normalize(canvas_result.json_data["objects"]) # need to convert obj to str because PyArrow
+        for col in objects.select_dtypes(include=['object']).columns:
+            objects[col] = objects[col].astype("str")
+        st.dataframe(objects)
+    else:
+      st.write("NO PERSON DETECTED")
+
 
 
 
