@@ -25,12 +25,12 @@ if image_file is not None:
   [img_faces, num, names] = faceDetection(img_file)
   #st.write(num)
   #st.write(names)
-  st.image(img_faces)
+  #st.image(img_faces)
   #st.image(names[0])
 
-  bg_image = Image.open(img_file)
-  with open("saved_state.json", "r") as f:
-      saved_state = json.load(f)
+  bg_image = Image.open(img_faces)
+  #with open("saved_state.json", "r") as f:
+  #    saved_state = json.load(f)
   label_color = (
       st.sidebar.color_picker("Annotation color: ", "#00ff00") + "50"
   )  # for alpha from 00 to FF
@@ -48,7 +48,7 @@ if image_file is not None:
       background_image=bg_image,
       height=bg_image.height,
       width=bg_image.width,
-      initial_drawing=saved_state,
+      #initial_drawing=saved_state,
       drawing_mode=mode,
       key="color_annotation_app",
   )
