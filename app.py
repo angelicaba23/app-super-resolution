@@ -43,8 +43,7 @@ if image_file is not None:
       drawing_mode=mode,
       key="color_annotation_app",
   )
-  if canvas_result.image_data is not None:
-    st.image(canvas_result.image_data)
+
   if canvas_result.json_data is not None:
       objects = pd.json_normalize(canvas_result.json_data["objects"]) # need to convert obj to str because PyArrow
       for col in objects.select_dtypes(include=['object']).columns:
