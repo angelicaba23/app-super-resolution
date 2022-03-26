@@ -28,7 +28,7 @@ if image_file is not None:
   #st.image(img_faces)
   #st.image(names[0])
   #save_image(img_faces, "img_faces.png")
-  if len(names) >= 1:
+  if len(names) > 0:
     a_file = open("saved_state.json", "r")
     json_data = json.load(a_file)
     a_file.close()
