@@ -40,7 +40,7 @@ if image_file is not None:
     a_file.close()
     print(json_object)
 
-    json_object["objects"][0] = {
+    new_obj = {
       "type": "rect",
         "left": 10,
         "top": 91,
@@ -52,7 +52,8 @@ if image_file is not None:
     }
 
     a_file = open("saved_state.json", "w")
-    json.dump(json_object, a_file)
+    json_object = json.load(a_file)
+    json_object["objects"].append(new_obj)
     a_file.close()
    
 
