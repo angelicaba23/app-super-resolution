@@ -35,6 +35,18 @@ if image_file is not None:
     st.write(x)
     x += 1
 
+    # python object to be appended
+    data_json = { "type": "rect",
+                "left": 10,
+                "top": 91,
+                "width": 20,
+                "height": 91,
+                "fill": "#00ff0050",
+                "stroke": "#00ff00",
+                "strokeWidth": 3
+    }
+    write_json(data_json)
+
     with open("saved_state.json", "r") as f:   saved_state = json.load(f)
     st.write(saved_state)
     
