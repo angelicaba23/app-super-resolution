@@ -40,7 +40,7 @@ if image_file is not None:
     a_file.close()
     print(json_object)
 
-    json_object["objects"][1] = {
+    json_object["objects"][0] = {
       "type": "rect",
         "left": 10,
         "top": 91,
