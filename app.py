@@ -31,19 +31,9 @@ if image_file is not None:
   #st.image(names[0])
   #save_image(img_faces, "img_faces.png")
   if len(names) > 0:
-    # python object to be appended
-    
-    for names in names:
-      data_json = { "type": "rect",
-                  "left": 10,
-                  "top": 91,
-                  "width": 20,
-                  "height": 91,
-                  "fill": "#00ff0050",
-                  "stroke": "#00ff00",
-                  "strokeWidth": 3
-      }
-      write_json(data_json)
+    x = 0
+    st.write(x)
+    x += 1
 
     with open("saved_state.json", "r") as f:   saved_state = json.load(f)
     st.write(saved_state)
