@@ -9,6 +9,8 @@ import pandas as pd
 from PIL import Image
 from streamlit_drawable_canvas import st_canvas
 
+from write_json import write_json
+
 im = Image.open("icon.ico")
 st.set_page_config(
     page_title="SuperResolution",
@@ -29,6 +31,15 @@ if image_file is not None:
   #st.image(names[0])
   #save_image(img_faces, "img_faces.png")
   if len(names) > 0:
+    # python object to be appended
+    data_json = {"left":30,
+                "top": 30,
+                "width": 30,
+                "height": 30,
+                "fill": "#00ff0050"
+    } 
+    write_json(data_json)
+
     a_file = open("saved_state.json", "r")
     json_data = json.load(a_file)
     a_file.close()
