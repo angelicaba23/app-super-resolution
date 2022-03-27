@@ -40,20 +40,6 @@ if image_file is not None:
     } 
     write_json(data_json)
 
-    a_file = open("saved_state.json", "r")
-    json_data = json.load(a_file)
-    a_file.close()
-    json_data['objects'][1] =json_data['objects'][0]
-    json_data['objects'][1]['left'] = 30
-    json_data['objects'][1]['top'] = 30
-    json_data['objects'][1]['width'] = 30
-    json_data['objects'][1]['height']= 30
-    json_data['objects'][1]['fill'] = "#00ff0050"
-
-    a_file = open("saved_state.json", "w")
-    json.dump(json_data, a_file)
-    a_file.close()
-
     with open("saved_state.json", "r") as f:   saved_state = json.load(f)
     st.write(saved_state['objects'][0]['left'],saved_state['objects'][0]['top'],saved_state['objects'][0]['width'],saved_state['objects'][0]['height'])
     
