@@ -32,7 +32,7 @@ if image_file is not None:
     a_file = open("saved_state.json", "r")
     json_data = json.load(a_file)
     a_file.close()
-
+    json_data['objects'][1] =json_data['objects'][0]
     json_data['objects'][1]['left'] = 30
     json_data['objects'][1]['top'] = 30
     json_data['objects'][1]['width'] = 30
