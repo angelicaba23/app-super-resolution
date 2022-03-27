@@ -24,8 +24,7 @@ if image_file is not None:
   #st.image(img_file)
   [img_faces, num, names] = faceDetection(img_file)
   #st.write(num)
-  st.write(names)
-  st.write(len(names))
+  #st.write(names)
   #st.image(img_faces)
   #st.image(names[0])
   #save_image(img_faces, "img_faces.png")
@@ -34,11 +33,11 @@ if image_file is not None:
     json_data = json.load(a_file)
     a_file.close()
 
-    json_data['objects'][0]['left'] = 30
-    json_data['objects'][0]['top'] = 30
-    json_data['objects'][0]['width'] = 30
-    json_data['objects'][0]['height']= 30
-    json_data['objects'][0]['fill'] = "#00ff0050"
+    json_data['objects'][1]['left'] = 30
+    json_data['objects'][1]['top'] = 30
+    json_data['objects'][1]['width'] = 30
+    json_data['objects'][1]['height']= 30
+    json_data['objects'][1]['fill'] = "#00ff0050"
 
     a_file = open("saved_state.json", "w")
     json.dump(json_data, a_file)
