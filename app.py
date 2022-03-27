@@ -51,7 +51,7 @@ if image_file is not None:
         "strokeWidth": 3
     }
 
-    a_file = open("saved_state.json", "w")
+    a_file = open("saved_state.json", "r+")
     json_object = json.load(a_file)
     json_object["objects"].append(new_obj)
     a_file.close()
