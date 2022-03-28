@@ -27,7 +27,7 @@ if image_file is not None:
   [img_faces, num, boxes] = faceDetection(img_file)
   #st.write(num)
   st.write(boxes)
-  #st.image(img_faces)
+  st.image(img_faces)
   #st.image(names[0])
   #save_image(img_faces, "img_faces.png")
   if len(boxes) > 0:
