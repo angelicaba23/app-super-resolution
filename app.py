@@ -34,14 +34,14 @@ if image_file is not None:
     x = 0
     st.write(x)
     x += 1
-    listObj = []
+    listObj = {}
     filename = 'saved_state.json'
 
     # Read JSON file
     with open(filename) as fp:
       listObj = json.load(fp)
 
-    listObj.append({
+    listObj.update({
       "type": "rect",
         "left": 10,
         "top": 91,
