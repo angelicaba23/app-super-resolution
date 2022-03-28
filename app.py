@@ -41,7 +41,7 @@ if image_file is not None:
     with open(filename) as fp:
       listObj = json.load(fp)
 
-    listObj.update({
+    listObj["objects"].update({
       "type": "rect",
         "left": 10,
         "top": 91,
