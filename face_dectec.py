@@ -47,7 +47,7 @@ def faceDetection(input_image_path):
   im = cv2.imread(input_image_path)[:, :, ::-1]
   detections = detector.detect(im)
   print(len(detections))
-  st.write(detections)
+  #st.write(detections)
   num=0
 
   image_landmarks = cv2.imread(input_image_path)
@@ -62,7 +62,7 @@ def faceDetection(input_image_path):
     print(x, y, w, h)
     #cv2.putText(image_landmarks, 'X', (w-10, y+10),cv2.FONT_HERSHEY_SIMPLEX,1, (0, 0,255), 3,cv2.LINE_AA )
     boxes.append([x,y,w,h])
-    image = Image.open(input_image_path)
+    #image = Image.open(input_image_path)
     #st.image(crop_object(image, detections, num, names)
     #crop_object(image, detections, num, names)
 
