@@ -23,13 +23,9 @@ if image_file is not None:
   save_image(image_file, image_file.name)
 
   img_file = "uploaded_image/" + image_file.name
-  #st.image(img_file)
   [img_faces, num, boxes] = faceDetection(img_file)
-  #st.write(num)
-  st.write(boxes)
-  st.image(img_faces)
-  #st.image(names[0])
-  #save_image(img_faces, "img_faces.png")
+  #st.write(boxes)
+  #st.image(img_faces)
   if len(boxes) > 0:
     list = []
     filename = 'saved_state.json'
@@ -47,17 +43,15 @@ if image_file is not None:
       })
 
     # Verify updated list
-    st.write(list)
+    #st.write(list)
 
     listObj = {
-      
         "version": "4.4.0",
-        "objects": list
-        
+        "objects": list  
     }
 
     # Verify updated listObj
-    st.write(listObj)
+    #st.write(listObj)
 
     with open(filename, 'w') as json_file:
       json.dump(listObj, json_file, 
@@ -65,7 +59,7 @@ if image_file is not None:
                           separators=(',',': '))
 
     with open(filename, "r") as f:   saved_state = json.load(f)
-    st.write(saved_state)
+    #st.write(saved_state)
     
     bg_image = Image.open(img_file)
     label_color = (
@@ -73,10 +67,8 @@ if image_file is not None:
     )  # for alpha from 00 to FF
     tool_mode = st.sidebar.selectbox(
       "Select tool:", ("draw", "move")
-  )
+    )
     mode = "transform" if tool_mode=="move" else "rect"
-
-    st.write(label_color)
 
     canvas_result = st_canvas(
         fill_color=label_color,
@@ -97,8 +89,3 @@ if image_file is not None:
         st.dataframe(objects)
   else:
     st.write("NO PERSON DETECTED")
-
-
-
-
-
