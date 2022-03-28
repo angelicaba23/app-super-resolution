@@ -2,7 +2,7 @@
 import json
 import streamlit as st
 
-from face_dectec import faceDetection
+from face_dectec import crop_object, faceDetection
 from save_img import save_image
 
 import pandas as pd
@@ -83,9 +83,14 @@ if image_file is not None:
     )
 
     if canvas_result.json_data is not None:
+        rts_boxes = []
+        rst_objects = canvas_result.json_data["objects"]
         objects = pd.json_normalize(canvas_result.json_data["objects"]) # need to convert obj to str because PyArrow
         for col in objects.select_dtypes(include=['object']).columns:
             objects[col] = objects[col].astype("str")
+            
         st.dataframe(objects)
+        st.write(rts_boxes)
+        #crop_object(bg_image, rts_boxes)
   else:
     st.write("NO PERSON DETECTED")
