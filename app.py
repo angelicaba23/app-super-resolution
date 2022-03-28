@@ -34,17 +34,17 @@ if image_file is not None:
     list = []
     filename = 'saved_state.json'
 
-
-    list.append({
-      "type": "rect",
-        "left": boxes[0][0],
-        "top": boxes[0][1],
-        "width": boxes[0][2]-boxes[0][0],
-        "height": boxes[0][3]-boxes[0][1],
-        "fill": "#00ff0050",
-        "stroke": "#00ff00",
-        "strokeWidth": 3
-    })
+    for boxes in boxes:
+      list.append({
+        "type": "rect",
+          "left": boxes[0],
+          "top": boxes[1],
+          "width": boxes[2]-boxes[0],
+          "height": boxes[3]-boxes[1],
+          "fill": "#00ff0050",
+          "stroke": "#00ff00",
+          "strokeWidth": 3
+      })
 
     # Verify updated list
     st.write(list)
