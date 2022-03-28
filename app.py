@@ -53,7 +53,7 @@ if image_file is not None:
 
     a_file = open("saved_state.json", "r+")
     json_object = json.load(a_file)
-    json_object["objects"][0].append(new_obj)
+    json_object["objects"][0] = new_obj
     #a_file.seek(0)
         # convert back to json.
     json.dump(json_object, a_file, indent = 4)
