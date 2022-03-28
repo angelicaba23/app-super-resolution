@@ -25,7 +25,7 @@ if image_file is not None:
   img_file = "uploaded_image/" + image_file.name
   [img_faces, num, boxes] = faceDetection(img_file)
   #st.write(boxes)
-  st.image(img_faces)
+  #st.image(img_faces)
   if len(boxes) > 0:
     list = []
     filename = 'saved_state.json'
