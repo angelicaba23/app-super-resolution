@@ -45,7 +45,7 @@ if image_file is not None:
         "top": boxes[0][1],
         "width": boxes[0][2],
         "height": boxes[0][3],
-        "fill": "#00ff00",
+        "fill": "#00ff0050",
         "stroke": "#00ff00",
         "strokeWidth": 3
     })
