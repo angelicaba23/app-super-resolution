@@ -46,17 +46,17 @@ if image_file is not None:
         "strokeWidth": 3
     })
 
-    
+    # Verify updated list
+    st.write(list)
 
     listObj = {
-      {
+      
         "version": "4.4.0",
         "objects": list
         
-      }
     }
 
-    # Verify updated list
+    # Verify updated listObj
     st.write(listObj)
 
     with open(filename, 'w') as json_file:
