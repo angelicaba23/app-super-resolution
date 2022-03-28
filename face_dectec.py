@@ -8,7 +8,7 @@ print(face_detection.available_detectors)
 detector = face_detection.build_detector(
   "DSFDDetector", confidence_threshold=.5, nms_iou_threshold=.3)
 
-def crop_object(image, box, num, names):
+def crop_object(image, box, num = 0, names  = []):
   x_top_left = box[0]
   y_top_left = box[1]
   x_bottom_right = box[2]
@@ -63,7 +63,9 @@ def faceDetection(input_image_path):
     boxes.append([x,y,w,h])
     image = Image.open(input_image_path)
     #st.image(crop_object(image, detections, num, names)
+    st.write(detections)
     crop_object(image, detections, num, names)
+
     num+=1
   image_landmarks = cv2.cvtColor(image_landmarks, cv2.COLOR_BGR2RGB)
   return image_landmarks, num, boxes
