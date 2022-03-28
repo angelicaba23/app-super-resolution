@@ -46,12 +46,13 @@ if image_file is not None:
         "strokeWidth": 3
     })
 
-    listObj ={
+    
+
+    listObj = {
       {
         "version": "4.4.0",
-        "objects": [
-          list
-        ]
+        "objects": list
+        
       }
     }
 
