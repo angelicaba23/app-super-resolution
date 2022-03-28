@@ -51,6 +51,7 @@ def faceDetection(input_image_path):
 
   image_landmarks = cv2.imread(input_image_path)
   names = [] 
+  boxes = []
   for detections in detections:
     x = int(detections[0])
     y = int(detections[1])
@@ -59,10 +60,10 @@ def faceDetection(input_image_path):
     cv2.rectangle(image_landmarks, (x, y), (w, h), (0, 255, 0), 2)
     print(x, y, w, h)
     #cv2.putText(image_landmarks, 'X', (w-10, y+10),cv2.FONT_HERSHEY_SIMPLEX,1, (0, 0,255), 3,cv2.LINE_AA )
-    
+    boxes.append([x,y,w,h])
     image = Image.open(input_image_path)
     #st.image(crop_object(image, detections, num, names)
     crop_object(image, detections, num, names)
     num+=1
   image_landmarks = cv2.cvtColor(image_landmarks, cv2.COLOR_BGR2RGB)
-  return image_landmarks, num, names
+  return image_landmarks, num, boxes

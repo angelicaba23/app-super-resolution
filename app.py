@@ -24,13 +24,13 @@ if image_file is not None:
 
   img_file = "uploaded_image/" + image_file.name
   #st.image(img_file)
-  [img_faces, num, names] = faceDetection(img_file)
+  [img_faces, num, boxes] = faceDetection(img_file)
   #st.write(num)
-  #st.write(names)
+  st.write(boxes)
   #st.image(img_faces)
   #st.image(names[0])
   #save_image(img_faces, "img_faces.png")
-  if len(names) > 0:
+  if len(boxes) > 0:
     listObj = {}
     filename = 'saved_state.json'
 
@@ -38,17 +38,17 @@ if image_file is not None:
     with open(filename) as fp:
       listObj = json.load(fp)
 
-    for names in names:
-      listObj["objects"].append({
-        "type": "rect",
-          "left": 10,
-          "top": 91,
-          "width": 10,
-          "height": 91,
-          "fill": "#00ff00",
-          "stroke": "#00ff00",
-          "strokeWidth": 3
-      })
+   
+    listObj["objects"].append({
+      "type": "rect",
+        "left": boxes[0][0],
+        "top": boxes[0][1],
+        "width": boxes[0][2],
+        "height": boxes[0][3],
+        "fill": "#00ff00",
+        "stroke": "#00ff00",
+        "strokeWidth": 3
+    })
 
     # Verify updated list
     st.write(listObj)
