@@ -87,7 +87,7 @@ if image_file is not None:
         rst_objects = canvas_result.json_data["objects"]
         objects = pd.json_normalize(canvas_result.json_data["objects"]) # need to convert obj to str because PyArrow
         for rst_objects in rst_objects:
-          rts_boxes.append([rst_objects['top']])
+          rts_boxes.append([rst_objects['left'],rst_objects['top'],rst_objects['width']+rst_objects['left'],rst_objects['height']+rst_objects['top']])
         
         for col in objects.select_dtypes(include=['object']).columns:
             objects[col] = objects[col].astype("str")
