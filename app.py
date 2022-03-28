@@ -31,9 +31,6 @@ if image_file is not None:
   #st.image(names[0])
   #save_image(img_faces, "img_faces.png")
   if len(names) > 0:
-    x = 0
-    st.write(x)
-    x += 1
     listObj = {}
     filename = 'saved_state.json'
 
@@ -41,16 +38,17 @@ if image_file is not None:
     with open(filename) as fp:
       listObj = json.load(fp)
 
-    listObj["objects"].append({
-      "type": "rect",
-        "left": 10,
-        "top": 91,
-        "width": 10,
-        "height": 91,
-        "fill": "#00ff00",
-        "stroke": "#00ff00",
-        "strokeWidth": 3
-    })
+    for names in names:
+      listObj["objects"].append({
+        "type": "rect",
+          "left": 10,
+          "top": 91,
+          "width": 10,
+          "height": 91,
+          "fill": "#00ff00",
+          "stroke": "#00ff00",
+          "strokeWidth": 3
+      })
 
     # Verify updated list
     st.write(listObj)
