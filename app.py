@@ -39,8 +39,8 @@ if image_file is not None:
       "type": "rect",
         "left": boxes[0][0],
         "top": boxes[0][1],
-        "width": boxes[0][2],
-        "height": boxes[0][3],
+        "width": boxes[0][2]-boxes[0][0],
+        "height": boxes[0][3]-boxes[0][1],
         "fill": "#00ff0050",
         "stroke": "#00ff00",
         "strokeWidth": 3
