@@ -64,8 +64,7 @@ def faceDetection(input_image_path):
     boxes.append([x,y,w,h])
     image = Image.open(input_image_path)
     #st.image(crop_object(image, detections, num, names)
-    
-    crop_object(image, detections, num, names)
+    #crop_object(image, detections, num, names)
 
     num+=1
   image_landmarks = cv2.cvtColor(image_landmarks, cv2.COLOR_BGR2RGB)
