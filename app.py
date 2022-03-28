@@ -35,10 +35,6 @@ if image_file is not None:
     filename = 'saved_state.json'
 
 
-    # Read JSON file
-    with open(filename) as fp:
-      listObj = json.load(fp)
-   
     list.append({
       "type": "rect",
         "left": boxes[0][0],
@@ -50,14 +46,14 @@ if image_file is not None:
         "strokeWidth": 3
     })
 
-    listObj.update({
+    listObj ={
       {
         "version": "4.4.0",
         "objects": [
           list
         ]
       }
-    })
+    }
 
     # Verify updated list
     st.write(listObj)
