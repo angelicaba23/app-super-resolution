@@ -31,7 +31,7 @@ if image_file is not None:
   #st.image(names[0])
   #save_image(img_faces, "img_faces.png")
   if len(boxes) > 0:
-    list = {}
+    list = []
     filename = 'saved_state.json'
 
 
