@@ -31,15 +31,15 @@ if image_file is not None:
   #st.image(names[0])
   #save_image(img_faces, "img_faces.png")
   if len(boxes) > 0:
-    listObj = {}
+    list = {}
     filename = 'saved_state.json'
+
 
     # Read JSON file
     with open(filename) as fp:
       listObj = json.load(fp)
-
    
-    listObj["objects"].append({
+    list.append({
       "type": "rect",
         "left": boxes[0][0],
         "top": boxes[0][1],
@@ -48,6 +48,15 @@ if image_file is not None:
         "fill": "#00ff0050",
         "stroke": "#00ff00",
         "strokeWidth": 3
+    })
+
+    listObj.append({
+      {
+        "version": "4.4.0",
+        "objects": [
+          list
+        ]
+      }
     })
 
     # Verify updated list
