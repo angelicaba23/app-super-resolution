@@ -34,13 +34,14 @@ if image_file is not None:
     x = 0
     st.write(x)
     x += 1
+    listObj = []
+    filename = 'saved_state.json'
 
-    a_file = open("saved_state.json", "r")
-    json_object = json.load(a_file)
-    a_file.close()
-    print(json_object)
+    # Read JSON file
+    with open(filename) as fp:
+      listObj = json.load(fp)
 
-    new_obj = {
+    listObj.append({
       "type": "rect",
         "left": 10,
         "top": 91,
@@ -49,18 +50,17 @@ if image_file is not None:
         "fill": "#00ff00",
         "stroke": "#00ff00",
         "strokeWidth": 3
-    }
+    })
 
-    a_file = open("saved_state.json", "r+")
-    json_object = json.load(a_file)
-    json_object["objects"][0]['left'] = 10
-    #a_file.seek(0)
-        # convert back to json.
-    json.dump(json_object, a_file, indent = 4)
-    a_file.close()
-   
+    # Verify updated list
+    st.write(listObj)
 
-    with open("saved_state.json", "r") as f:   saved_state = json.load(f)
+    with open(filename, 'w') as json_file:
+      json.dump(listObj, json_file, 
+                          indent=4,  
+                          separators=(',',': '))
+
+    with open(filename, "r") as f:   saved_state = json.load(f)
     st.write(saved_state)
     
     bg_image = Image.open(img_file)
