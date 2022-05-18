@@ -52,7 +52,6 @@ SRCNN.load_weights(load_weights)
 print("weights loaded")
 
 def predict(input_img):
-
     scale = 2
 
     img = cv2.imread(input_img, cv2.IMREAD_COLOR)

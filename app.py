@@ -95,6 +95,7 @@ if image_file is not None:
           #st.write(rts_boxes)
           crop_image = crop_object(bg_image, rts_boxes)
           cols[i].image(crop_image)
+          predict(crop_image)
           i += 1
         for col in objects.select_dtypes(include=['object']).columns:
             objects[col] = objects[col].astype("str")
