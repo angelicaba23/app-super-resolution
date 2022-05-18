@@ -102,8 +102,8 @@ if image_file is not None:
             objects[col] = objects[col].astype("str")
         #st.dataframe(objects)
 
-        if st.button("Procesar"):
-          st.write("cargando")
+        #if st.button("Procesar"):
+        #  st.write("cargando")
     
   else:
     st.write("NO PERSON DETECTED")
