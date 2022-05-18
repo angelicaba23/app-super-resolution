@@ -97,7 +97,7 @@ if image_file is not None:
         for rst_objects in rst_objects:
           rts_boxes = [rst_objects['left'],rst_objects['top'],rst_objects['width']+rst_objects['left'],rst_objects['height']+rst_objects['top']]
           #st.write(rts_boxes)
-          colname = str("col"+i)
+          colname = "col"+str(i)
           with colname:
             st.image(crop_object(bg_image, rts_boxes))
           i += 1
