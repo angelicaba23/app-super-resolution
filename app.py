@@ -25,7 +25,12 @@ if image_file is not None:
   save_image(image_file, image_file.name)
   img_file = "uploaded_image/" + image_file.name
 
-  [img_faces, num, boxes] = faceDetection(image_file)
+  # Convert the file to an opencv image.
+  image = Image.open(image_file)
+  st.image(image, caption='Input', use_column_width=True)
+  img_array = np.array(image)
+
+  [img_faces, num, boxes] = faceDetection(img_array)
   #st.write(boxes)
   #st.image(img_faces)
   if len(boxes) > 0:
