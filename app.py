@@ -13,11 +13,6 @@ from streamlit_drawable_canvas import st_canvas
 
 from write_json import write_json
 
-import face_detection
-print(face_detection.available_detectors)
-detector = face_detection.build_detector(
-  "DSFDDetector", confidence_threshold=.5, nms_iou_threshold=.3)
-
 im = Image.open("icon.ico")
 st.set_page_config(
     page_title="SuperResolution",
@@ -31,20 +26,8 @@ if image_file is not None:
 
   img_file = "uploaded_image/" + image_file.name
 
- # To convert to a string based IO:
-  stringio = StringIO(image_file.getvalue().decode("utf-8", 'ignore'))
-  st.write(stringio)
-  # To read file as string:
-  string_data = stringio.read()
-  #cv2.imread(string_data)[:, :, ::-1]
-
   bytes_as_np_array = np.frombuffer(image_file.read(), dtype=np.uint8)
   img = cv2.imdecode(bytes_as_np_array, cv2.IMREAD_COLOR)
-  im= img[:, :, ::-1]
-
-  detections = detector.detect(im)
-
-  st.write(len(detections))
 
 
   [img_faces, num, boxes] = faceDetection(img)
