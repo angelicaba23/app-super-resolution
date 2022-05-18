@@ -26,10 +26,6 @@ if image_file is not None:
 
   img_file = "uploaded_image/" + image_file.name
 
-  bytes_as_np_array = np.frombuffer(image_file.read(), dtype=np.uint8)
-  img = cv2.imdecode(bytes_as_np_array, cv2.IMREAD_COLOR)
-
-
   file_bytes = np.asarray(bytearray(image_file.read()), dtype=np.uint8)
   opencv_image = cv2.imdecode(file_bytes, 1)
 
