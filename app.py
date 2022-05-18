@@ -26,19 +26,14 @@ if image_file is not None:
 
   img_file = "uploaded_image/" + image_file.name
 
-  # Convert the file to an opencv image.
-  #image = Image.open(image_file)
-  #img_array = np.array(image)
-  #cv2.imwrite('out.jpg', cv2.cvtColor(img_array, cv2.COLOR_RGB2BGR))
-  # To convert to a string based IO:
+ # To convert to a string based IO:
   stringio = StringIO(image_file.getvalue().decode("utf-8", 'ignore'))
   st.write(stringio)
 
   # To read file as string:
   string_data = stringio.read()
-  im = cv2.imread(string_data)
-
-  [img_faces, num, boxes] = faceDetection(img_file)
+ 
+  [img_faces, num, boxes] = faceDetection(string_data)
   #st.write(boxes)
   #st.image(img_faces)
   if len(boxes) > 0:
