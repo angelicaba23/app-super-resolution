@@ -22,9 +22,9 @@ st.set_page_config(
 
 image_file = st.file_uploader("Upload Image", type=["png","jpg","jpeg"])
 if image_file is not None:
-  save_image(image_file, image_file.name)
+  #save_image(image_file, image_file.name)
 
-  img_file = "uploaded_image/" + image_file.name
+  #img_file = "uploaded_image/" + image_file.name
 
   file_bytes = np.asarray(bytearray(image_file.read()), dtype=np.uint8)
   opencv_image = cv2.imdecode(file_bytes, 1)
@@ -67,7 +67,7 @@ if image_file is not None:
     with open(filename, "r") as f:   saved_state = json.load(f)
     #st.write(saved_state)
     
-    bg_image = Image.open(opencv_image)
+    bg_image = Image.open(image_file)
     label_color = (
         st.sidebar.color_picker("Annotation color: ", "#00ff00") + "50"
     )  # for alpha from 00 to FF
