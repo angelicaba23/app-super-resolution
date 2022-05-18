@@ -43,7 +43,7 @@ def model():
     return SRCNN
 
 SRCNN = model()
-SRCNN.load_weights("model_5545_993_20_10.h5")
+SRCNN.load_weights("/model_5545_993_20_10.h5")
 print("weights loaded")
 
 def predict(input_img):
