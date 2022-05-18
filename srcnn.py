@@ -2,7 +2,7 @@ import os
 import sys
 import keras
 import cv2
-import numpy
+import numpy as np
 import skimage
 import streamlit as st
 from PIL import Image
@@ -52,13 +52,14 @@ load_weights = 'model_5545_993_20_10.h5'
 SRCNN.load_weights(load_weights)
 print("weights loaded")
 
-def predict(img):
+def predict(input_img):
     scale = 2
 
-    #img = input_img
+    img = np.array(input_img)
+
     st.write(type(img))
     
-    shape= img.size
+    shape= img.shape
     st.write(shape)
 
     img = cv2.cvtColor(img, cv2.COLOR_BGR2YCrCb)
