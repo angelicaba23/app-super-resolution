@@ -24,7 +24,7 @@ if image_file is not None:
 
   img_file = "uploaded_image/" + image_file.name
 
-  im = cv2.imread(img_file)[:, :, ::-1]
+  im = cv2.imread(image_file)[:, :, ::-1]
 
   [img_faces, num, boxes] = faceDetection(img_file)
   #st.write(boxes)
