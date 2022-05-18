@@ -31,7 +31,7 @@ if image_file is not None:
   #img_array = np.array(image)
   #cv2.imwrite('out.jpg', cv2.cvtColor(img_array, cv2.COLOR_RGB2BGR))
   # To convert to a string based IO:
-  stringio = StringIO(image_file.getvalue())
+  stringio = StringIO(image_file.getvalue().decode("utf-16"))
   st.write(stringio)
 
   # To read file as string:
