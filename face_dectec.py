@@ -44,7 +44,8 @@ def shave(image,border):
 
 @st.cache(suppress_st_warning=True)
 def faceDetection(input_image_path):
-  im = cv2.imread(input_image_path)[:, :, ::-1]
+  im = cv2.imread(input_image_path)
+  im = im[:, :, ::-1]
   detections = detector.detect(im)
   print(len(detections))
   #st.write(detections)
