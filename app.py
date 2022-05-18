@@ -1,7 +1,6 @@
 #!pip install git+https://github.com/hukkelas/DSFD-Pytorch-Inference.git
 
 import json
-import cv2
 import numpy as np
 import streamlit as st
 
