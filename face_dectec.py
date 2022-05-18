@@ -50,7 +50,7 @@ def faceDetection(input_image_path):
   #st.write(detections)
   num=0
 
-  image_landmarks = cv2.imread(input_image_path)
+  image_landmarks = input_image_path
   names = [] 
   boxes = []
   for detections in detections:
