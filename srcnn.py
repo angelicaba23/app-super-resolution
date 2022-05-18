@@ -20,7 +20,7 @@ from tensorflow.keras.preprocessing.image import ImageDataGenerator, array_to_im
 
 
 # define the SRCNN model
-
+@st.cache(suppress_st_warning=True)
 def model():
     
     # define model type
@@ -45,15 +45,13 @@ def model():
     
     return SRCNN
 
-@st.cache(suppress_st_warning=True)
-def loadmodel():
-    SRCNN = model()
-    load_weights = 'model_5545_993_20_10.h5'
-    #st.write(load_weights)
-    SRCNN.load_weights(load_weights)
-    print("weights loaded")
+SRCNN = model()
 
-loadmodel()
+
+load_weights = 'model_5545_993_20_10.h5'
+#st.write(load_weights)
+SRCNN.load_weights(load_weights)
+print("weights loaded")
 
 def predict(input_img):
     scale = 2
