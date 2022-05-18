@@ -55,6 +55,7 @@ def predict(input_img):
     scale = 2
 
     img = input_img
+    st.write(img)
     shape = img.shape
 
     img = cv2.cvtColor(img, cv2.COLOR_BGR2YCrCb)
