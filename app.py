@@ -92,7 +92,7 @@ if image_file is not None:
         
         rst_objects = canvas_result.json_data["objects"]
         objects = pd.json_normalize(canvas_result.json_data["objects"]) # need to convert obj to str because PyArrow
-        cols = st.columns(len(rst_objects))
+        cols = st.columns(int(len(rst_objects)))
         i = 0
         for rst_objects in rst_objects:
           rts_boxes = [rst_objects['left'],rst_objects['top'],rst_objects['width']+rst_objects['left'],rst_objects['height']+rst_objects['top']]
@@ -105,6 +105,7 @@ if image_file is not None:
 
         if st.button("Procesar"):
           st.write("cargando")
+
 
         
         
