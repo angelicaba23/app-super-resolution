@@ -44,7 +44,8 @@ def model():
 
 SRCNN = model()
 model_weights = "model_5545_993_20_10.h5"
-SRCNN.load_weights(model_weights)
+with open(model_weights, "r") as mw:
+    SRCNN.load_weights(mw)
 print("weights loaded")
 
 def predict(input_img):
