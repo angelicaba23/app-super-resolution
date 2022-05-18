@@ -1,4 +1,5 @@
 import json
+import cv2
 import streamlit as st
 
 from face_dectec import crop_object, faceDetection
@@ -22,6 +23,9 @@ if image_file is not None:
   save_image(image_file, image_file.name)
 
   img_file = "uploaded_image/" + image_file.name
+
+  im = cv2.imread(img_file)[:, :, ::-1]
+
   [img_faces, num, boxes] = faceDetection(img_file)
   #st.write(boxes)
   #st.image(img_faces)
