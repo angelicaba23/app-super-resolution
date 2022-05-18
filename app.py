@@ -92,12 +92,11 @@ if image_file is not None:
         
         rst_objects = canvas_result.json_data["objects"]
         objects = pd.json_normalize(canvas_result.json_data["objects"]) # need to convert obj to str because PyArrow
-        cols = st.columns(3)
+        cols = st.columns(len(rst_objects))
         i = 0
         for rst_objects in rst_objects:
           rts_boxes = [rst_objects['left'],rst_objects['top'],rst_objects['width']+rst_objects['left'],rst_objects['height']+rst_objects['top']]
           #st.write(rts_boxes)
-          
           cols[i].image(crop_object(bg_image, rts_boxes))
           i += 1
         for col in objects.select_dtypes(include=['object']).columns:
