@@ -39,8 +39,8 @@ if image_file is not None:
   #cv2.imread(string_data)[:, :, ::-1]
 
   bytes_as_np_array = np.frombuffer(image_file.read(), dtype=np.uint8)
-  img = cv2.imdecode(bytes_as_np_array, cv2.IMREAD_COLOR)[:, :, ::-1]
-  
+  img = cv2.imdecode(bytes_as_np_array, cv2.IMREAD_COLOR)
+  im= im[:, :, ::-1]
 
   detections = detector.detect(im)
 
