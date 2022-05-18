@@ -34,9 +34,9 @@ if image_file is not None:
   #cv2.imread(string_data)[:, :, ::-1]
 
   bytes_as_np_array = np.frombuffer(image_file.read(), dtype=np.uint8)
-  cv2.imdecode(bytes_as_np_array, 0)
+  img = cv2.imdecode(bytes_as_np_array, 0)
  
-  [img_faces, num, boxes] = faceDetection(img_file)
+  [img_faces, num, boxes] = faceDetection(img)
   #st.write(boxes)
   #st.image(img_faces)
   if len(boxes) > 0:
