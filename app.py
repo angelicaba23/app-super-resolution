@@ -4,7 +4,7 @@ import numpy as np
 import streamlit as st
 
 from face_dectec import crop_object, faceDetection
-
+from srcnn import predict
 import pandas as pd
 from PIL import Image
 from streamlit_drawable_canvas import st_canvas
@@ -93,7 +93,8 @@ if image_file is not None:
         for rst_objects in rst_objects:
           rts_boxes = [rst_objects['left'],rst_objects['top'],rst_objects['width']+rst_objects['left'],rst_objects['height']+rst_objects['top']]
           #st.write(rts_boxes)
-          cols[i].image(crop_object(bg_image, rts_boxes))
+          crop_image = crop_object(bg_image, rts_boxes)
+          cols[i].image(crop_image)
           i += 1
         for col in objects.select_dtypes(include=['object']).columns:
             objects[col] = objects[col].astype("str")

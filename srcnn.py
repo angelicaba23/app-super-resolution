@@ -52,8 +52,6 @@ def predict(input_img):
 
     img = cv2.imread(input_img, cv2.IMREAD_COLOR)
     shape = img.shape
-    img2 = cv2.resize(img, (int (shape[1] * scale), int (shape[0] * scale)), cv2.INTER_CUBIC)
-   
 
     img = cv2.cvtColor(img, cv2.COLOR_BGR2YCrCb)
     Y_img = cv2.resize(img[:, :, 0], (int (shape[1] * scale), int (shape[0] * scale)), cv2.INTER_CUBIC)
@@ -76,15 +74,7 @@ def predict(input_img):
     pre = pre.astype(numpy.uint8)
     img = cv2.cvtColor(img, cv2.COLOR_BGR2YCrCb)
     img[6: -6, 6: -6, 0] = pre[0, :, :, 0]
-    #plt.imshow(cv2.cvtColor(img, cv2.COLOR_BGR2YCrCb))
-    #plt.show()
+
     img = cv2.cvtColor(img, cv2.COLOR_YCrCb2BGR)
     st.write("OUTPUT")
     st.image(img)
-
-    #cv2.imwrite(OUTPUT_NAME, img)
-
-    #im1 = cv2.imread(IMG_NAME)
-
-
-
