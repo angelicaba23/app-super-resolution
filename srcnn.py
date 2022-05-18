@@ -57,10 +57,10 @@ def predict(input_img):
 
     img = np.array(input_img)
 
-    st.write(type(img))
+    #st.write(type(img))
     
     shape= img.shape
-    st.write(shape)
+    #st.write(shape)
 
     img = cv2.cvtColor(img, cv2.COLOR_BGR2YCrCb)
     Y_img = cv2.resize(img[:, :, 0], (int (shape[1] * scale), int (shape[0] * scale)), cv2.INTER_CUBIC)
