@@ -71,8 +71,8 @@ def predict(input_img):
     img[:, :, 0] = Y_img
     img = cv2.cvtColor(img, cv2.COLOR_YCrCb2BGR)
 
-    st.write("INPUT")
-    st.image(img)
+    #st.write("INPUT")
+    #st.image(img)
 
     Y = np.zeros((1, img.shape[0], img.shape[1], 1), dtype=float)
     Y[0, :, :, 0] = Y_img.astype(float) / 255.
@@ -85,5 +85,6 @@ def predict(input_img):
     img[6: -6, 6: -6, 0] = pre[0, :, :, 0]
 
     img = cv2.cvtColor(img, cv2.COLOR_YCrCb2BGR)
-    st.write("OUTPUT")
-    st.image(img)
+    #st.write("OUTPUT")
+    #st.image(img)
+    return img
