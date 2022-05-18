@@ -1,3 +1,4 @@
+from io import StringIO
 import json
 import cv2
 import numpy as np
@@ -29,8 +30,13 @@ if image_file is not None:
   #image = Image.open(image_file)
   #img_array = np.array(image)
   #cv2.imwrite('out.jpg', cv2.cvtColor(img_array, cv2.COLOR_RGB2BGR))
-  bytes_data = image_file.getvalue()
-  im = cv2.imread(bytes_data)
+  # To convert to a string based IO:
+  stringio = StringIO(image_file.getvalue().decode("utf-8"))
+  st.write(stringio)
+
+  # To read file as string:
+  string_data = stringio.read()
+  im = cv2.imread(string_data)
 
   [img_faces, num, boxes] = faceDetection(img_file)
   #st.write(boxes)
