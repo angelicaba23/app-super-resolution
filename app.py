@@ -11,8 +11,6 @@ from streamlit_drawable_canvas import st_canvas
 
 from write_json import write_json
 
-
-
 im = Image.open("icon.ico")
 st.set_page_config(
     page_title="SuperResolution",
@@ -23,13 +21,8 @@ st.set_page_config(
 image_file = st.file_uploader("Upload Image", type=["png","jpg","jpeg"])
 if image_file is not None:
   save_image(image_file, image_file.name)
-  img_file = "uploaded_image/" + image_file.name
-  
-else:
-  if st.button("TEST") is None:
-    img_file = "selfie3.jpeg"
 
-if img_file is not None:  
+  img_file = "uploaded_image/" + image_file.name
   [img_faces, num, boxes] = faceDetection(img_file)
   #st.write(boxes)
   #st.image(img_faces)
@@ -76,9 +69,8 @@ if img_file is not None:
       "Select tool:", ("draw", "move")
     )
     mode = "transform" if tool_mode=="move" else "rect"
-    
-    with st.spinner('Wait for it...'):
-      canvas_result = st_canvas(
+
+    canvas_result = st_canvas(
         fill_color=label_color,
         stroke_width=3,
         stroke_color="#00ff00",
@@ -94,15 +86,15 @@ if img_file is not None:
         
         rst_objects = canvas_result.json_data["objects"]
         objects = pd.json_normalize(canvas_result.json_data["objects"]) # need to convert obj to str because PyArrow
-
         for rst_objects in rst_objects:
           rts_boxes = [rst_objects['left'],rst_objects['top'],rst_objects['width']+rst_objects['left'],rst_objects['height']+rst_objects['top']]
           #st.write(rts_boxes)
-          st.image(crop_object(bg_image, rts_boxes), use_column_width = "false")
+          st.image(crop_object(bg_image, rts_boxes))
 
-        #for col in objects.select_dtypes(include=['object']).columns:
-            #objects[col] = objects[col].astype("str")
+        for col in objects.select_dtypes(include=['object']).columns:
+            objects[col] = objects[col].astype("str")
         #st.dataframe(objects)
+        
         
   else:
     st.write("NO PERSON DETECTED")
