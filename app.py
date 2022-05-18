@@ -26,9 +26,10 @@ if image_file is not None:
   img_file = "uploaded_image/" + image_file.name
 
   # Convert the file to an opencv image.
-  file_bytes = np.asarray(bytearray(image_file.read()), dtype=np.uint8)
-  opencv_image = cv2.imdecode(file_bytes, 1)
-  im = cv2.imread(file_bytes)
+  image = Image.open(image_file)
+  img_array = np.array(image)
+  #cv2.imwrite('out.jpg', cv2.cvtColor(img_array, cv2.COLOR_RGB2BGR))
+  im = cv2.imread(img_array)
 
   [img_faces, num, boxes] = faceDetection(img_file)
   #st.write(boxes)
