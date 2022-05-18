@@ -29,7 +29,8 @@ if image_file is not None:
   #image = Image.open(image_file)
   #img_array = np.array(image)
   #cv2.imwrite('out.jpg', cv2.cvtColor(img_array, cv2.COLOR_RGB2BGR))
-  im = cv2.imread(image_file)
+  bytes_data = image_file.getvalue()
+  im = cv2.imread(bytes_data)
 
   [img_faces, num, boxes] = faceDetection(img_file)
   #st.write(boxes)
