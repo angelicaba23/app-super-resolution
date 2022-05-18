@@ -67,7 +67,7 @@ if image_file is not None:
     with open(filename, "r") as f:   saved_state = json.load(f)
     #st.write(saved_state)
     
-    bg_image = Image.open(img_file)
+    bg_image = Image.open(opencv_image)
     label_color = (
         st.sidebar.color_picker("Annotation color: ", "#00ff00") + "50"
     )  # for alpha from 00 to FF
