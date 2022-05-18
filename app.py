@@ -1,5 +1,7 @@
 #!pip install git+https://github.com/hukkelas/DSFD-Pytorch-Inference.git
 import json
+import cv2
+import numpy as np
 import streamlit as st
 
 from face_dectec import crop_object, faceDetection
@@ -21,7 +23,9 @@ st.set_page_config(
 image_file = st.file_uploader("Upload Image", type=["png","jpg","jpeg"])
 if image_file is not None:
   save_image(image_file, image_file.name)
-
+  # Convert the file to an opencv image.
+  file_bytes = np.asarray(bytearray(image_file.read()), dtype=np.uint8)
+  image_file = cv2.imdecode(file_bytes, 1)
   img_file = "uploaded_image/" + image_file.name
   [img_faces, num, boxes] = faceDetection(image_file)
   #st.write(boxes)
