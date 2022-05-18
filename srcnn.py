@@ -5,6 +5,7 @@ import cv2
 import numpy
 import skimage
 import streamlit as st
+from PIL import Image
 
 from keras.models import Sequential
 from keras.layers import Conv2D
