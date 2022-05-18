@@ -52,10 +52,10 @@ load_weights = 'model_5545_993_20_10.h5'
 SRCNN.load_weights(load_weights)
 print("weights loaded")
 
-def predict(input_img):
+def predict(img):
     scale = 2
 
-    img = input_img
+    #img = input_img
     st.write(type(img))
     
     shape= img.size
