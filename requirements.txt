@@ -8,3 +8,4 @@ opencv-python-headless==4.5.5.64
 streamlit-drawable-canvas==0.8.0
 streamlit-text-rating==0.1.5
 click==8.0.4
+io
