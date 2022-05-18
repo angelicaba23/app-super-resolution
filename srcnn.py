@@ -1,3 +1,4 @@
+import os
 import sys
 import keras
 import cv2
@@ -43,9 +44,11 @@ def model():
     return SRCNN
 
 SRCNN = model()
-model_weights = "model_5545_993_20_10.h5"
-with open(model_weights, "r") as mw:
-    SRCNN.load_weights(mw)
+
+path = os.path.dirname(__file__)
+load_weights = path+'/model_5545_993_20_10.h5'
+
+SRCNN.load_weights(load_weights)
 print("weights loaded")
 
 def predict(input_img):
