@@ -28,7 +28,7 @@ if image_file is not None:
   # Convert the file to an opencv image.
   file_bytes = np.asarray(bytearray(image_file.read()), dtype=np.uint8)
   opencv_image = cv2.imdecode(file_bytes, 1)
-  im = cv2.imread(opencv_image)
+  im = cv2.imread(file_bytes)
 
   [img_faces, num, boxes] = faceDetection(img_file)
   #st.write(boxes)
