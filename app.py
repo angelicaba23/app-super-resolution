@@ -31,7 +31,10 @@ if image_file is not None:
   st.write(stringio)
   # To read file as string:
   string_data = stringio.read()
-  cv2.imread(string_data)[:, :, ::-1]
+  #cv2.imread(string_data)[:, :, ::-1]
+
+  bytes_as_np_array = np.frombuffer(stringio.read(), dtype=np.uint8)
+  cv2.imdecode(bytes_as_np_array, 0)
  
   [img_faces, num, boxes] = faceDetection(img_file)
   #st.write(boxes)
