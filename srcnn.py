@@ -45,10 +45,8 @@ def model():
 
 SRCNN = model()
 
-path = os.path.dirname(__file__)
-for f in os.listdir(path):
-    st.write(os.path.join(path,f))
-load_weights = path+'/model_5545_993_20_10.h5'
+
+load_weights = 'model_5545_993_20_10.h5'
 #st.write(load_weights)
 SRCNN.load_weights(load_weights)
 print("weights loaded")
