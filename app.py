@@ -1,17 +1,13 @@
-from io import StringIO
 import json
 import cv2
 import numpy as np
 import streamlit as st
 
 from face_dectec import crop_object, faceDetection
-from save_img import save_image
 
 import pandas as pd
 from PIL import Image
 from streamlit_drawable_canvas import st_canvas
-
-from write_json import write_json
 
 im = Image.open("icon.ico")
 st.set_page_config(
@@ -105,9 +101,6 @@ if image_file is not None:
 
         if st.button("Procesar"):
           st.write("cargando")
-
-
-        
-        
+    
   else:
     st.write("NO PERSON DETECTED")
