@@ -54,7 +54,7 @@ print("weights loaded")
 def predict(input_img):
     scale = 2
 
-    img = cv2.imread(input_img, cv2.IMREAD_COLOR)
+    img = input_img
     shape = img.shape
 
     img = cv2.cvtColor(img, cv2.COLOR_BGR2YCrCb)
