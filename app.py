@@ -29,11 +29,11 @@ if image_file is not None:
  # To convert to a string based IO:
   stringio = StringIO(image_file.getvalue().decode("utf-8", 'ignore'))
   st.write(stringio)
-
   # To read file as string:
   string_data = stringio.read()
+  cv2.imread(string_data)[:, :, ::-1]
  
-  [img_faces, num, boxes] = faceDetection(string_data)
+  [img_faces, num, boxes] = faceDetection(img_file)
   #st.write(boxes)
   #st.image(img_faces)
   if len(boxes) > 0:
