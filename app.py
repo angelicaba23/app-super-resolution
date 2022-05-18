@@ -26,7 +26,7 @@ if image_file is not None:
   img_file = "uploaded_image/" + image_file.name
 
   
-  [img_faces, num, boxes] = faceDetection(image_file)
+  [img_faces, num, boxes] = faceDetection(img_file)
   #st.write(boxes)
   #st.image(img_faces)
   if len(boxes) > 0:
@@ -64,7 +64,7 @@ if image_file is not None:
     with open(filename, "r") as f:   saved_state = json.load(f)
     #st.write(saved_state)
     
-    bg_image = Image.open(image_file)
+    bg_image = Image.open(img_file)
     label_color = (
         st.sidebar.color_picker("Annotation color: ", "#00ff00") + "50"
     )  # for alpha from 00 to FF
