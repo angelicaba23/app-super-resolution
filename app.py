@@ -1,5 +1,5 @@
 #!pip install git+https://github.com/hukkelas/DSFD-Pytorch-Inference.git
-import io
+
 import json
 import cv2
 import numpy as np
@@ -26,11 +26,8 @@ if image_file is not None:
   save_image(image_file, image_file.name)
   img_file = "uploaded_image/" + image_file.name
 
-  # Convert the file to an opencv image.
-  img_stream = io.BytesIO(image_file)
-  img = cv2.imdecode(np.frombuffer(img_stream.read(), np.uint8), 1)
-
-  [img_faces, num, boxes] = faceDetection(img)
+  
+  [img_faces, num, boxes] = faceDetection(image_file)
   #st.write(boxes)
   #st.image(img_faces)
   if len(boxes) > 0:
