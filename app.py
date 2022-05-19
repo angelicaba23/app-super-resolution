@@ -1,7 +1,13 @@
+import streamlit as st
+st.set_page_config(
+    page_title="SuperResolution",
+    page_icon=Image.open("icon.ico"),
+    layout="wide",
+)
+
 import json
 import cv2
 import numpy as np
-import streamlit as st
 
 from face_dectec import crop_object, faceDetection
 from srcnn import predict
@@ -9,12 +15,7 @@ import pandas as pd
 from PIL import Image
 from streamlit_drawable_canvas import st_canvas
 
-im = Image.open("icon.ico")
-st.set_page_config(
-    page_title="SuperResolution",
-    page_icon=im,
-    layout="wide",
-)
+
 
 image_file = st.file_uploader("Upload Image", type=["png","jpg","jpeg"])
 if image_file is not None:
@@ -98,7 +99,7 @@ if image_file is not None:
           crop_image = crop_object(bg_image, rts_boxes)
           cols[i].image(crop_image)
           cols_srcnn[i].image(predict(crop_image))
-          cols_srgan[i].image(crop_image)
+          #cols_srgan[i].image(predictgan(crop_image))
           i += 1
         for col in objects.select_dtypes(include=['object']).columns:
             objects[col] = objects[col].astype("str")
