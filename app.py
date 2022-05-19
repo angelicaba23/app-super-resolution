@@ -1,4 +1,5 @@
 import streamlit as st
+from PIL import Image
 st.set_page_config(
     page_title="SuperResolution",
     page_icon=Image.open("icon.ico"),
@@ -12,7 +13,6 @@ import numpy as np
 from face_dectec import crop_object, faceDetection
 from srcnn import predict
 import pandas as pd
-from PIL import Image
 from streamlit_drawable_canvas import st_canvas
 
 
