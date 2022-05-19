@@ -27,6 +27,7 @@ if image_file is not None:
   opencv_image = cv2.imdecode(file_bytes, 1)
 
   [img_faces, num, boxes] = faceDetection(opencv_image)
+  print("numero de rostros = "+ str(num))
   #st.write(boxes)
   #st.image(img_faces)
   if len(boxes) > 0:
@@ -86,7 +87,7 @@ if image_file is not None:
     )
 
     if canvas_result.json_data is not None:
-        
+        print("Canvas creado")
         rst_objects = canvas_result.json_data["objects"]
         objects = pd.json_normalize(canvas_result.json_data["objects"]) # need to convert obj to str because PyArrow
         cols = st.columns(int(len(rst_objects)))
@@ -100,6 +101,7 @@ if image_file is not None:
           cols[i].image(crop_image)
           cols_srcnn[i].image(predict(crop_image))
           #cols_srgan[i].image(predictgan(crop_image))
+          print("img" + str(i))
           i += 1
         for col in objects.select_dtypes(include=['object']).columns:
             objects[col] = objects[col].astype("str")
