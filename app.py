@@ -1,10 +1,5 @@
 import streamlit as st
 from PIL import Image
-st.set_page_config(
-    page_title="SuperResolution",
-    page_icon=Image.open("icon.ico"),
-    layout="wide",
-)
 
 import json
 import cv2
@@ -15,7 +10,11 @@ from srcnn import predict
 import pandas as pd
 from streamlit_drawable_canvas import st_canvas
 
-
+st.set_page_config(
+    page_title="SuperResolution",
+    page_icon=Image.open("icon.ico"),
+    layout="wide"
+)
 
 image_file = st.file_uploader("Upload Image", type=["png","jpg","jpeg"])
 if image_file is not None:
@@ -90,9 +89,10 @@ if image_file is not None:
         print("Canvas creado")
         rst_objects = canvas_result.json_data["objects"]
         objects = pd.json_normalize(canvas_result.json_data["objects"]) # need to convert obj to str because PyArrow
-        cols = st.columns(int(len(rst_objects)))
-        cols_srcnn = st.columns(int(len(rst_objects)))
-        cols_srgan = st.columns(int(len(rst_objects)))
+        n = int(len(rst_objects))
+        cols = st.columns(n)
+        cols_srcnn = st.columns(n)
+        #cols_srgan = st.columns(n)
         i = 0
         for rst_objects in rst_objects:
           rts_boxes = [rst_objects['left'],rst_objects['top'],rst_objects['width']+rst_objects['left'],rst_objects['height']+rst_objects['top']]
