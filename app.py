@@ -107,16 +107,16 @@ if image_file is not None:
           srt_enco = img_enco.tostring()
           f4 = BytesIO(srt_enco)
           f5 = BufferedReader(f4)
-          cols_srcnn[i].write(type(srt_enco),type(f4), type(f5))
+          #cols_srcnn[i].write(type(srt_enco),type(f4), type(f5))
 
-          with open("selfie3.jpeg", "rb") as file:
-            cols_srcnn[i].write(type(file))
-            cols_srcnn[i].download_button(
-              label="Download",
-              data=file,
-              file_name="srcnn_img_"+str(i)+".png",
-              mime="image/png"
-            )
+
+          print(type(f5))
+          cols_srcnn[i].download_button(
+            label="Download",
+            data=f5,
+            file_name="srcnn_img_"+str(i)+".png",
+            mime="image/png"
+          )
           #cols_srgan[i].image(predictgan(crop_image))
           print("img" + str(i))
           i += 1
