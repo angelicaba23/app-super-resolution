@@ -109,8 +109,8 @@ if image_file is not None:
         if st.button("PROCESAR"):
           st.warning("SRCNN")
           i = 0
-          for rst_objects in rst_objects:
-            rts_boxes2 = [rst_objects['left'],rst_objects['top'],rst_objects['width']+rst_objects['left'],rst_objects['height']+rst_objects['top']]
+          for rst_objects2 in rst_objects:
+            rts_boxes2 = [rst_objects2['left'],rst_objects2['top'],rst_objects2['width']+rst_objects2['left'],rst_objects2['height']+rst_objects2['top']]
             #st.write(rts_boxes)
             crop_image = crop_object(bg_image, rts_boxes2)
             #cols[i].image(crop_image)
