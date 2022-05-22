@@ -105,6 +105,7 @@ if image_file is not None:
           cols_srcnn = st.columns(n)
           i = 0
           for img in croped_images:
+            cols[i].image(img)
             cols_srcnn[i].image(predict(img))
             #cols_srgan[i].image(predictgan(crop_image))
             print("img" + str(i))
