@@ -95,16 +95,16 @@ if image_file is not None:
         #cols_srgan = st.columns(n)
         i = 0
         for rst_objects in rst_objects:
-          rts_boxes = [rst_objects['left'],rst_objects['top'],rst_objects['width']+rst_objects['left'],rst_objects['height']+rst_objects['top']]
+          #rts_boxes = [rst_objects['left'],rst_objects['top'],rst_objects['width']+rst_objects['left'],rst_objects['height']+rst_objects['top']]
           #st.write(rts_boxes)
-          crop_image = crop_object(bg_image, rts_boxes)
-          cols[i].image(crop_image)
-          cols_srcnn[i].image(predict(crop_image))
+          #crop_image = crop_object(bg_image, rts_boxes)
+          #cols[i].image(crop_image)
+          #cols_srcnn[i].image(predict(crop_image))
           #cols_srgan[i].image(predictgan(crop_image))
           print("img" + str(i))
           i += 1
-        for col in objects.select_dtypes(include=['object']).columns:
-            objects[col] = objects[col].astype("str")
+        #for col in objects.select_dtypes(include=['object']).columns:
+            #objects[col] = objects[col].astype("str")
         #st.dataframe(objects)
 
         #if st.button("Procesar"):
