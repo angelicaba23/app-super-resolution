@@ -106,8 +106,9 @@ if image_file is not None:
           ret, img_enco = cv2.imencode(".jpg", predict(crop_image))
           srt_enco = img_enco.tostring()
           f4 = BytesIO(srt_enco)
-          f5 = BufferedReader(f5)
+          f5 = BufferedReader(f4)
           cols_srcnn[i].write(type(srt_enco),type(f4), type(f5))
+
           with open("selfie3.jpeg", "rb") as file:
             cols_srcnn[i].write(type(file))
             cols_srcnn[i].download_button(
