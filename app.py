@@ -102,7 +102,14 @@ if image_file is not None:
           #st.write(rts_boxes)
           crop_image = crop_object(bg_image, rts_boxes)
           cols[i].image(crop_image)
-          cols_srcnn[i].image(predict(crop_image))
+          srcnn_img = predict(crop_image)
+          cols_srcnn[i].image(srcnn_img)
+          btn = cols_srcnn[i].download_button(
+             label="Download",
+             data=srcnn_img,
+             file_name="srcnn_img.png",
+             mime="image/png"
+           )
           #cols_srgan[i].image(predictgan(crop_image))
           print("img" + str(i))
           i += 1
