@@ -101,8 +101,9 @@ if image_file is not None:
           #st.write(rts_boxes)
           crop_image = crop_object(bg_image, rts_boxes)
           cols[i].image(crop_image)
-          im_rgb = predict(crop_image)[:, :, [2, 1, 0]]
+          im_bgr = predict(crop_image)
           cols_srcnn[i].image(im_rgb)
+          im_rgb = im_bgr[:, :, [2, 1, 0]]
           ret, img_enco = cv2.imencode(".jpg", im_rgb)
           srt_enco = img_enco.tostring()
           f4 = BytesIO(srt_enco)
