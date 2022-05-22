@@ -104,6 +104,7 @@ if image_file is not None:
           
           cols_srcnn[i].image(predict(crop_image))
           ret, img_enco = cv2.imencode(".png", predict(crop_image))
+          img_enco = cv2.cvtColor(img_enco, cv2.COLOR_BGR2RGB)
           srt_enco = img_enco.tostring()
           f4 = BytesIO(srt_enco)
           f5 = BufferedReader(f4)
