@@ -1,3 +1,4 @@
+from io import BufferedReader, BytesIO
 import streamlit as st
 from PIL import Image
 
@@ -100,9 +101,13 @@ if image_file is not None:
           #st.write(rts_boxes)
           crop_image = crop_object(bg_image, rts_boxes)
           cols[i].image(crop_image)
-          with open(predict(crop_image), "rb") as srcnn_img:
-            cols_srcnn[i].image(srcnn_img)
-            cols_srcnn[i].write(type(srcnn_img))
+          
+          cols_srcnn[i].image(predict(crop_image))
+          ret, img_enco = cv2.imencode(".jpg", predict(crop_image))
+          srt_enco = img_enco.tostring()
+          f4 = BytesIO(srt_enco)
+          f5 = BufferedReader(f5)
+          cols_srcnn[i].write(type(srt_enco),type(f4), type(f5))
           with open("selfie3.jpeg", "rb") as file:
             cols_srcnn[i].write(type(file))
             cols_srcnn[i].download_button(
