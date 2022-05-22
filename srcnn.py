@@ -20,7 +20,7 @@ from tensorflow.keras.preprocessing.image import ImageDataGenerator, array_to_im
 
 
 # define the SRCNN model
-@st.cache(suppress_st_warning=True)
+
 def model():
     
     # define model type
@@ -54,8 +54,9 @@ SRCNN = model()
 
 
 
-
+@st.cache(suppress_st_warning=True)
 def predict(input_img):
+    print("prede")
     scale = 2
 
     img = np.array(input_img)
