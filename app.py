@@ -103,7 +103,7 @@ if image_file is not None:
           cols[i].image(crop_image)
           
           cols_srcnn[i].image(predict(crop_image))
-          ret, img_enco = cv2.imencode(".jpg", predict(crop_image))
+          ret, img_enco = cv2.imencode(".png", predict(crop_image))
           srt_enco = img_enco.tostring()
           f4 = BytesIO(srt_enco)
           f5 = BufferedReader(f4)
