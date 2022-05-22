@@ -24,10 +24,9 @@ if image_file is not None:
 
   file_bytes = np.asarray(bytearray(image_file.read()), dtype=np.uint8)
   opencv_image = cv2.imdecode(file_bytes, 1)
-  print("faceDetection")
+  
   [img_faces, num, boxes] = faceDetection(opencv_image)
   print("numero de rostros = "+ str(num))
-  
   #st.write(boxes)
   #st.image(img_faces)
   if len(boxes) > 0:
@@ -92,9 +91,7 @@ if image_file is not None:
         objects = pd.json_normalize(canvas_result.json_data["objects"]) # need to convert obj to str because PyArrow
         n = int(len(rst_objects))
         cols = st.columns(n)
-        st.info("SRCNN")
         cols_srcnn = st.columns(n)
-        st.info("SRGAN")
         #cols_srgan = st.columns(n)
         i = 0
         for rst_objects in rst_objects:
@@ -102,14 +99,12 @@ if image_file is not None:
           #st.write(rts_boxes)
           crop_image = crop_object(bg_image, rts_boxes)
           cols[i].image(crop_image)
-          srcnn_img = predict(crop_image)
-          cols_srcnn[i].image(srcnn_img)
-          
+          cols_srcnn[i].image(predict(crop_image))
           #cols_srgan[i].image(predictgan(crop_image))
           print("img" + str(i))
           i += 1
-        #for col in objects.select_dtypes(include=['object']).columns:
-        #    objects[col] = objects[col].astype("str")
+        for col in objects.select_dtypes(include=['object']).columns:
+            objects[col] = objects[col].astype("str")
         #st.dataframe(objects)
 
         #if st.button("Procesar"):
