@@ -96,14 +96,13 @@ if image_file is not None:
           rts_boxes = [rst_objects['left'],rst_objects['top'],rst_objects['width']+rst_objects['left'],rst_objects['height']+rst_objects['top']]
           croped_images.append(crop_object(bg_image, rts_boxes))
 
-        
-        n = int(len(rst_objects))
-        cols = st.columns(n)
-        cols_srcnn = st.columns(n)
         #cols_srgan = st.columns(n)
       
         if st.button("PROCESAR"):
           st.warning("SRCNN")
+          n = int(len(rst_objects))
+          cols = st.columns(n)
+          cols_srcnn = st.columns(n)
           i = 0
           for img in croped_images:
             cols_srcnn[i].image(predict(img))
