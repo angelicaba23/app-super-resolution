@@ -103,21 +103,25 @@ if image_file is not None:
           cols[i].image(crop_image)
           im_bgr = predict(crop_image)
           cols_srcnn[i].image(im_bgr)
-          im_rgb = im_bgr[:, :, [2, 1, 0]]
-          ret, img_enco = cv2.imencode(".jpg", im_rgb)
-          srt_enco = img_enco.tostring()
-          f4 = BytesIO(srt_enco)
-          f5 = BufferedReader(f4)
-          #cols_srcnn[i].write(type(srt_enco),type(f4), type(f5))
 
+          im_rgb = im_bgr[:, :, [2, 1, 0]] #array
+          ret, img_enco = cv2.imencode(".png", im_rgb) 
+          srt_enco = img_enco.tostring()  #bytes
+          img_BytesIO = BytesIO(srt_enco) #io.BytesIO
+          img_BufferedReader = BufferedReader(img_BytesIO) #io.BufferedReader
 
-          print(type(f5))
+          print(type(im_rgb))
+          print(type(img_enco))
+          print(type(srt_enco))
+          print(type(img_BytesIO))
+          print(type(img_BufferedReader))
           cols_srcnn[i].download_button(
             label="Download",
-            data=f5,
-            file_name="srcnn_img_"+str(i)+".jpg",
+            data=img_BufferedReader,
+            file_name="srcnn_img_"+str(i)+".png",
             mime="image/png"
           )
+
           #cols_srgan[i].image(predictgan(crop_image))
           print("img" + str(i))
           i += 1
