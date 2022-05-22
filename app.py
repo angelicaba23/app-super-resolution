@@ -92,7 +92,7 @@ if image_file is not None:
         objects = pd.json_normalize(canvas_result.json_data["objects"]) # need to convert obj to str because PyArrow
         n = int(len(rst_objects))
         cols = st.columns(n)
-
+        st.info("SuperResolution (CNN)")
         cols_srcnn = st.columns(n)
         #cols_srgan = st.columns(n)
         i = 0
