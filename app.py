@@ -105,7 +105,7 @@ if image_file is not None:
             cols_srcnn[i].download_button(
               label="Download",
               data=file,
-              file_name="d.png",
+              file_name="srcnn_img_"+str(i)+".png",
               mime="image/png"
             )
           #cols_srgan[i].image(predictgan(crop_image))
