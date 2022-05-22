@@ -27,7 +27,7 @@ if image_file is not None:
   print("faceDetection")
   [img_faces, num, boxes] = faceDetection(opencv_image)
   print("numero de rostros = "+ str(num))
-
+  
   #st.write(boxes)
   #st.image(img_faces)
   if len(boxes) > 0:
@@ -90,23 +90,31 @@ if image_file is not None:
         print("Canvas creado")
         rst_objects = canvas_result.json_data["objects"]
         objects = pd.json_normalize(canvas_result.json_data["objects"]) # need to convert obj to str because PyArrow
-        croped_images = []
+        n = int(len(rst_objects))
+        cols = st.columns(n)
+        cols_srcnn = st.columns(n)
+        #cols_srgan = st.columns(n)
+        i = 0
 
         for rst_objects in rst_objects:
           rts_boxes = [rst_objects['left'],rst_objects['top'],rst_objects['width']+rst_objects['left'],rst_objects['height']+rst_objects['top']]
-          croped_images.append(crop_object(bg_image, rts_boxes))
+          #st.write(rts_boxes)
+          crop_image = crop_object(bg_image, rts_boxes)
+          cols[i].image(crop_image)
+          #cols_srcnn[i].image(predict(crop_image))
+          #cols_srgan[i].image(predictgan(crop_image))
+          print("img" + str(i))
+          i += 1
 
-        #cols_srgan = st.columns(n)
-      
         if st.button("PROCESAR"):
           st.warning("SRCNN")
-          n = int(len(rst_objects))
-          cols = st.columns(n)
-          cols_srcnn = st.columns(n)
           i = 0
-          for img in croped_images:
-            cols[i].image(img)
-            cols_srcnn[i].image(predict(img))
+          for rst_objects in rst_objects:
+            rts_boxes = [rst_objects['left'],rst_objects['top'],rst_objects['width']+rst_objects['left'],rst_objects['height']+rst_objects['top']]
+            #st.write(rts_boxes)
+            crop_image = crop_object(bg_image, rts_boxes)
+            #cols[i].image(crop_image)
+            cols_srcnn[i].image(predict(crop_image))
             #cols_srgan[i].image(predictgan(crop_image))
             print("img" + str(i))
             i += 1
