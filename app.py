@@ -104,7 +104,7 @@ if image_file is not None:
           cols[i].image(crop_image)
           srcnn_img = predict(crop_image)
           cols_srcnn[i].image(srcnn_img)
-          btn = cols_srcnn[i].download_button(
+          cols_srcnn[i].download_button(
              label="Download",
              data=srcnn_img,
              file_name="srcnn_img.png",
@@ -113,7 +113,6 @@ if image_file is not None:
           #cols_srgan[i].image(predictgan(crop_image))
           print("img" + str(i))
           i += 1
-        st.snow()
         #for col in objects.select_dtypes(include=['object']).columns:
         #    objects[col] = objects[col].astype("str")
         #st.dataframe(objects)
