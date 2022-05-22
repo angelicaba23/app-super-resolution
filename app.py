@@ -92,33 +92,21 @@ if image_file is not None:
         objects = pd.json_normalize(canvas_result.json_data["objects"]) # need to convert obj to str because PyArrow
         n = int(len(rst_objects))
         cols = st.columns(n)
+        st.info("SRCNN")
         cols_srcnn = st.columns(n)
+        st.info("SRGAN")
         #cols_srgan = st.columns(n)
         i = 0
-
         for rst_objects in rst_objects:
           rts_boxes = [rst_objects['left'],rst_objects['top'],rst_objects['width']+rst_objects['left'],rst_objects['height']+rst_objects['top']]
           #st.write(rts_boxes)
           crop_image = crop_object(bg_image, rts_boxes)
           cols[i].image(crop_image)
-          #cols_srcnn[i].image(predict(crop_image))
+          cols_srcnn[i].image(predict(crop_image))
           #cols_srgan[i].image(predictgan(crop_image))
           print("img" + str(i))
           i += 1
-
-        if st.button("PROCESAR"):
-          st.warning("SRCNN")
-          i = 0
-          for rst_objects2 in rst_objects:
-            rts_boxes2 = [rst_objects2['left'],rst_objects2['top'],rst_objects2['width']+rst_objects2['left'],rst_objects2['height']+rst_objects2['top']]
-            #st.write(rts_boxes)
-            crop_image = crop_object(bg_image, rts_boxes2)
-            #cols[i].image(crop_image)
-            cols_srcnn[i].image(predict(crop_image))
-            #cols_srgan[i].image(predictgan(crop_image))
-            print("img" + str(i))
-            i += 1
-
+        st.snow()
         #for col in objects.select_dtypes(include=['object']).columns:
         #    objects[col] = objects[col].astype("str")
         #st.dataframe(objects)
