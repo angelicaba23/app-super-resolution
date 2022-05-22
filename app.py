@@ -101,6 +101,7 @@ if image_file is not None:
           crop_image = crop_object(bg_image, rts_boxes)
           cols[i].image(crop_image)
           cols_srcnn[i].image(predict(crop_image))
+          cols_srcnn[i].write(type(predict(crop_image)))
           with open("selfie3.jpeg", "rb") as file:
             cols_srcnn[i].write(type(file))
             cols_srcnn[i].download_button(
