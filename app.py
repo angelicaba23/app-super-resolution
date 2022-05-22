@@ -100,10 +100,11 @@ if image_file is not None:
           #st.write(rts_boxes)
           crop_image = crop_object(bg_image, rts_boxes)
           cols[i].image(crop_image)
-          cols_srcnn[i].image(predict(crop_image))
+          img =predict(crop_image).encode('utf-8')
+          cols_srcnn[i].image(predict(img))
           cols_srcnn[i].download_button(
              label="Download",
-             data=predict(crop_image).encode('utf-8'),
+             data=img,
              file_name=".png",
              mime="image/png"
            )
