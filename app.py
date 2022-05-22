@@ -90,8 +90,9 @@ if image_file is not None:
         rst_objects = canvas_result.json_data["objects"]
         objects = pd.json_normalize(canvas_result.json_data["objects"]) # need to convert obj to str because PyArrow
         n = int(len(rst_objects))
-        cols = st.columns(n)
-        cols_srcnn = st.columns(n)
+        print(type(n))
+        #cols = st.columns(n)
+        #cols_srcnn = st.columns(n)
         #cols_srgan = st.columns(n)
         i = 0
         for rst_objects in rst_objects:
