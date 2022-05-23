@@ -21,6 +21,7 @@ from tensorflow.keras.preprocessing.image import ImageDataGenerator, array_to_im
 
 # define the SRCNN model
 
+@st.experimental_singleton()
 def model():
     
     # define model type
