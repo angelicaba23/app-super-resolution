@@ -43,7 +43,7 @@ def model():
     # compile model
     SRCNN.compile(optimizer=adam, loss='mean_squared_error', metrics=['mean_squared_error'])
     
-    load_weights = '/pretrained_models/model_1414_222_20_10.h5'
+    load_weights = 'pretrained_models/model_1414_222_20_10.h5'
     #st.write(load_weights)
     SRCNN.load_weights(load_weights)
     print("weights loaded")
