@@ -117,7 +117,7 @@ def display_app_header(main_txt,sub_txt,is_sidebar = False):
     """
 
     html_temp = f"""
-    <h2 style = "color:#F74369; text_align:center; font-weight: bold;"> {main_txt} </h2>
+    <h2 style = "color:#1f1c51; text_align:center; font-weight: bold;"> {main_txt} </h2>
     <p style = "color:#1f1c51; text_align:center;"> {sub_txt} </p>
     </div>
     """
