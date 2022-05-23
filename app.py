@@ -54,7 +54,7 @@ display_app_header(main_txt = "Step 1",
                        sub_txt= "Upload data",
                        is_sidebar=True)
 
-image_file = st.file_uploader("Upload Image", type=["png","jpg","jpeg"])
+image_file = st.sidebar.file_uploader("Upload Image", type=["png","jpg","jpeg"])
 
 if image_file is not None:
   #save_image(image_file, image_file.name)
