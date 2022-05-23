@@ -1,8 +1,8 @@
 [theme]
 base="light"
-primaryColor="#6896f5"
-secondaryBackgroundColor="#e2e2ff"
-textColor="#214869"
+primaryColor="#1f1c51"
+secondaryBackgroundColor="#fcfcfc"
+textColor="#1f1c51"
 [global]
 dataFrameSerialization = "legacy"
 [server]

@@ -33,15 +33,9 @@ try:
     
     
     # Main panel setup
-    display_app_header(main_txt='Data Quality Wrapper',
-                       sub_txt='Clean, describe, visualise and select data for AI models')
+    display_app_header(main_txt='Super Resolution',
+                       sub_txt='Upload, procces, download to get a new resolution')
 
-    st.markdown("""---""")
-    # provide options to user to navigate to other dqw apps
-    app_section_button('Image Data Section 🖼️',
-    '[Tabular Data Section 🏗️](https://share.streamlit.io/soft-nougat/dqw-ivves_structured/main/app.py)',
-    '[Audio Data Section 🎶](https://share.streamlit.io/soft-nougat/dqw-ivves_audio/main/app.py)',
-    '[Text Data Section 📚](https://share.streamlit.io/soft-nougat/dqw-ivves_text/main/app.py)')
     st.markdown("""---""")
     
     #image_data_app()
@@ -65,7 +59,7 @@ st.write("")
 
 #sidebar
 st.sidebar.image('extra/name.png', use_column_width=True)
-st.sidebar.write("[GitHub](https://github.com/angelicaba23/app-super-resolution)")
+st.sidebar.app_section_button("[GitHub](https://github.com/angelicaba23/app-super-resolution)")
 
 
 image_file = st.file_uploader("Upload Image", type=["png","jpg","jpeg"])
