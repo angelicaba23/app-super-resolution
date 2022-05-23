@@ -13,11 +13,7 @@ import pandas as pd
 from streamlit_drawable_canvas import st_canvas
 
 # Page config
-st.set_page_config(
-    page_title="SuperResolution",
-    #page_icon=Image.open("icon.ico"),
-    layout="wide"
-)
+st.set_page_config(page_title="SuperResolution",layout="wide")
 
 image_file = st.file_uploader("Upload Image", type=["png","jpg","jpeg"])
 if image_file is not None:
