@@ -12,9 +12,10 @@ from srcnn import predictCNN
 import pandas as pd
 from streamlit_drawable_canvas import st_canvas
 
+# Page config
 st.set_page_config(
     page_title="SuperResolution",
-    page_icon=Image.open("icon.ico"),
+    #page_icon=Image.open("icon.ico"),
     layout="wide"
 )
 
