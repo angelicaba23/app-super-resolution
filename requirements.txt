@@ -9,3 +9,4 @@ streamlit-drawable-canvas==0.8.0
 click==8.0.4
 tensorflow==2.9.0
 
+

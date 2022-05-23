@@ -55,7 +55,11 @@ SRCNN = model()
 
 
 @st.cache(suppress_st_warning=True)
-def predict(input_img):
+def predictCNN(input_img):
+    """
+     A function that takes an image and returns a super-resolved image.
+
+    """
     print("prede")
     scale = 2
 

@@ -7,7 +7,8 @@ import cv2
 import numpy as np
 
 from face_dectec import crop_object, faceDetection
-from srcnn import predict
+from srcnn import predictCNN
+#from srgan import predictSrgan
 import pandas as pd
 from streamlit_drawable_canvas import st_canvas
 
@@ -101,7 +102,7 @@ if image_file is not None:
           #st.write(rts_boxes)
           crop_image = crop_object(bg_image, rts_boxes)
           cols[i].image(crop_image)
-          im_bgr = predict(crop_image)
+          im_bgr = predictCNN(crop_image)
           cols_srcnn[i].image(im_bgr)
 
           im_rgb = im_bgr[:, :, [2, 1, 0]] #numpy.ndarray

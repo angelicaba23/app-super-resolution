@@ -15,9 +15,9 @@ def crop_object(image, box, num = 0, names  = []):
   y_bottom_right = box[3]
 
   crop_img = image.crop((int(x_top_left), int(y_top_left), int(x_bottom_right), int(y_bottom_right)))
-  name = "crop_img_"+str(num)+".png"
-  names.append(name)
-  crop_img.save(name)
+  #name = "crop_img_"+str(num)+".png"
+  #names.append(name)
+  #crop_img.save(name)
   return crop_img
 
 # define necessary image processing functions
