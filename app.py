@@ -59,7 +59,7 @@ st.write("")
 
 #sidebar
 st.sidebar.image('extra/name.png', use_column_width=True)
-st.sidebar.app_section_button("[GitHub](https://github.com/angelicaba23/app-super-resolution)")
+#st.sidebar.app_section_button("[GitHub](https://github.com/angelicaba23/app-super-resolution)")
 
 
 image_file = st.file_uploader("Upload Image", type=["png","jpg","jpeg"])
