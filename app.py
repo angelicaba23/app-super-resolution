@@ -25,6 +25,19 @@ if 'data' not in st.session_state:
 app_meta('🖼️')
 set_bg_hack('extra/bq.png')
 
+
+#style
+styl = f"""
+<style>
+	.css-14ngwub {{
+    background-color: blue;
+	}}
+	}}
+</style>
+"""
+st.markdown(styl, unsafe_allow_html=True)
+
+
 # set logo in sidebar using PIL
 logo = Image.open('extra/name.png')
 st.sidebar.image(logo, 
@@ -51,8 +64,8 @@ st.sidebar.image('extra/upload.png', use_column_width=True)
 #st.sidebar.app_section_button("[GitHub](https://github.com/angelicaba23/app-super-resolution)")
 
 display_app_header(main_txt = "Step 1",
-                       sub_txt= "Upload data",
-                       is_sidebar=True)
+                  sub_txt= "Upload data",
+                  is_sidebar=True)
 
 image_file = st.sidebar.file_uploader("Upload Image", type=["png","jpg","jpeg"])
 
