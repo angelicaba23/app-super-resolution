@@ -26,7 +26,7 @@ app_meta('🖼️')
 set_bg_hack('extra/bq.png')
 
 # set logo in sidebar using PIL
-logo = Image.open('extra/upload.png')
+logo = Image.open('extra/name.png')
 st.sidebar.image(logo, 
                     use_column_width=True)
 
@@ -44,12 +44,18 @@ st.markdown("""---""")
     
 #image_data_app()
 
+
+
 #sidebar
-st.sidebar.image('extra/name.png', use_column_width=True)
+st.sidebar.image('extra/upload.png', use_column_width=True)
 #st.sidebar.app_section_button("[GitHub](https://github.com/angelicaba23/app-super-resolution)")
 
+display_app_header(main_txt = "Step 1",
+                       sub_txt= "Upload data",
+                       is_sidebar=True)
 
 image_file = st.file_uploader("Upload Image", type=["png","jpg","jpeg"])
+
 if image_file is not None:
   #save_image(image_file, image_file.name)
 
