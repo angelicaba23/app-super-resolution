@@ -15,6 +15,17 @@ from streamlit_drawable_canvas import st_canvas
 # Page config
 #st.set_page_config(page_title="SuperResolution",layout="wide")
 
+# Info
+with st.expander("What is this app?", expanded=False):
+    st.write("hola")
+    st.write("")
+st.write("")
+
+#sidebar
+st.sidebar.image('extra/name.png', use_column_width=True)
+st.write(["GitHub"]("https://github.com/angelicaba23/app-super-resolution"))
+
+
 image_file = st.file_uploader("Upload Image", type=["png","jpg","jpeg"])
 if image_file is not None:
   #save_image(image_file, image_file.name)
