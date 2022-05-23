@@ -6,4 +6,4 @@ textColor="#214869"
 [global]
 dataFrameSerialization = "legacy"
 [server]
-maxUploadSize = 10
+server.maxUploadSize = 10
