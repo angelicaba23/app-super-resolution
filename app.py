@@ -194,7 +194,12 @@ if image_file is not None:
           )
 
           cols_srgan[i].image(predictSrgan(crop_image))
-          
+          cols_srgan[i].download_button(
+            label="📥",
+            data=img_BufferedReader,
+            file_name="srgan_img_"+str(i)+".png",
+            mime="image/png"
+          )
           print("img" + str(i))
           i += 1
         for col in objects.select_dtypes(include=['object']).columns:
