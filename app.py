@@ -29,7 +29,7 @@ set_bg_hack('extra/bq.png')
 #style
 styl = f"""
 <style>
-	.css-14ngwub {{
+	.css-14ngwub .st-ct{{
     background-color: #97fdf5;
 	}}
 	}}
@@ -123,7 +123,7 @@ if image_file is not None:
     
     bg_image = Image.open(image_file)
     label_color = (
-        st.sidebar.color_picker("Annotation color: ", "#00ff00") + "50"
+        st.sidebar.color_picker("Annotation color: ", "#00FFB3") 
     )  # for alpha from 00 to FF
     tool_mode = st.sidebar.selectbox(
       "Select tool:", ("Add", "Move & edit")
@@ -131,9 +131,9 @@ if image_file is not None:
     mode = "transform" if tool_mode=="move" else "rect"
 
     canvas_result = st_canvas(
-        fill_color=label_color,
+        fill_color=label_color+ "50",
         stroke_width=3,
-        stroke_color="#00ff00",
+        stroke_color=label_color,
         background_image=bg_image,
         height=bg_image.height,
         width=bg_image.width,
