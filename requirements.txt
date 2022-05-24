@@ -8,7 +8,7 @@ opencv-python-headless==4.5.5.64
 streamlit-drawable-canvas==0.8.0
 click==8.0.4
 tensorflow-cpu
-torch>=1.7
+torch
 numpy<1.21  # numba requires numpy<1.21,>=1.17
 torchvision
 scipy
