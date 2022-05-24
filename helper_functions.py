@@ -157,8 +157,8 @@ def display_mini_text(txt,url,txt_url,is_sidebar = False):
     """
 
     html_temp = f"""
-    <h6 style = font-size: 60%; opacity: 0.5; "color:#1f1c51; text_align:center;"> {txt} 
-    <a target="_blank" class="text-dark font-weight-bold" href="{url}">{txt_url} </a> </h6>
+    <h6 style = color:rgb(139 162 183 / 25%); font-size: 60%; opacity: 0.5; "color:#1f1c51; text_align:center;"> {txt} 
+    <a target="_blank" style = color:rgb(139 162 183 / 25%); href="{url}">{txt_url} </a> </h6>
     </div>
     """
     if is_sidebar:
