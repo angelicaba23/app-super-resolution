@@ -63,7 +63,7 @@ st.markdown("""---""")
 st.sidebar.image('extra/upload.png', use_column_width=True)
 #st.sidebar.app_section_button("[GitHub](https://github.com/angelicaba23/app-super-resolution)")
 
-display_app_header(main_txt = "Step 1",
+display_app_header(main_txt = "📤 Step 1",
                   #sub_txt= "Upload data",
                   is_sidebar=True)
 
@@ -84,7 +84,7 @@ if image_file is not None:
   #st.write(boxes)
   #st.image(img_faces)
   if len(boxes) > 0:
-    display_app_header(main_txt = "Step 2",
+    display_app_header(main_txt = "🛠️ Step 2",
                   sub_txt= "Edit image",
                   is_sidebar=True)
     list = []
@@ -97,8 +97,8 @@ if image_file is not None:
           "top": boxes[1],
           "width": boxes[2]-boxes[0],
           "height": boxes[3]-boxes[1],
-          "fill": "#00ff0050",
-          "stroke": "#00ff00",
+          "fill": "#00FFB350",
+          "stroke": "#00FFB3",
           "strokeWidth": 3
       })
 
