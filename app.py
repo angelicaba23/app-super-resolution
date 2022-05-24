@@ -13,12 +13,6 @@ import pandas as pd
 from streamlit_drawable_canvas import st_canvas
 from helper_functions import *
 
-from SessionState import _get_state
-
-
-state = _get_state()
-
-
 
 # create ss object
 if 'data' not in st.session_state:
@@ -30,7 +24,7 @@ if 'data' not in st.session_state:
 icon = Image.open('icon.ico')
 #app_meta(icon)
 
-state.page_config = app_meta(icon)
+app_meta(icon)
 
 set_bg_hack('extra/bg.png')
 
