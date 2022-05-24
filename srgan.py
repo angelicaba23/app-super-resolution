@@ -1,6 +1,6 @@
 import os
 from gfpgan import GFPGANer
-from basicsr import *
+#from basicsr import *
 
 img_list = ""
 bg_upsampler = None
@@ -14,8 +14,8 @@ model_path = "GFPGANv1.pth"
 os.system("curl -LJO https://github.com/TencentARC/GFPGAN/releases/download/v0.1.0/GFPGANv1.pth")
 
 #print(os.system("ls pretrained_models "))
-#os.system("BASICSR_EXT=True pip install basicsr==1.3.5")
-#os.system("curl https://files.pythonhosted.org/packages/5a/a9/7c9e5ff86c945d902aad5bcba0abf18c29c2bcd6ef0f078f414698d5c329/basicsr-1.3.5.tar.gzpip install realesrgan")
+os.system("BASICSR_EXT=True pip install basicsr==1.3.5")
+os.system("python setup.py develop")
 print(os.system("pip list"))
 
 def predictSrgan():
