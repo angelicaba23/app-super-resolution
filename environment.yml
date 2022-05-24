@@ -130,7 +130,7 @@ dependencies:
     - jupyter-core==4.9.2
     - jupyterlab-pygments==0.1.2
     - jupyterlab-widgets==1.1.0
-    - keras==2.8.0
+    - keras==2.9.0rc0
     - markupsafe==2.1.1
     - matplotlib-inline==0.1.3
     - mistune==0.8.4
@@ -140,8 +140,8 @@ dependencies:
     - nest-asyncio==1.5.4
     - networkx==2.7.1
     - notebook==6.4.10
-    - numpy==1.22.3
-    - opencv-python==4.5.5.64
+    - numpy==1.20.3
+    - opencv-python-headless==4.5.5.64
     - packaging==21.3
     - pandas==1.4.1
     - pandocfilters==1.5.0
@@ -196,4 +196,7 @@ dependencies:
     - widgetsnbextension==3.6.0
     - yarg==0.1.9
     - zipp==3.7.0
+    - face_detection==0.2.2
+    - basicsr==1.3.5
+    - facexlib>=0.2.0.3
 prefix: /Users/angelicaba23/opt/anaconda3/envs/pf
