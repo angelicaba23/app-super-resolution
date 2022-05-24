@@ -33,6 +33,9 @@ styl = f"""
     background-color: #ebf5f2;
     padding: 3rem 1rem;
 	}}
+  .h6{{
+    color:rgb(139 162 183 / 25%)
+	}}
 	}}
 </style>
 """
