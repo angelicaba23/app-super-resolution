@@ -154,7 +154,7 @@ if image_file is not None:
         width=bg_image.width,
         initial_drawing=saved_state,
         drawing_mode=mode,
-        key="color_annotation_app",
+        key="canvas_"+str(bg_image.height)+str(bg_image.width),
     )
 
     if canvas_result.json_data is not None:
