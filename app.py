@@ -97,8 +97,8 @@ if image_file is not None:
           "top": boxes[1],
           "width": boxes[2]-boxes[0],
           "height": boxes[3]-boxes[1],
-          "fill": "#00FFB350",
-          "stroke": "#00FFB3",
+          "fill": "#00ff0050",
+          "stroke": "#00ff00",
           "strokeWidth": 3
       })
 
@@ -125,14 +125,11 @@ if image_file is not None:
     label_color = (
         st.sidebar.color_picker("Annotation color: ", "#00FFB3") 
     )  # for alpha from 00 to FF
-    display = ("Add", "Move & edit")
 
-    options = ("draw", "edit")
-
-    tool_mode = st.sidebar.selectbox("Select faces tool:", options, format_func=lambda x: display[x])
-
-    
-    mode = "transform" if tool_mode=="move" else "rect"
+    tool_mode = st.sidebar.selectbox(
+      "Select faces tool:", ("Add", "Move & edit")
+    )
+    mode = "transform" if tool_mode=="Move & edit" else "rect"
 
     canvas_result = st_canvas(
         fill_color=label_color+ "50",
