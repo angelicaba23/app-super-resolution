@@ -13,17 +13,25 @@ import pandas as pd
 from streamlit_drawable_canvas import st_canvas
 from helper_functions import *
 
-# Page config
-#st.set_page_config(page_title="SuperResolution",layout="wide")
+from SessionState import _get_state
+
+
+state = _get_state()
+
 
 
 # create ss object
 if 'data' not in st.session_state:
     st.session_state.data = None
 
+# Page config
+#st.set_page_config(page_title="SuperResolution",layout="wide")
 # app design
 icon = Image.open('icon.ico')
-app_meta(icon)
+#app_meta(icon)
+
+state.page_config = app_meta(icon)
+
 set_bg_hack('extra/bg.png')
 
 
@@ -199,3 +207,5 @@ if image_file is not None:
     
   else:
     st.write("NO PERSON DETECTED")
+
+state.sync()
