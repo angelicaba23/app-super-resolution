@@ -29,8 +29,8 @@ set_bg_hack('extra/bq.png')
 #style
 styl = f"""
 <style>
-	.css-14ngwub .st-ct{{
-    background-color: #97fdf5;
+	.css-1dh0e47 e1fqkh3o1{{
+    background-color: white;
 	}}
 	}}
 </style>
