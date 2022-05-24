@@ -1,5 +1,6 @@
 keras==2.9.0rc0
 numpy==1.21
+torch>=1.7
 Pillow==9.0.1
 scikit-image==0.19.2
 streamlit==1.7.0
@@ -8,7 +9,7 @@ opencv-python-headless==4.5.5.64
 streamlit-drawable-canvas==0.8.0
 click==8.0.4
 tensorflow-cpu
-torch>=1.7
+
 #opencv-python
 torchvision
 scipy
