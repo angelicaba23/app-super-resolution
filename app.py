@@ -40,20 +40,19 @@ st.markdown(styl, unsafe_allow_html=True)
 
 # set logo in sidebar using PIL
 logo = Image.open('extra/name.png')
-st.sidebar.image(logo, 
-                    use_column_width=True)
+#st.sidebar.image(logo,use_column_width=True)
 
 
 # Main panel setup
-display_app_header(main_txt='Super Resolution',
-                    sub_txt='Upload, procces, download to get a new resolution')
+#display_app_header(main_txt='Super Resolution', sub_txt='Upload, procces, download to get a new resolution')
+
 # Info
 with st.expander("What is this app?", expanded=False):
     st.write("hola")
     st.write("")
 st.write("")
 
-st.markdown("""---""")
+#st.markdown("""---""")
     
 #image_data_app()
 
