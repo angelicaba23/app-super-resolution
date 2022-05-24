@@ -11,9 +11,3 @@ tensorflow-cpu
 torch>=1.7
 torchvision
 scipy
-tqdm
-lmdb
-pyyaml
-tb-nightly
-yapf
-facexlib>=0.2.0.3
