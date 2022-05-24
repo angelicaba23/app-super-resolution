@@ -70,6 +70,8 @@ display_app_header(main_txt = "Step 1",
 image_file = st.sidebar.file_uploader("Upload Image", type=["png","jpg","jpeg"])
 
 if image_file is not None:
+
+  
   #save_image(image_file, image_file.name)
 
   #img_file = "uploaded_image/" + image_file.name
@@ -82,6 +84,9 @@ if image_file is not None:
   #st.write(boxes)
   #st.image(img_faces)
   if len(boxes) > 0:
+    display_app_header(main_txt = "Step 2",
+                  sub_txt= "Edit image",
+                  is_sidebar=True)
     list = []
     filename = 'saved_state.json'
 

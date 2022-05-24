@@ -107,7 +107,7 @@ def set_png_as_page_bg(png_file):
 
 # display app header and sidebar
 # use HTML code to set div
-def display_app_header(main_txt,sub_txt="",is_sidebar = False):
+def display_app_header(main_txt,sub_txt='',is_sidebar = False):
     """
     function to display major headers at user interface
     ----------
@@ -115,11 +115,17 @@ def display_app_header(main_txt,sub_txt="",is_sidebar = False):
     sub_txt: str -> the minor text to be displayed 
     is_sidebar: bool -> check if its side panel or major panel
     """
-
-    html_temp = f"""
-    <h2 style = "color:#1f1c51; text_align:center; font-weight: bold;"> {main_txt} </h2>
-    </div>
-    """
+    if sub_txt=='':
+        html_temp = f"""
+        <h2 style = "color:#1f1c51; text_align:center; font-weight: bold;"> {main_txt} </h2>
+        </div>
+        """
+    else:
+        html_temp = f"""
+        <h2 style = "color:#1f1c51; text_align:center; font-weight: bold;"> {main_txt} </h2>
+        <p style = "color:#1f1c51; text_align:center;"> {sub_txt} </p>
+        </div>
+        """
     if is_sidebar:
         st.sidebar.markdown(html_temp, unsafe_allow_html = True)
     else: 
