@@ -150,6 +150,8 @@ if image_file is not None:
         stroke_width=3,
         stroke_color=label_color,
         background_image=bg_image,
+        height=bg_image.height,
+        width=bg_image.width,
         initial_drawing=saved_state,
         drawing_mode=mode,
         key="color_annotation_app",
@@ -176,7 +178,7 @@ if image_file is not None:
 
           im_rgb = im_bgr[:, :, [2, 1, 0]] #numpy.ndarray
           ret, img_enco = cv2.imencode(".png", im_rgb)  #numpy.ndarray
-          srt_enco = img_enco.tobytes()  #bytes
+          srt_enco = img_enco.tobytes()   #bytes
           img_BytesIO = BytesIO(srt_enco) #_io.BytesIO
           img_BufferedReader = BufferedReader(img_BytesIO) #_io.BufferedReader
 
