@@ -18,6 +18,6 @@ lmdb
 pyyaml
 tb-nightly
 yapf
-basicsr>=1.3.5
+basicsr
 facexlib>=0.2.0.3
 realesrgan
