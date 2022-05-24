@@ -57,15 +57,12 @@ logo = Image.open('extra/name.png')
 # Info
 with st.expander("What is this app?", expanded=False):
     st.write("""
-            This app allows you to train, evaluate and optimize a Prophet model in just a few clicks.
-            All you have to do is to upload a time series dataset, and follow the guidelines in the sidebar to:
-            * __Prepare data__: Filter, aggregate, resample and/or clean your dataset.
-            * __Choose model parameters__: Default parameters are available but you can tune them.
-            Look at the tooltips to understand how each parameter is impacting forecasts.
-            * __Select evaluation method__: Define the evaluation process, the metrics and the granularity to
-            assess your model performance.
-            * __Make a forecast__: Make a forecast on future dates that are not included in your dataset,
-            with the model previously trained. \n
+            This web-based application allows you to identify faces, resize and download images in just a few clicks.
+            All you have to do is to upload a single photo, and follow the guidelines in the sidebar.
+            This app uses Deep Learning (DL) to:
+            * __Identify faces__: It returns the croped image (you can change it).
+            * __Increase face resolution__: It returns the image whith a x2 scale.
+            \n
             """)
 #st.markdown("""---""")
     
