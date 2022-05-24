@@ -55,7 +55,7 @@ logo = Image.open('extra/name.png')
 #display_app_header(main_txt='Super Resolution', sub_txt='Upload, procces, download to get a new resolution')
 
 # Info
-with st.expander("What is this app?", expanded=False):
+with st.expander("* __What is this app?", expanded=False):
     st.write("""
             This web-based application allows you to identify faces, resize and download images in just a few clicks.
             All you have to do is to upload a single photo, and follow the guidelines in the sidebar.\n
