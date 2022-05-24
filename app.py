@@ -202,4 +202,3 @@ if image_file is not None:
   else:
     st.write("NO PERSON DETECTED")
 
-state.sync()
