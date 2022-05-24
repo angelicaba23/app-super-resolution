@@ -107,7 +107,7 @@ def set_png_as_page_bg(png_file):
 
 # display app header and sidebar
 # use HTML code to set div
-def display_app_header(main_txt,sub_txt,is_sidebar = False):
+def display_app_header(main_txt,sub_txt="",is_sidebar = False):
     """
     function to display major headers at user interface
     ----------
