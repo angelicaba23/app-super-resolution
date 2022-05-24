@@ -30,7 +30,7 @@ set_bg_hack('extra/bq.png')
 styl = f"""
 <style>
 	.css-15euf4 {{
-    background-color: white;
+    background-color: #ebf5f2;
 	}}
 	}}
 </style>
