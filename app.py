@@ -68,7 +68,7 @@ display_app_header(main_txt = "📤 Step 1",
                   is_sidebar=True)
 
 image_file = st.sidebar.file_uploader("Upload Image", type=["png","jpg","jpeg"])
-display_mini_text("By uploading an image or URL you agree to our ","https://github.com/angelicaba23/app-super-resolution/blob/main/requirements.txt","txt_url",is_sidebar = True)
+display_mini_text("By uploading an image or URL you agree to our ","https://github.com/angelicaba23/app-super-resolution/blob/dev/extra/termsofservice.md","Terms of Service",is_sidebar = True)
 
 if image_file is not None:
 
