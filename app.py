@@ -150,8 +150,6 @@ if image_file is not None:
         stroke_width=3,
         stroke_color=label_color,
         background_image=bg_image,
-        height=bg_image.height,
-        width=bg_image.width,
         initial_drawing=saved_state,
         drawing_mode=mode,
         key="color_annotation_app",
