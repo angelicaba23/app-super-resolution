@@ -183,7 +183,7 @@ if image_file is not None:
           img_BufferedReader = BufferedReader(img_BytesIO) #_io.BufferedReader
 
           cols_srcnn[i].download_button(
-            label="Download 📥",
+            label="📥",
             data=img_BufferedReader,
             file_name="srcnn_img_"+str(i)+".png",
             mime="image/png"
