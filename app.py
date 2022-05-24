@@ -125,9 +125,13 @@ if image_file is not None:
     label_color = (
         st.sidebar.color_picker("Annotation color: ", "#00FFB3") 
     )  # for alpha from 00 to FF
-    tool_mode = st.sidebar.selectbox(
-      "Select tool:", ("Add", "Move & edit")
-    )
+    display = ("Add", "Move & edit")
+
+    options = ("draw", "edit")
+
+    tool_mode = st.sidebar.selectbox("Select faces tool:", options, format_func=lambda x: display[x])
+
+    
     mode = "transform" if tool_mode=="move" else "rect"
 
     canvas_result = st_canvas(
