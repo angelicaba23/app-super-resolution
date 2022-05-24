@@ -33,6 +33,12 @@ styl = f"""
     background-color: #ebf5f2;
     padding: 3rem 1rem;
 	}}
+  h6{{
+    color:rgb(139 162 183 / 25%);
+	}}
+  .css-83m1w6 a {{
+    color:rgb(139 162 183 / 25%);
+  }}
 	}}
 </style>
 """
@@ -68,6 +74,7 @@ display_app_header(main_txt = "📤 Step 1",
                   is_sidebar=True)
 
 image_file = st.sidebar.file_uploader("Upload Image", type=["png","jpg","jpeg"])
+display_mini_text("By uploading an image or URL you agree to our ","https://github.com/angelicaba23/app-super-resolution/blob/dev/extra/termsofservice.md","Terms of Service",is_sidebar = True)
 
 if image_file is not None:
 

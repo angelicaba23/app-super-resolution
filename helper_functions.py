@@ -149,6 +149,23 @@ def display_app_header_1(sub_txt,is_sidebar = False):
     else: 
         st.markdown(html_temp, unsafe_allow_html = True)
 
+def display_mini_text(txt,url,txt_url,is_sidebar = False):
+    """
+    function to display text
+    ----------
+    main_txt: str -> the text to be displayed
+    """
+
+    html_temp = f"""
+    <h6 style = color:rgb(139 162 183 / 25%); font-size: 60%; opacity: 0.5; "color:#1f1c51; text_align:center;"> {txt} 
+    <a target="_blank" style = color:rgb(139 162 183 / 25%); href="{url}">{txt_url} </a> </h6>
+    </div>
+    """
+    if is_sidebar:
+        st.sidebar.markdown(html_temp, unsafe_allow_html = True)
+    else: 
+        st.markdown(html_temp, unsafe_allow_html = True)
+
 
 def get_input(data_input_mthd,ss_text,is_batch=False,text_column = "text"):
     """
