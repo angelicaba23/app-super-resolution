@@ -34,8 +34,11 @@ styl = f"""
     padding: 3rem 1rem;
 	}}
   h6{{
-    color:rgb(139 162 183 / 25%)
+    color:rgb(139 162 183 / 25%);
 	}}
+  .css-83m1w6 a {{
+    color:rgb(139 162 183 / 25%);
+  }}
 	}}
 </style>
 """
