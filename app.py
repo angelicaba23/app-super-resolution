@@ -97,8 +97,8 @@ if image_file is not None:
           "top": boxes[1],
           "width": boxes[2]-boxes[0],
           "height": boxes[3]-boxes[1],
-          "fill": "#00ff0050",
-          "stroke": "#00ff00",
+          "fill": "#00FFB350",
+          "stroke": "#00FFB3",
           "strokeWidth": 3
       })
 
