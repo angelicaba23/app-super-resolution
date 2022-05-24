@@ -64,7 +64,7 @@ st.sidebar.image('extra/upload.png', use_column_width=True)
 #st.sidebar.app_section_button("[GitHub](https://github.com/angelicaba23/app-super-resolution)")
 
 display_app_header(main_txt = "Step 1",
-                  sub_txt= "Upload data",
+                  #sub_txt= "Upload data",
                   is_sidebar=True)
 
 image_file = st.sidebar.file_uploader("Upload Image", type=["png","jpg","jpeg"])
