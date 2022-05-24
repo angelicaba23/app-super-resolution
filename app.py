@@ -176,7 +176,7 @@ if image_file is not None:
 
           im_rgb = im_bgr[:, :, [2, 1, 0]] #numpy.ndarray
           ret, img_enco = cv2.imencode(".png", im_rgb)  #numpy.ndarray
-          srt_enco = img_enco.tostring()  #bytes
+          srt_enco = img_enco.tobytes()  #bytes
           img_BytesIO = BytesIO(srt_enco) #_io.BytesIO
           img_BufferedReader = BufferedReader(img_BytesIO) #_io.BufferedReader
 
