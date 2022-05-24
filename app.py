@@ -166,7 +166,7 @@ if image_file is not None:
         cols = st.columns(n)
         st.info("🪄 SuperResolution (CNN)")
         cols_srcnn = st.columns(n)
-        st.success("🪄 SuperResolution+Enhancement(GAN)")
+        st.success("🪄 SuperResolution+Enhancement (GAN)")
         cols_srgan = st.columns(n)
         i = 0
 
