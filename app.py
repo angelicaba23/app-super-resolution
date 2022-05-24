@@ -123,7 +123,7 @@ if image_file is not None:
     
     bg_image = Image.open(image_file)
     label_color = (
-        st.sidebar.color_picker("Annotation color: ", "#00FFB3") 
+        st.sidebar.color_picker("Annotation color: ", "#97fdf5") 
     )  # for alpha from 00 to FF
 
     tool_mode = st.sidebar.selectbox(
@@ -149,8 +149,9 @@ if image_file is not None:
         objects = pd.json_normalize(canvas_result.json_data["objects"]) # need to convert obj to str because PyArrow
         n = int(len(rst_objects))
         cols = st.columns(n)
-        st.info("SuperResolution (CNN)")
+        st.info("🪄 SuperResolution (CNN)")
         cols_srcnn = st.columns(n)
+        st.success("🪄 SuperResolution+Enhancement(GAN)")
         #cols_srgan = st.columns(n)
         i = 0
         for rst_objects in rst_objects:
