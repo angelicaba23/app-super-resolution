@@ -1,6 +1,6 @@
 import os
 from gfpgan import GFPGANer
-from BasicSR.basicsr import *
+from basicsr import *
 
 img_list = ""
 bg_upsampler = None
