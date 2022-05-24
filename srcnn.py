@@ -1,18 +1,27 @@
-import numpy as np
-import os 
+import os
+import sys
+import keras
 import cv2
-
-from face_dectec import modcrop, shave
-from metrics import compare_images
+import numpy as np
+import skimage
+import streamlit as st
+from PIL import Image
 
 from keras.models import Sequential
 from keras.layers import Conv2D
-
 from keras.optimizers import Adam
+
+#from tensorflow.keras.optimizers import Adam
 from skimage.metrics import structural_similarity as ssim
 
 
+from tensorflow.keras.preprocessing.image import ImageDataGenerator, array_to_img, img_to_array
+#from keras.applications import ImageDataGenerator, array_to_img, img_to_array
+
+
 # define the SRCNN model
+
+@st.experimental_singleton()
 def model():
     
     # define model type
@@ -35,68 +44,56 @@ def model():
     # compile model
     SRCNN.compile(optimizer=adam, loss='mean_squared_error', metrics=['mean_squared_error'])
     
+    load_weights = 'pretrained_models/model_1414_222_20_10.h5'
+    #st.write(load_weights)
+    SRCNN.load_weights(load_weights)
+    print("weights loaded")
+    
     return SRCNN
 
-#define main prediction function
+SRCNN = model()
 
-def predict(image_path):
+
+
+@st.cache(suppress_st_warning=True)
+def predictCNN(input_img):
+    """
+     A function that takes an image and returns a super-resolved image.
+
+    """
+    print("prede")
+    scale = 2
+
+    img = np.array(input_img)
+
+    #st.write(type(img))
     
-    #load the srcnn model with weights cuz deep learning neural n/w take lot of time to train(have to feed in large amount of input data)
-    srcnn=model()
-    srcnn.load_weights('3051crop_weight_200.h5')
-     
-    #load the degraded and reference images
-    #in opencv, images are loaded as BGR channels
-    path,file=os.path.split(image_path)
-    degraded=cv2.imread(image_path)
-    ref=cv2.imread('source/{}'.format(file))
-    
-    #preprocess the image with modcrop
-    ref=modcrop(ref,3)#when calculating our image quality metrics later we have the same size image to what we produce in SRCNN network
-    degraded=modcrop(degraded,3)
-    
-    #convert the image to YCrCb(3 channel image) - (srcnn trained on Y channel)
-    temp=cv2.cvtColor(degraded,cv2.COLOR_BGR2YCrCb)
-    #opencv does a very good job in converting from rgb to YCrCb and back
-    
-    #create image slice and normalize cuz SRCNN works on one dimensional input(or 3D inputs of depth 1 ,ie, inputs with one channel)
-    Y=np.zeros((1,temp.shape[0],temp.shape[1],1),dtype=float)
-    #create a numpy array the we fill with data,temp.shape[0]=width,[1]=height and last one means one channel(essentially like batch=1 cuz that's what going to get passed to the n/w ')
-    #fill in the data; all values are normalized to between 0 and 1 as that's how srcnn was trained
-    Y[0,:,:,0]=temp[:,:,0].astype(float)/255
-    #first 0 means 0th index(we are saying that batch size is 1); :,: means every point in these channels; last 0 means first channel,ie, all the pixels in first luminescence channel
-    #so we have our image slice, we have the Y channel, which is the first channel(index 0) out of the image that we converted to YCrCb color space
-    
-    #perform super-resolution with srcnn
-    pre=srcnn.predict(Y,batch_size=1)#that's why we had index 0  above cuz we are saying that batch size is 1
-    
-    #post-process output cuz pre is still normalized
-    pre*=255#multiplying every pixel by 255
-    pre[pre[:]>255]=255#any pixels >255 set it =255 to prevent any rounding errors due to multiplication
-    pre[pre[:]<0] =0# same reason as above
-    pre=pre.astype(np.uint8)#convert float back to int values
-    
-    #cuz this is only the luminescence channel in the pre ,SO
-    #copy Y channel back to image and convert to BGR
-    temp=shave(temp,6)#accd.to tutor it loses 3 pixels on each side so if we shave this with a border 6,we can crop it appropriately there, so it is the same size as our output
-    #if not agree with tutor, use print statements to see the specific dimensions
-    
-    # for the first channel(Y channel), copy in the output of our network
-    temp[:,:,0]=pre[0,:,:,0]
-    #So we are keeping the red difference and blue difference, channels 1 and 2, in this temp image which is in the YCrCb color space
-    #and in the first one we are copying in our ouput,our luminiscence channel
-    
-    #convert back to bgr
-    output=cv2.cvtColor(temp,cv2.COLOR_YCrCb2BGR)
-    
-    #emove borderfrom reference and degraded image, so that all our images(ref,degraded(low res.), and ouput(high res.)) are of the same size
-    ref = shave(ref.astype(np.uint8), 6)
-    degraded = shave(degraded.astype(np.uint8), 6)
-    
-    # image quality calculations
-    scores = []
-    scores.append(compare_images(degraded, ref))#degraded wrt ref
-    scores.append(compare_images(output, ref))#high res. output wrt ref
-    
-    # return images and scores
-    return ref, degraded, output, scores
+    shape= img.shape
+    #st.write(shape)
+
+    img = cv2.cvtColor(img, cv2.COLOR_BGR2YCrCb)
+    Y_img = cv2.resize(img[:, :, 0], (int (shape[1] * scale), int (shape[0] * scale)), cv2.INTER_CUBIC)
+    img = cv2.resize(img, (int (shape[1] * scale), int (shape[0] * scale)), cv2.INTER_CUBIC)
+
+    print(img.shape)
+    print(Y_img.shape)
+    img[:, :, 0] = Y_img
+    img = cv2.cvtColor(img, cv2.COLOR_YCrCb2BGR)
+
+    #st.write("INPUT")
+    #st.image(img)
+
+    Y = np.zeros((1, img.shape[0], img.shape[1], 1), dtype=float)
+    Y[0, :, :, 0] = Y_img.astype(float) / 255.
+
+    pre = SRCNN.predict(Y, batch_size=1) * 255.
+    pre[pre[:] > 255] = 255
+    pre[pre[:] < 0] = 0
+    pre = pre.astype(np.uint8)
+    img = cv2.cvtColor(img, cv2.COLOR_BGR2YCrCb)
+    img[6: -6, 6: -6, 0] = pre[0, :, :, 0]
+
+    img = cv2.cvtColor(img, cv2.COLOR_YCrCb2BGR)
+    #st.write("OUTPUT")
+    #st.image(img)
+    return img
