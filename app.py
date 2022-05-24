@@ -126,7 +126,7 @@ if image_file is not None:
         st.sidebar.color_picker("Annotation color: ", "#00ff00") + "50"
     )  # for alpha from 00 to FF
     tool_mode = st.sidebar.selectbox(
-      "Select tool:", ("draw", "move")
+      "Select tool:", ("Add", "Move & edit")
     )
     mode = "transform" if tool_mode=="move" else "rect"
 
