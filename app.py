@@ -2,14 +2,9 @@ from io import BufferedReader, BytesIO
 import streamlit as st
 from PIL import Image
 
-<<<<<<< HEAD
-from face_dectec import crop_object, faceDetection
-from save_img import save_image
-=======
 import json
 import cv2
 import numpy as np
->>>>>>> dev
 
 from face_dectec import crop_object, faceDetection
 from srcnn import predictCNN
@@ -63,17 +58,6 @@ st.write("")
 #image_data_app()
 
 
-<<<<<<< HEAD
-from write_json import write_json
-
-im = Image.open("icon.ico")
-st.set_page_config(
-    page_title="SuperResolution",
-    page_icon=im,
-    layout="wide",
-)
-=======
->>>>>>> dev
 
 #sidebar
 st.sidebar.image('extra/upload.png', use_column_width=True)
@@ -113,13 +97,8 @@ if image_file is not None:
           "top": boxes[1],
           "width": boxes[2]-boxes[0],
           "height": boxes[3]-boxes[1],
-<<<<<<< HEAD
-          "fill": "#00ff0050",
-          "stroke": "#00ff00",
-=======
           "fill": "#00FFB350",
           "stroke": "#00FFB3",
->>>>>>> dev
           "strokeWidth": 3
       })
 
@@ -138,47 +117,6 @@ if image_file is not None:
       json.dump(listObj, json_file, 
                           indent=4,  
                           separators=(',',': '))
-<<<<<<< HEAD
-
-    with open(filename, "r") as f:   saved_state = json.load(f)
-    #st.write(saved_state)
-    
-    bg_image = Image.open(img_file)
-    label_color = (
-        st.sidebar.color_picker("Annotation color: ", "#00ff00") + "50"
-    )  # for alpha from 00 to FF
-    tool_mode = st.sidebar.selectbox(
-      "Select tool:", ("draw", "move")
-    )
-    mode = "transform" if tool_mode=="move" else "rect"
-
-    canvas_result = st_canvas(
-        fill_color=label_color,
-        stroke_width=3,
-        stroke_color="#00ff00",
-        background_image=bg_image,
-        height=bg_image.height,
-        width=bg_image.width,
-        initial_drawing=saved_state,
-        drawing_mode=mode,
-        key="color_annotation_app",
-    )
-
-    if canvas_result.json_data is not None:
-        
-        rst_objects = canvas_result.json_data["objects"]
-        objects = pd.json_normalize(canvas_result.json_data["objects"]) # need to convert obj to str because PyArrow
-        for rst_objects in rst_objects:
-          rts_boxes = [rst_objects['left'],rst_objects['top'],rst_objects['width']+rst_objects['left'],rst_objects['height']+rst_objects['top']]
-          #st.write(rts_boxes)
-          st.image(crop_object(bg_image, rts_boxes))
-
-        for col in objects.select_dtypes(include=['object']).columns:
-            objects[col] = objects[col].astype("str")
-        #st.dataframe(objects)
-        
-        
-=======
 
     with open(filename, "r") as f:   saved_state = json.load(f)
     #st.write(saved_state)
@@ -247,6 +185,5 @@ if image_file is not None:
         #if st.button("Procesar"):
         #  st.write("cargando")
     
->>>>>>> dev
   else:
     st.write("NO PERSON DETECTED")
