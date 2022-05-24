@@ -19,10 +19,11 @@ def predictSrgan():
         print("GFPGANv1.pth descargado")
 
 """
+
 restorer = GFPGANer(
         model_path=model_path,
         upscale=upscale,
         arch=arch,
         channel_multiplier=channel_multiplier,
         bg_upsampler=bg_upsampler)
- """       
+"""    
