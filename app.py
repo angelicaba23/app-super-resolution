@@ -8,7 +8,7 @@ import numpy as np
 
 from face_dectec import crop_object, faceDetection
 from srcnn import predictCNN
-#from srgan import predictSrgan
+from srgan import predictSrgan
 import pandas as pd
 from streamlit_drawable_canvas import st_canvas
 from helper_functions import *
@@ -68,7 +68,7 @@ with st.expander("* __What is this app?", expanded=False):
     
 #image_data_app()
 
-
+predictSrgan()
 
 #sidebar
 st.sidebar.image('extra/upload.png', use_column_width=True)
