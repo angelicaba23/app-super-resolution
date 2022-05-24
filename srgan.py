@@ -10,10 +10,13 @@ model_name = 'GFPGANv1.3'
 upscale = 2
 
 model_path = "GFPGAN/experiments/pretrained_models/GFPGANv1.pth"
+print(os.system("pip list"))
 os.system("curl -LJO https://github.com/TencentARC/GFPGAN/releases/download/v0.1.0/GFPGANv1.pth")
 
 print(os.system("ls"))
 #print(os.system("ls pretrained_models "))
+os.system("BASICSR_EXT=True pip install basicsr")
+print(os.system("pip list"))
 
 def predictSrgan():
         print("GFPGANv1.pth descargado")

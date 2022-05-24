@@ -28,7 +28,7 @@ app_meta(icon)
 
 set_bg_hack('extra/bg.png')
 
-print(os.system("pip list"))
+
 
 #style
 styl = f"""
