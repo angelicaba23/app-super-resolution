@@ -23,7 +23,7 @@ if 'data' not in st.session_state:
 
 # app design
 app_meta('🖼️')
-set_bg_hack('extra/bq.png')
+set_bg_hack('extra/bg.png')
 
 
 #style
