@@ -16,6 +16,7 @@ os.system("curl -LJO https://github.com/TencentARC/GFPGAN/releases/download/v0.1
 print(os.system("ls"))
 #print(os.system("ls pretrained_models "))
 os.system("BASICSR_EXT=True pip install basicsr==1.3.5")
+os.system("pip install realesrgan")
 print(os.system("pip list"))
 
 def predictSrgan():
