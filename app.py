@@ -8,22 +8,24 @@ import numpy as np
 
 from face_dectec import crop_object, faceDetection
 from srcnn import predictCNN
-#from srgan import predictSrgan
+from srgan import predictSrgan
 import pandas as pd
 from streamlit_drawable_canvas import st_canvas
 from helper_functions import *
-
-# Page config
-#st.set_page_config(page_title="SuperResolution",layout="wide")
 
 
 # create ss object
 if 'data' not in st.session_state:
     st.session_state.data = None
 
+# Page config
+#st.set_page_config(page_title="SuperResolution",layout="wide")
 # app design
 icon = Image.open('icon.ico')
+#app_meta(icon)
+
 app_meta(icon)
+
 set_bg_hack('extra/bg.png')
 
 
@@ -55,7 +57,7 @@ logo = Image.open('extra/name.png')
 #display_app_header(main_txt='Super Resolution', sub_txt='Upload, procces, download to get a new resolution')
 
 # Info
-with st.expander("* __What is this app?", expanded=False):
+with st.expander("What is this app?", expanded=False):
     st.write("""
             This web-based application allows you to identify faces, resize and download images in just a few clicks.
             All you have to do is to upload a single photo, and follow the guidelines in the sidebar.\n
@@ -68,7 +70,7 @@ with st.expander("* __What is this app?", expanded=False):
     
 #image_data_app()
 
-
+predictSrgan()
 
 #sidebar
 st.sidebar.image('extra/upload.png', use_column_width=True)
@@ -176,12 +178,12 @@ if image_file is not None:
 
           im_rgb = im_bgr[:, :, [2, 1, 0]] #numpy.ndarray
           ret, img_enco = cv2.imencode(".png", im_rgb)  #numpy.ndarray
-          srt_enco = img_enco.tostring()  #bytes
+          srt_enco = img_enco.tobytes()   #bytes
           img_BytesIO = BytesIO(srt_enco) #_io.BytesIO
           img_BufferedReader = BufferedReader(img_BytesIO) #_io.BufferedReader
 
           cols_srcnn[i].download_button(
-            label="Download 📥",
+            label="📥",
             data=img_BufferedReader,
             file_name="srcnn_img_"+str(i)+".png",
             mime="image/png"
@@ -199,3 +201,4 @@ if image_file is not None:
     
   else:
     st.write("NO PERSON DETECTED")
+
