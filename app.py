@@ -22,7 +22,8 @@ if 'data' not in st.session_state:
     st.session_state.data = None
 
 # app design
-app_meta('🖼️')
+icon = Image.open('icon.ico')
+app_meta(icon)
 set_bg_hack('extra/bg.png')
 
 
