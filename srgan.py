@@ -90,11 +90,11 @@ def predictSrgan(image_path):
         channel_multiplier = 1
         model_name = 'GFPGANv1'
     elif args.version == '1.2':
-        arch = 'clean'
+        arch = 'original'
         channel_multiplier = 2
         model_name = 'GFPGANCleanv1-NoCE-C2'
     elif args.version == '1.3':
-        arch = 'clean'
+        arch = 'original'
         channel_multiplier = 2
         model_name = 'GFPGANv1.3'
     else:
