@@ -35,6 +35,7 @@ icon = Image.open('extra/icon2.ico')
 #set_bg_hack('extra/bq.png')
 
 print(os.system("pip list"))
+os.system('pip install torch')
 os.system('python setup.py develop')
 print(os.system("ls ./BasicSR/"))
 
