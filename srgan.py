@@ -108,7 +108,7 @@ def predictSrgan(image_path):
         raise ValueError(f'Model {model_name} does not exist.')
 
     print('model_path='+str(model_path),
-        'upscale=='+str(args.upscal)e,
+        'upscale=='+str(args.upscale),
         'arch='+str(arch),
         'channel_multiplier='+str(channel_multiplier),
         'bg_upsampler=='+str(bg_upsampler))
