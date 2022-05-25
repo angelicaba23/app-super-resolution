@@ -1,6 +1,0 @@
-name: pf
-channels:
-  - conda-forge
-  - defaults
-dependencies:
-prefix: /Users/angelicaba23/opt/anaconda3/envs/pf
