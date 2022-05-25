@@ -1,3 +1,7 @@
+print(os.system('conda list -n base -r'))
+print(os.system('conda install --revision 0'))
+
+
 from io import BufferedReader, BytesIO
 import streamlit as st
 from PIL import Image
@@ -8,7 +12,7 @@ import numpy as np
 
 from face_dectec import crop_object, faceDetection
 from srcnn import predictCNN
-from srgan import predictSrgan
+#from srgan import predictSrgan
 import pandas as pd
 from streamlit_drawable_canvas import st_canvas
 from helper_functions import *
@@ -69,8 +73,6 @@ with st.expander("What is this app?", expanded=False):
 #st.markdown("""---""")
     
 #image_data_app()
-
-predictSrgan()
 
 #sidebar
 st.sidebar.image('extra/upload.png', use_column_width=True)
@@ -192,7 +194,7 @@ if image_file is not None:
             mime="image/png"
           )
 
-          cols_srgan[i].image(predictSrgan(crop_image))
+          #cols_srgan[i].image(predictSrgan("crop_img_0.png"))
           cols_srgan[i].download_button(
             label="📥",
             data=img_BufferedReader,
