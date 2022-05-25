@@ -10,9 +10,10 @@ streamlit-drawable-canvas==0.8.0
 tensorflow-cpu
 #tensorflow==2.9.0
 click==8.0.4
-torch>=1.7
+#torch>=1.7
 numpy<1.21  # numba requires numpy<1.21,>=1.17
 #opencv-python
+torch
 torchvision
 scipy
 tqdm
