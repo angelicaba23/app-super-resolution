@@ -10,9 +10,9 @@ from basicsr.utils import imwrite
 
 from gfpgan import GFPGANer
 
-os.system("curl -LJO https://github.com/TencentARC/GFPGAN/releases/download/v0.1.0/GFPGANv1.pth")
-modelname ='GFPGANv1.pth'
-os.system("mv GFPGANv1.pth experiments/pretrained_models/GFPGANv1.pth ")
+os.system("curl -LJO https://github.com/TencentARC/GFPGAN/releases/download/v0.1.3.0/GFPGANv1.3.pth")
+modelname ='GFPGANv1.3pth'
+os.system("mv GFPGANv1.3.pth experiments/pretrained_models")
 print(os.system("ls experiments/pretrained_models"))
 
 #define main prediction function
@@ -29,7 +29,7 @@ def predictSrgan(image_path):
     parser.add_argument('-o', '--output', type=str, default='results', help='Output folder. Default: results')
     # we use version to select models, which is more user-friendly
     parser.add_argument(
-        '-v', '--version', type=str, default='1', help='GFPGAN model version. Option: 1 | 1.2 | 1.3. Default: 1.3')
+        '-v', '--version', type=str, default='1.3', help='GFPGAN model version. Option: 1 | 1.2 | 1.3. Default: 1.3')
     parser.add_argument(
         '-s', '--upscale', type=int, default=2, help='The final upsampling scale of the image. Default: 2')
 
@@ -101,17 +101,11 @@ def predictSrgan(image_path):
         raise ValueError(f'Wrong model version {args.version}.')
 
     # determine model paths
-    model_path = os.path.join('experiments/pretrained_models', 'GFPGANv1.pth')
+    model_path = os.path.join('experiments/pretrained_models', model_name + '.pth')
     if not os.path.isfile(model_path):
         model_path = os.path.join('realesrgan/weights', model_name + '.pth')
     if not os.path.isfile(model_path):
         raise ValueError(f'Model {model_name} does not exist.')
-
-    print('model_path='+str(model_path),
-        'upscale=='+str(args.upscale),
-        'arch='+str(arch),
-        'channel_multiplier='+str(channel_multiplier),
-        'bg_upsampler=='+str(bg_upsampler))
 
     restorer = GFPGANer(
         model_path=model_path,
@@ -143,5 +137,5 @@ def predictSrgan(image_path):
         else:
             save_restore_path = os.path.join(args.output, 'restored_imgs', f'{basename}.{extension}')
         imwrite(restored_img, save_restore_path)
-        #cv2.imwrite(restored_img, save_restore_path)
+
     return save_restore_path
