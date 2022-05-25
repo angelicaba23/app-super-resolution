@@ -27,7 +27,7 @@ app_meta(icon)
 
 #set_bg_hack('extra/bq.png')
 
-
+os.system("python BasicSR/setup.py develop")
 
 #style
 styl = f"""
