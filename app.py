@@ -1,5 +1,4 @@
-print(os.system('conda list -n base -r'))
-print(os.system('conda install --revision 0'))
+
 
 
 from io import BufferedReader, BytesIO
