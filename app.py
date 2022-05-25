@@ -36,7 +36,15 @@ icon = Image.open('extra/icon2.ico')
 
 print(os.system("pip list"))
 print(os.system("ls ./BasicSR/"))
-os.system("python BasicSR/setup.py develop")
+
+pa = "/home/appuser/venv/lib/python3.8/site-packages/torch/include/ATen/native/cuda"
+
+bash= f"""CUDA_HOME={pa}
+          CUDNN_INCLUDE_DIR={pa}
+          CUDNN_LIB_DIR={pa}
+          python BasicSR/setup.py develop"""
+print(bash)
+os.system(bash)
 print("/n/n python BasicSR/setup.py develop /n")
 
 from srgan import predictSrgan
