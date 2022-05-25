@@ -3,7 +3,7 @@ import streamlit as st
 import os
 
 print(os.system("find / -type d -name cuda 2>/dev/null"))
-os.system("pip install basicsr")
+
 
 from io import BufferedReader, BytesIO
 from PIL import Image
