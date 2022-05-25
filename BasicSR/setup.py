@@ -1,10 +1,9 @@
 import os
 #os.system("pip install torch")
-#import torch
 
-print(torch.cuda.is_available())
-x = torch.rand(5, 3)
-print(x)
+os.system("pip install torch")
+import torch
+
 
 from setuptools import find_packages, setup
 
