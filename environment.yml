@@ -3,7 +3,9 @@ channels:
   - conda-forge
   - defaults
 dependencies:
-  -pip
+  - pip=21.2.4=py38hecd8cb5_0
   - pip:
-    - click==8.0.4
+    - numpy==1.22.3
+    - opencv-python==4.5.5.64
+    - streamlit==1.7.0
 prefix: /Users/angelicaba23/opt/anaconda3/envs/pf
