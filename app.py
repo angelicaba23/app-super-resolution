@@ -1,6 +1,4 @@
 
-
-
 from io import BufferedReader, BytesIO
 import streamlit as st
 from PIL import Image
@@ -16,6 +14,7 @@ import pandas as pd
 from streamlit_drawable_canvas import st_canvas
 from helper_functions import *
 
+print(os.system("pip list"))
 
 # create ss object
 if 'data' not in st.session_state:
