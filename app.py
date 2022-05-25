@@ -35,6 +35,7 @@ icon = Image.open('extra/icon2.ico')
 #set_bg_hack('extra/bq.png')
 
 print(os.system("pip list"))
+os.system('python setup.py develop')
 print(os.system("ls ./BasicSR/"))
 
 pa = "/home/appuser/venv/lib/python3.8/site-packages/torch/include/ATen/native/cuda"
