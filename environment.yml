@@ -1,0 +1,8 @@
+name: pf
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - pip:
+    - click==8.0.4
+prefix: /Users/angelicaba23/opt/anaconda3/envs/pf
