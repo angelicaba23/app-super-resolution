@@ -101,7 +101,7 @@ def predictSrgan(image_path):
         raise ValueError(f'Wrong model version {args.version}.')
 
     # determine model paths
-    model_path = os.path.join('experiments/pretrained_models', 'GFPGANv1.3.pth')
+    model_path = os.path.join('experiments/pretrained_models', 'GFPGANv1.pth')
     if not os.path.isfile(model_path):
         model_path = os.path.join('realesrgan/weights', model_name + '.pth')
     if not os.path.isfile(model_path):
