@@ -32,8 +32,8 @@ app_meta(icon)
 #style
 styl = f"""
 <style>
-	.css-zn0oak{{
-    background-color: rgb(209 223 222);
+	.css-15euf4{{
+    background-color: #ebf5f2;
     padding: 3rem 1rem;
 	}}
   h6{{
