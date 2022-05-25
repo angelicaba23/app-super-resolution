@@ -3,6 +3,7 @@ channels:
   - conda-forge
   - defaults
 dependencies:
+  -pip
   - pip:
     - click==8.0.4
 prefix: /Users/angelicaba23/opt/anaconda3/envs/pf
