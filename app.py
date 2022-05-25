@@ -1,7 +1,7 @@
 import torch
+import streamlit as st
 st.write(torch.cuda.is_available())
 from io import BufferedReader, BytesIO
-import streamlit as st
 from PIL import Image
 
 import json
