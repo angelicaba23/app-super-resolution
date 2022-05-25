@@ -12,7 +12,7 @@ from srgan import predictSrgan
 import pandas as pd
 from streamlit_drawable_canvas import st_canvas
 from helper_functions import *
-
+from numpy import asarray
 
 # create ss object
 if 'data' not in st.session_state:
@@ -21,19 +21,19 @@ if 'data' not in st.session_state:
 # Page config
 #st.set_page_config(page_title="SuperResolution",layout="wide")
 # app design
-icon = Image.open('icon.ico')
-#app_meta(icon)
+icon = Image.open('extra/icon2.ico')
+app_meta(icon)
 
 
-set_bg_hack('extra/bg.png')
+#set_bg_hack('extra/bq.png')
 
 
 
 #style
 styl = f"""
 <style>
-	.css-15euf4{{
-    background-color: #ebf5f2;
+	.css-zn0oak{{
+    background-color: rgb(209 223 222);
     padding: 3rem 1rem;
 	}}
   h6{{
@@ -51,6 +51,16 @@ st.markdown(styl, unsafe_allow_html=True)
 # set logo in sidebar using PIL
 logo = Image.open('extra/name.png')
 #st.sidebar.image(logo,use_column_width=True)
+col1, col2, col3 = st.columns(3)
+
+with col1:
+    st.write(' ')
+
+with col2:
+    st.image('extra/icon2.png')
+
+with col3:
+    st.write(' ')
 
 
 # Main panel setup
@@ -70,7 +80,7 @@ with st.expander("What is this app?", expanded=False):
     
 #image_data_app()
 
-predictSrgan()
+
 
 #sidebar
 st.sidebar.image('extra/upload.png', use_column_width=True)
@@ -192,13 +202,18 @@ if image_file is not None:
             mime="image/png"
           )
 
-          cols_srgan[i].image(predictSrgan(crop_image))
-          cols_srgan[i].download_button(
+          #cols_srgan[i].image(predictSrgan(crop_image))
+          #cols_srgan[i].image(predictSrgan("crop_img_0.png"))
+          img_gan=predictSrgan("crop_img_0.png")
+          
+          with open("results/restored_imgs/crop_img_0.png", "rb") as file:
+
+            cols_srgan[i].download_button(
             label="📥",
-            data=img_BufferedReader,
+            data=file,
             file_name="srgan_img_"+str(i)+".png",
             mime="image/png"
-          )
+            )
           print("img" + str(i))
           i += 1
         for col in objects.select_dtypes(include=['object']).columns:
@@ -210,4 +225,3 @@ if image_file is not None:
     
   else:
     st.write("NO PERSON DETECTED")
-

@@ -20,8 +20,7 @@ from tensorflow.keras.preprocessing.image import ImageDataGenerator, array_to_im
 
 
 # define the SRCNN model
-
-@st.experimental_singleton()
+@st.cache(suppress_st_warning=True)
 def model():
     
     # define model type
@@ -44,24 +43,17 @@ def model():
     # compile model
     SRCNN.compile(optimizer=adam, loss='mean_squared_error', metrics=['mean_squared_error'])
     
-    load_weights = 'pretrained_models/model_1414_222_20_10.h5'
-    #st.write(load_weights)
-    SRCNN.load_weights(load_weights)
-    print("weights loaded")
-    
     return SRCNN
 
 SRCNN = model()
 
 
+load_weights = 'model_5545_993_20_10.h5'
+#st.write(load_weights)
+SRCNN.load_weights(load_weights)
+print("weights loaded")
 
-@st.cache(suppress_st_warning=True)
 def predictCNN(input_img):
-    """
-     A function that takes an image and returns a super-resolved image.
-
-    """
-    print("prede")
     scale = 2
 
     img = np.array(input_img)
