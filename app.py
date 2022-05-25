@@ -41,7 +41,7 @@ bash= f"""CUDA_HOME={pa}
           CUDNN_LIB_DIR={pa}
           python set.py develop"""
 print(bash)
-os.system("python BasicSR/setup.py develop")
+#os.system("python BasicSR/setup.py develop")
 print("/n/n python BasicSR/setup.py develop /n")
 
 #os.system("pip install torch")

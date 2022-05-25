@@ -6,6 +6,9 @@ import glob
 import numpy as np
 import os
 import torch
+
+
+os.system("pip install basicsr")
 from basicsr.utils import imwrite
 
 from gfpgan import GFPGANer
