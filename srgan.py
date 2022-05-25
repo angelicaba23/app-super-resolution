@@ -143,5 +143,5 @@ def predictSrgan(image_path):
         else:
             save_restore_path = os.path.join(args.output, 'restored_imgs', f'{basename}.{extension}')
         imwrite(restored_img, save_restore_path)
-
+        #cv2.imwrite(restored_img, save_restore_path)
     return save_restore_path
