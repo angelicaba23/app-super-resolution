@@ -12,7 +12,7 @@ from gfpgan import GFPGANer
 
 os.system("curl -LJO https://github.com/TencentARC/GFPGAN/releases/download/v0.1.0/GFPGANv1.pth")
 modelname ='GFPGANv1.pth'
-os.system("mv GFPGANv1.pth experiments/pretrained_models/GFPGANv1.3.pth ")
+os.system("mv GFPGANv1.pth experiments/pretrained_models/GFPGANv1.pth ")
 print(os.system("ls experiments/pretrained_models"))
 
 #define main prediction function
@@ -29,7 +29,7 @@ def predictSrgan(image_path):
     parser.add_argument('-o', '--output', type=str, default='results', help='Output folder. Default: results')
     # we use version to select models, which is more user-friendly
     parser.add_argument(
-        '-v', '--version', type=str, default='1.3', help='GFPGAN model version. Option: 1 | 1.2 | 1.3. Default: 1.3')
+        '-v', '--version', type=str, default='1', help='GFPGAN model version. Option: 1 | 1.2 | 1.3. Default: 1.3')
     parser.add_argument(
         '-s', '--upscale', type=int, default=2, help='The final upsampling scale of the image. Default: 2')
 
@@ -90,11 +90,11 @@ def predictSrgan(image_path):
         channel_multiplier = 1
         model_name = 'GFPGANv1'
     elif args.version == '1.2':
-        arch = 'original'
+        arch = 'clean'
         channel_multiplier = 2
         model_name = 'GFPGANCleanv1-NoCE-C2'
     elif args.version == '1.3':
-        arch = 'original'
+        arch = 'clean'
         channel_multiplier = 2
         model_name = 'GFPGANv1.3'
     else:
