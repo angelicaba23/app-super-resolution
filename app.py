@@ -26,7 +26,7 @@ if 'data' not in st.session_state:
 #st.set_page_config(page_title="SuperResolution",layout="wide")
 # app design
 icon = Image.open('extra/icon2.ico')
-app_meta(icon)
+#app_meta(icon)
 
 
 #set_bg_hack('extra/bq.png')
