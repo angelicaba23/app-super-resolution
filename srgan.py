@@ -107,6 +107,12 @@ def predictSrgan(image_path):
     if not os.path.isfile(model_path):
         raise ValueError(f'Model {model_name} does not exist.')
 
+    print('model_path='+model_path,
+        'upscale=='+args.upscale,
+        'arch='+arch,
+        'channel_multiplier='+channel_multiplier,
+        'bg_upsampler=='+bg_upsampler)
+        
     restorer = GFPGANer(
         model_path=model_path,
         upscale=args.upscale,
