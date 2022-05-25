@@ -23,3 +23,19 @@ pyyaml
 tb-nightly
 yapf
 
+
+addict
+future
+#lmdb
+#numpy
+#opencv-python
+#Pillow
+#pyyaml
+requests
+#scikit-image
+#scipy
+#tb-nightly
+#torch>=1.7
+#torchvision
+#tqdm
+#yapf
