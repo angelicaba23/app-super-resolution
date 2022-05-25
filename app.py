@@ -43,7 +43,7 @@ pa = "/home/appuser/venv/lib/python3.8/site-packages/torch/include/ATen/native/c
 bash= f"""CUDA_HOME={pa}
           CUDNN_INCLUDE_DIR={pa}
           CUDNN_LIB_DIR={pa}
-          python BasicSR/setup.py develop"""
+          python set.py develop"""
 print(bash)
 os.system(bash)
 print("/n/n python BasicSR/setup.py develop /n")
