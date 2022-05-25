@@ -4,6 +4,8 @@ st.write(torch.cuda.is_available())
 x = torch.rand(5, 3)
 st.write(x)
 
+print(os.system("find / -type d -name cuda 2>/dev/null"))
+
 from io import BufferedReader, BytesIO
 from PIL import Image
 
