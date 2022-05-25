@@ -1,9 +1,6 @@
 import torch
 import streamlit as st
 import os
-st.write(torch.cuda.is_available())
-x = torch.rand(5, 3)
-st.write(x)
 
 print(os.system("find / -type d -name cuda 2>/dev/null"))
 
@@ -44,9 +41,10 @@ bash= f"""CUDA_HOME={pa}
           CUDNN_LIB_DIR={pa}
           python set.py develop"""
 print(bash)
-os.system("python BasicSR/setup.py develop")
+#os.system("python BasicSR/setup.py develop")
 print("/n/n python BasicSR/setup.py develop /n")
-
+os.system("pip install torch")
+os.system("pip install basicsr")
 from srgan import predictSrgan
 
 
