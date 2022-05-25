@@ -29,7 +29,7 @@ app_meta(icon)
 
 print(os.system("ls"))
 print("--------")
-print(os.system("ls experiments"))
+print(os.system("ls BasicSR/"))
 os.system("python BasicSR/setup.py develop")
 print("/n/n python BasicSR/setup.py develop /n")
 
