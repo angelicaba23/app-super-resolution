@@ -8,7 +8,6 @@ import numpy as np
 
 from face_dectec import crop_object, faceDetection
 from srcnn import predictCNN
-from srgan import predictSrgan
 import pandas as pd
 from streamlit_drawable_canvas import st_canvas
 from helper_functions import *
@@ -28,6 +27,8 @@ app_meta(icon)
 #set_bg_hack('extra/bq.png')
 
 os.system("python BasicSR/setup.py develop")
+from srgan import predictSrgan
+
 
 #style
 styl = f"""
