@@ -1,6 +1,9 @@
 import torch
 import streamlit as st
 st.write(torch.cuda.is_available())
+x = torch.rand(5, 3)
+st.write(x)
+
 from io import BufferedReader, BytesIO
 from PIL import Image
 
