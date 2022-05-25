@@ -1,3 +1,4 @@
+os.system("pip install torch")
 import torch
 
 from setuptools import find_packages, setup

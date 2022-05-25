@@ -35,9 +35,6 @@ icon = Image.open('extra/icon2.ico')
 #set_bg_hack('extra/bq.png')
 
 print(os.system("pip list"))
-os.system('python setup.py develop')
-os.system('pip install torch')
-os.system('python setup.py develop')
 print(os.system("ls ./BasicSR/"))
 
 pa = "/home/appuser/venv/lib/python3.8/site-packages/torch/include/ATen/native/cuda"
@@ -47,7 +44,7 @@ bash= f"""CUDA_HOME={pa}
           CUDNN_LIB_DIR={pa}
           python set.py develop"""
 print(bash)
-os.system(bash)
+os.system("python BasicSR/setup.py develop")
 print("/n/n python BasicSR/setup.py develop /n")
 
 from srgan import predictSrgan
