@@ -13,7 +13,7 @@ click==8.0.4
 #torch>=1.7
 numpy<1.21  # numba requires numpy<1.21,>=1.17
 #opencv-python
-torch
+#torch
 torchvision
 scipy
 tqdm
