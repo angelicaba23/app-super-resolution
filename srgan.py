@@ -6,8 +6,8 @@ import glob
 import numpy as np
 import os
 import torch
-os.system("pip install torch")
-os.system("pip install basicsr")
+#os.system("pip install torch")
+#os.system("pip install basicsr")
 #os.system("pip install basicsr")
 from basicsr.utils import imwrite
 
