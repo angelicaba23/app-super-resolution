@@ -1,9 +1,9 @@
+import os
 os.system("pip install torch")
 import torch
 
 from setuptools import find_packages, setup
 
-import os
 import subprocess
 import time
 from torch.utils.cpp_extension import BuildExtension, CppExtension, CUDAExtension
