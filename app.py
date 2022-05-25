@@ -27,9 +27,7 @@ app_meta(icon)
 #set_bg_hack('extra/bq.png')
 
 
-print(os.system("ls"))
-print("--------")
-print(os.system("ls BasicSR/"))
+print(os.system("ls ./BasicSR/"))
 os.system("python BasicSR/setup.py develop")
 print("/n/n python BasicSR/setup.py develop /n")
 
