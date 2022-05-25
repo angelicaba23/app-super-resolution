@@ -1,4 +1,5 @@
 import torch
+torch.cuda.is_available()
 from io import BufferedReader, BytesIO
 import streamlit as st
 from PIL import Image
