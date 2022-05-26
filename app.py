@@ -114,7 +114,6 @@ if image_file is not None:
   colbtt2:st.write(' ')
   file_bytes = np.asarray(bytearray(image_file.read()), dtype=np.uint8) #<class 'numpy.ndarray'>
   opencv_image = cv2.imdecode(file_bytes, 1) #<class 'numpy.ndarray'>
-  st.write(type(image_file),type(file_bytes), type(opencv_image))
 else: 
   opencv_image= ""
 
