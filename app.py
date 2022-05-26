@@ -53,7 +53,7 @@ styl = f"""
 st.markdown(styl, unsafe_allow_html=True)
 
 #main function
-def updateimg(opencv_image):
+def updateimg(opencv_image,image_file):
   [img_faces, num, boxes] = faceDetection(opencv_image)
   print("numero de rostros = "+ str(num))
   #st.write(boxes)
@@ -213,7 +213,7 @@ with coltry3:st.write(' ')
 
 with colbtt1:st.write(' ')
 with colbtt2:
-  if st.button("TRY IT"): updateimg(asarray(cv2.imread('extra/selfie3.jpeg')))
+  if st.button("TRY IT"): updateimg(asarray(cv2.imread('extra/selfie3.jpeg')),image_file)
 with colbtt3:st.write(' ')
 
 
@@ -237,4 +237,4 @@ if image_file is not None:
 
   file_bytes = np.asarray(bytearray(image_file.read()), dtype=np.uint8) #<class 'numpy.ndarray'>
   opencv_image = cv2.imdecode(file_bytes, 1) #<class 'numpy.ndarray'>
-  updateimg(opencv_image)
+  updateimg(opencv_image, image_file)
