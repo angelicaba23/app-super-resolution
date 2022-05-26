@@ -1,4 +1,5 @@
 from io import BufferedReader, BytesIO
+from turtle import color
 import streamlit as st
 from PIL import Image
 
@@ -32,8 +33,8 @@ set_bg_hack('extra/bq4.png')
 #style
 styl = f"""
 <style>
-	.css-zn0oak{{
-    background-color: rgb(209 223 222);
+	.css-zn0oak .css-15euf4{{
+    background-color: rgb(207 226 224);
     padding: 3rem 1rem;
 	}}
   h6{{
@@ -52,16 +53,18 @@ st.markdown(styl, unsafe_allow_html=True)
 logo = Image.open('extra/name.png')
 #st.sidebar.image(logo,use_column_width=True)
 col1, col2, col3 = st.columns(3)
+with col1:st.write(' ')
+with col2:st.image('extra/icon2.png')
+with col3:st.write(' ')
 
-with col1:
-    st.write(' ')
+coltry1, coltry2, coltry3 = st.columns(3)
+with coltry1:st.write(' ')
+with coltry2:
+  st.image('extra/selfie3.jpeg')
+  with st.button("TRY"):
+    image_file = cv2.imread('selfie3.jpeg')
 
-with col2:
-    st.image('extra/icon2.png')
-
-with col3:
-    st.write(' ')
-
+with coltry3:st.write(' ')
 
 # Main panel setup
 #display_app_header(main_txt='Super Resolution', sub_txt='Upload, procces, download to get a new resolution')
@@ -95,13 +98,12 @@ display_mini_text("By uploading an image or URL you agree to our ","https://gith
 
 if image_file is not None:
 
-  
   #save_image(image_file, image_file.name)
-
   #img_file = "uploaded_image/" + image_file.name
 
   file_bytes = np.asarray(bytearray(image_file.read()), dtype=np.uint8)
   opencv_image = cv2.imdecode(file_bytes, 1)
+  st.write(type(image_file),type(image_file), type(image_file))
   
   [img_faces, num, boxes] = faceDetection(opencv_image)
   print("numero de rostros = "+ str(num))
