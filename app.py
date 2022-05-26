@@ -118,7 +118,7 @@ if image_file is not None or check:
   #save_image(image_file, image_file.name)
   #img_file = "uploaded_image/" + image_file.name
   else:
-    
+    check = False
     file_bytes = np.asarray(bytearray(image_file.read()), dtype=np.uint8) #<class 'numpy.ndarray'>
     opencv_image = cv2.imdecode(file_bytes, 1) #<class 'numpy.ndarray'>
 
