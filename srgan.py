@@ -6,17 +6,9 @@ import glob
 import numpy as np
 import os
 import torch
-#os.system("pip install torch")
-#os.system("pip install basicsr")
-#os.system("pip install basicsr")
 from basicsr.utils import imwrite
 
 from gfpgan import GFPGANer
-
-os.system("curl -LJO https://github.com/TencentARC/GFPGAN/releases/download/v0.1.0/GFPGANv1.pth")
-modelname ='GFPGANv1.pth'
-os.system("mv GFPGANv1.pth experiments/pretrained_models")
-print(os.system("ls experiments/pretrained_models"))
 
 #define main prediction function
 
@@ -32,7 +24,7 @@ def predictSrgan(image_path):
     parser.add_argument('-o', '--output', type=str, default='results', help='Output folder. Default: results')
     # we use version to select models, which is more user-friendly
     parser.add_argument(
-        '-v', '--version', type=str, default='1', help='GFPGAN model version. Option: 1 | 1.2 | 1.3. Default: 1.3')
+        '-v', '--version', type=str, default='1.3', help='GFPGAN model version. Option: 1 | 1.2 | 1.3. Default: 1.3')
     parser.add_argument(
         '-s', '--upscale', type=int, default=2, help='The final upsampling scale of the image. Default: 2')
 
@@ -110,8 +102,6 @@ def predictSrgan(image_path):
     if not os.path.isfile(model_path):
         raise ValueError(f'Model {model_name} does not exist.')
 
-    print("----MODEL-----"+str(os.system("ls experiments/pretrained_models/")))
-    print(model_path)
     restorer = GFPGANer(
         model_path=model_path,
         upscale=args.upscale,
@@ -128,7 +118,7 @@ def predictSrgan(image_path):
 
     # restore faces and background if necessary
     cropped_faces, restored_faces, restored_img = restorer.enhance(
-        input_img)
+        input_img, has_aligned=args.aligned, only_center_face=args.only_center_face, paste_back=True)
     
     # save restored img
     if restored_img is not None:

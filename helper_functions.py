@@ -34,7 +34,7 @@ def app_meta(icon):
     # Set website details
     st.set_page_config(page_title ="Super Resolution", 
                        page_icon=icon, 
-                       layout='wide')
+                       layout='centered')
     
     # set sidebar width
     st.markdown(

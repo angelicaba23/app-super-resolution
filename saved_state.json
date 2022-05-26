@@ -3,10 +3,10 @@
     "objects": [
         {
             "type": "rect",
-            "left": 44,
-            "top": 61,
-            "width": 37,
-            "height": 45,
+            "left": 49,
+            "top": 64,
+            "width": 345,
+            "height": 360,
             "fill": "#00FFB350",
             "stroke": "#00FFB3",
             "strokeWidth": 3

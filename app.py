@@ -1,11 +1,6 @@
-import torch
-import streamlit as st
-import os
-
-print(os.system("find / -type d -name cuda 2>/dev/null"))
-
-
 from io import BufferedReader, BytesIO
+from turtle import color
+import streamlit as st
 from PIL import Image
 
 import json
@@ -14,6 +9,7 @@ import numpy as np
 
 from face_dectec import crop_object, faceDetection
 from srcnn import predictCNN
+from srgan import predictSrgan
 import pandas as pd
 from streamlit_drawable_canvas import st_canvas
 from helper_functions import *
@@ -27,41 +23,25 @@ if 'data' not in st.session_state:
 #st.set_page_config(page_title="SuperResolution",layout="wide")
 # app design
 icon = Image.open('extra/icon2.ico')
-#app_meta(icon)
+app_meta(icon)
 
 
-#set_bg_hack('extra/bq.png')
+set_bg_hack('extra/bq4.png')
 
-print(os.system("pip list"))
-print(os.system("ls ./BasicSR/"))
-
-pa = "/home/appuser/venv/lib/python3.8/site-packages/torch/include/ATen/native/cuda"
-
-bash= f"""CUDA_HOME={pa}
-          CUDNN_INCLUDE_DIR={pa}
-          CUDNN_LIB_DIR={pa}
-          python set.py develop"""
-print(bash)
-#os.system("python BasicSR/setup.py develop")
-print("/n/n python BasicSR/setup.py develop /n")
-
-#os.system("pip install torch")
-#os.system("pip install basicsr")
-from srgan import predictSrgan
 
 
 #style
 styl = f"""
 <style>
-	.css-15euf4{{
-    background-color: #ebf5f2;
+	.css-zn0oak{{
+    background-color: rgb(209 223 222);
     padding: 3rem 1rem;
 	}}
   h6{{
-    color:rgb(139 162 183 / 25%);
+    color:rgb(0 104 201 / 75%);
 	}}
   .css-83m1w6 a {{
-    color:rgb(139 162 183 / 25%);
+    color:rgb(0 104 201 / 75%);
   }}
 	}}
 </style>
@@ -88,7 +68,7 @@ with col3:
 #display_app_header(main_txt='Super Resolution', sub_txt='Upload, procces, download to get a new resolution')
 
 # Info
-with st.expander("What is this app?", expanded=False):
+with st.expander("What is this app?", expanded=False):    
     st.write("""
             This web-based application allows you to identify faces, resize and download images in just a few clicks.
             All you have to do is to upload a single photo, and follow the guidelines in the sidebar.\n
@@ -130,7 +110,7 @@ if image_file is not None:
   #st.image(img_faces)
   if len(boxes) > 0:
     display_app_header(main_txt = "🛠️ Step 2",
-                  sub_txt= "Edit image",
+                  sub_txt= "Edit Image",
                   is_sidebar=True)
     list = []
     filename = 'saved_state.json'
@@ -194,9 +174,9 @@ if image_file is not None:
         objects = pd.json_normalize(canvas_result.json_data["objects"]) # need to convert obj to str because PyArrow
         n = int(len(rst_objects))
         cols = st.columns(n)
-        st.info("🪄 SuperResolution (CNN)")
+        st.info("🪄 IMAGE PROCESSED BY THE METHOD SUPER RESOLUTION (CNN)")
         cols_srcnn = st.columns(n)
-        st.success("🪄 SuperResolution+Enhancement (GAN)")
+        st.success("🪄 IMAGE PROCESSED BY THE METHOD SUPER RESOLUTION + ENHANCEMENT (GAN)")
         cols_srgan = st.columns(n)
         i = 0
 
@@ -226,7 +206,7 @@ if image_file is not None:
           #cols_srgan[i].image(predictSrgan(crop_image))
           #cols_srgan[i].image(predictSrgan("crop_img_0.png"))
           img_gan=predictSrgan("crop_img_0.png")
-          
+          cols_srgan[i].image(img_gan)
           with open("results/restored_imgs/crop_img_0.png", "rb") as file:
 
             cols_srgan[i].download_button(
