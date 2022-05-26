@@ -128,7 +128,7 @@ def predictSrgan(image_path):
             extension = args.ext
 
         if args.suffix is not None:
-            save_restore_path = os.path.join(args.output, 'restored_imgs', f'{basename}_{args.suffix}.{extension}')
+            save_restore_path = os.path.join(args.output, 'restored_imgs', f'{basename}_{args.suffix}_gan.{extension}')
         else:
             save_restore_path = os.path.join(args.output, 'restored_imgs', f'{basename}.{extension}')
         imwrite(restored_img, save_restore_path)

@@ -88,4 +88,5 @@ def predictCNN(input_img):
     img = cv2.cvtColor(img, cv2.COLOR_YCrCb2BGR)
     #st.write("OUTPUT")
     #st.image(img)
+    cv2.imwrite("results/restored_imgs/crop_img_0_cnn.png",img)
     return img

@@ -213,7 +213,7 @@ if image_file is not None or check:
             #-------CNN-----
             im_bgr = predictCNN(crop_image)
             cols_srcnn[i].image(im_bgr)
-
+            
             im_rgb = im_bgr[:, :, [2, 1, 0]] #numpy.ndarray
             ret, img_enco = cv2.imencode(".png", im_rgb)  #numpy.ndarray
             srt_enco = img_enco.tobytes()   #bytes
@@ -232,7 +232,7 @@ if image_file is not None or check:
             #img_gan=predictSrgan("crop_img_0.png")
             img_gan = im_bgr
             cols_srgan[i].image(img_gan)
-            with open("results/restored_imgs/crop_img_0.png", "rb") as file:
+            with open("results/restored_imgs/crop_img_0_gan.png", "rb") as file:
 
               cols_srgan[i].download_button(
               label="📥",
@@ -246,7 +246,8 @@ if image_file is not None or check:
 
             
             # Add multiple files to the zip
-            zipObj.write('extra/bq.png')
+            zipObj.write('results/restored_imgs/crop_img_0_gan.png')
+            zipObj.write('results/restored_imgs/crop_img_0_cnn.png')
            
           # close the Zip File
           zipObj.close()
