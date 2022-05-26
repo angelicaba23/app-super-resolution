@@ -61,9 +61,12 @@ coltry1, coltry2, coltry3 = st.columns(3)
 with coltry1:st.write(' ')
 with coltry2:
   st.image('extra/selfie3.jpeg')
-  with st.button("TRY"):
-    image_file = cv2.imread('extra/selfie3.jpeg')
-
+  colbtt1, colbtt2, colbtt3 = st.columns(3)
+  with colbtt1:st.write(' ')
+  with colbtt2:
+    if st.button("TRY"):
+      image_file = cv2.imread('extra/selfie3.jpeg')
+  with colbtt3:st.write(' ')
 with coltry3:st.write(' ')
 
 # Main panel setup
