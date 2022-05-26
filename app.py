@@ -90,7 +90,7 @@ with coltry3:st.write(' ')
 
 with colbtt1:st.write(' ')
 with colbtt2: 
-  check = st.button("🆗")
+  check = st.checkbox("🆗")
 with colbtt3:st.write(' ')
 
 
