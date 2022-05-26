@@ -87,10 +87,8 @@ with coltry2:st.image('extra/selfie3.jpeg')
 with coltry3:st.write(' ')
 
 with colbtt1:st.write(' ')
-with colbtt2:
-  if st.checkbox("TRY IT"):
-    image_file = 'extra/selfie3.jpeg'
-    opencv_image= cv2.imread('extra/selfie3.jpeg')
+with colbtt2: check = st.checkbox("TRY IT")
+    
 with colbtt3:st.write(' ')
 
 
@@ -107,8 +105,10 @@ image_file = st.sidebar.file_uploader("Upload Image", type=["png","jpg","jpeg"])
 
 display_mini_text("By uploading an image or URL you agree to our ","https://github.com/angelicaba23/app-super-resolution/blob/dev/extra/termsofservice.md","Terms of Service",is_sidebar = True)
 
-if image_file:
-
+if image_file or check:
+  if check:
+    image_file = 'extra/selfie3.jpeg'
+    opencv_image= cv2.imread('extra/selfie3.jpeg')
   #save_image(image_file, image_file.name)
   #img_file = "uploaded_image/" + image_file.name
   coltry2:st.write(' ')
