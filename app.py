@@ -203,6 +203,7 @@ if image_file is not None or check:
           cols_srgan = st.columns(n)
           i = 0
 
+          zipObj = ZipFile('extra/imgs.zip', 'w')
           for rst_objects in rst_objects:
             rts_boxes = [rst_objects['left'],rst_objects['top'],rst_objects['width']+rst_objects['left'],rst_objects['height']+rst_objects['top']]
             #st.write(rts_boxes)
@@ -228,7 +229,8 @@ if image_file is not None or check:
 
             #cols_srgan[i].image(predictSrgan(crop_image))
             #cols_srgan[i].image(predictSrgan("crop_img_0.png"))
-            img_gan=predictSrgan("crop_img_0.png")
+            #img_gan=predictSrgan("crop_img_0.png")
+            img_gan = im_bgr
             cols_srgan[i].image(img_gan)
             with open("results/restored_imgs/crop_img_0.png", "rb") as file:
 
@@ -238,26 +240,28 @@ if image_file is not None or check:
               file_name="srgan_img_"+str(i)+".png",
               mime="image/png"
               )
+              zipObj.write(file)
+
             print("img" + str(i))
             i += 1
 
-            zipObj = ZipFile('extra/imgs.zip', 'w')
+            
             # Add multiple files to the zip
             zipObj.write('extra/bq.png')
-            zipObj.write('extra/bq2.png')
-            # close the Zip File
-            zipObj.close()
+           
+          # close the Zip File
+          zipObj.close()
 
-            display_app_header(main_txt = "📥 Step 3",
-                  sub_txt= "Download",
-                  is_sidebar=True)
-            with open("extra/imgs.zip", "rb") as fp:
-              btn = st.download_button(
-                  label="Download ZIP",
-                  data=fp,
-                  file_name="imgs.zip",
-                  mime="application/zip"
-              )
+          display_app_header(main_txt = "📥 Step 3",
+                sub_txt= "Download",
+                is_sidebar=True)
+          with open("extra/imgs.zip", "rb") as fp:
+            btn = st.download_button(
+                label="Download ZIP",
+                data=fp,
+                file_name="imgs.zip",
+                mime="application/zip"
+            )
 
   else:
     st.warning("We have not detected faces in the image, please select the area manually using the tools.")
