@@ -116,11 +116,9 @@ if image_file is not None or check:
   if check:
     image_file = 'extra/selfie3.jpeg'
     opencv_image= cv2.imread('extra/selfie3.jpeg')
-    check = False
   #save_image(image_file, image_file.name)
   #img_file = "uploaded_image/" + image_file.name
   else:
-    check = False
     file_bytes = np.asarray(bytearray(image_file.read()), dtype=np.uint8) #<class 'numpy.ndarray'>
     opencv_image = cv2.imdecode(file_bytes, 1) #<class 'numpy.ndarray'>
 
@@ -168,7 +166,7 @@ if image_file is not None or check:
     #st.write(saved_state)
     
     bg_image = Image.open(image_file)
-    image_file = None
+    #image_file = None
     label_color = (
         st.sidebar.color_picker("Annotation color: ", "#97fdf5") 
     )  # for alpha from 00 to FF
@@ -261,13 +259,6 @@ if image_file is not None or check:
             
 
           # close the Zip File
-          zf.close()
-
-          zf = zipfile.ZipFile('imgs.zip', 'r')
-
-          for i in zf.infolist():
-            st.write(f"is_dir: {i.is_dir()}; filename: {i.filename}")
-
           zf.close()
 
           display_app_header(main_txt = "🎉 Step 3",
