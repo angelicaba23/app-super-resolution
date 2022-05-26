@@ -274,12 +274,11 @@ if image_file is not None or check:
                 sub_txt= "Download results",
                 is_sidebar=True)
           with open("imgs.zip", "rb") as fp:
-            btn = st.download_button(
+            btn = st.sidebar.download_button(
                 label="📥",
                 data=fp,
                 file_name="imgs.zip",
-                mime="application/zip",
-                sidebar=True
+                mime="application/zip"
             )
 
   else:
