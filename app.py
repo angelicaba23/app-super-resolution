@@ -69,8 +69,8 @@ with col3:st.write(' ')
 # create ss object
 if "expandedval" not in st.session_state:
   st.session_state.expandedval = True
-
-
+if "checkval" not in st.session_state:
+  st.session_state.checkval = False
 # Info
 with st.expander("What is this app?", expanded=st.session_state.expandedval):    
     st.write("""
@@ -93,7 +93,7 @@ with st.expander("What is this app?", expanded=st.session_state.expandedval):
 
     with colbtt1:st.write(' ')
     with colbtt2: 
-      check = st.checkbox("YES", key='YES')
+      check = st.checkbox("YES", value=st.session_state.checkval, onchange=st.write(st.session_state.checkval))
     with colbtt3:st.write(' ')
 
 #st.markdown("""---""")
@@ -121,10 +121,11 @@ if image_file is not None or check:
   #img_file = "uploaded_image/" + image_file.name
 
   else:
-    st.session_state["YES"] = False
+    check = False
     file_bytes = np.asarray(bytearray(image_file.read()), dtype=np.uint8) #<class 'numpy.ndarray'>
     opencv_image = cv2.imdecode(file_bytes, 1) #<class 'numpy.ndarray'>
     
+  st.session_state.checkval = False
   st.session_state.expandedval = False
   #check = False
   [img_faces, num, boxes] = faceDetection(opencv_image)
