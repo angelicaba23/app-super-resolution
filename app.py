@@ -190,7 +190,7 @@ if image_file is not None or check:
   )
 
   print("Canvas creado")
-  if canvas_result.json_data["objects"] is not None:
+  if canvas_result.json_data is not None:
     rst_objects = canvas_result.json_data["objects"]
     objects = pd.json_normalize(canvas_result.json_data["objects"]) # need to convert obj to str because PyArrow
     n = int(len(rst_objects))
