@@ -89,7 +89,7 @@ with coltry3:st.write(' ')
 with colbtt1:st.write(' ')
 with colbtt2:
   if st.button("TRY IT"):
-    image_file = cv2.imread('extra/selfie3.jpeg')
+    image_file = 'extra/selfie3.jpeg'
 with colbtt3:st.write(' ')
 
 
@@ -115,7 +115,7 @@ if image_file is not None:
   file_bytes = np.asarray(bytearray(image_file.read()), dtype=np.uint8) #<class 'numpy.ndarray'>
   opencv_image = cv2.imdecode(file_bytes, 1) #<class 'numpy.ndarray'>
 else: 
-  opencv_image= ""
+  opencv_image= cv2.imread('extra/selfie3.jpeg')
 
 [img_faces, num, boxes] = faceDetection(opencv_image)
 print("numero de rostros = "+ str(num))
