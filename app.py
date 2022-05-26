@@ -93,7 +93,7 @@ with st.expander("What is this app?", expanded=st.session_state.expandedval):
 
     with colbtt1:st.write(' ')
     with colbtt2: 
-      st.checkbox("YES", value=st.session_state.checkval, on_change=st.write(st.session_state.checkval))
+      st.session_state.checkval = st.checkbox("YES", value=st.session_state.checkval, on_change=st.write(st.session_state.checkval))
     with colbtt3:st.write(' ')
 
 #st.markdown("""---""")
