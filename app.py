@@ -270,7 +270,7 @@ if image_file is not None or check:
             mime="application/zip"
         )
     except:
-      st.warning("We have not detected faces in the image, please select the area manually using the tools.")
+      st.warning("Please select the face manually using the tools.")
       
   else:
     st.warning("We have not detected faces in the image, please select the area manually using the tools.")
