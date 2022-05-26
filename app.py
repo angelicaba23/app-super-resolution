@@ -224,8 +224,7 @@ if image_file is not None or check:
             im_bgr = predictCNN(crop_image)
 
             # Add multiple files to the zip
-            zf.write(im_bgr, f'gan/crop_img_{str(i)}.png')
-            
+          
             cols_srcnn[i].image(im_bgr)
 
             im_rgb = im_bgr[:, :, [2, 1, 0]] #numpy.ndarray
@@ -247,7 +246,6 @@ if image_file is not None or check:
             img_gan = im_bgr
             cols_srgan[i].image(img_gan)
             with open("results/restored_imgs/crop_img_0.png", "rb") as file:
-
               cols_srgan[i].download_button(
               label="📥",
               data=file,
@@ -256,6 +254,7 @@ if image_file is not None or check:
               )
             # Add multiple files to the zip
             zf.write('results/restored_imgs/crop_img_0.png', f'gan/crop_img_{str(i)}.png')
+            zf.write(srt_enco, f'cnn/crop_img_{str(i)}.png')
             
             print("img" + str(i))
             i += 1
