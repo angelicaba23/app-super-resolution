@@ -79,7 +79,7 @@ with st.expander("What is this app?", expanded=False):
 #st.markdown("""---""")
     
 #test
-colbtt1, colbtt2, colbtt3 = st.columns(4)
+colbtt1, colbtt2, colbtt3 = st.columns([4,1,4])
 coltry1, coltry2, coltry3 = st.columns(3)
 
 with coltry1:st.write(' ')
