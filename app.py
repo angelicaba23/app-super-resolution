@@ -244,6 +244,10 @@ if image_file is not None or check:
 
           #if st.button("Procesar"):
           #  st.write("cargando")
-      
   else:
-    st.write("NO PERSON DETECTED")
+    st.warning("We have not detected faces in the image, please select the area manually using the tools.")
+      
+else:
+  st.write("NO PERSON DETECTED")
+  st.warning("We have not detected faces in the image, please select the area manually using the tools.")
+      
