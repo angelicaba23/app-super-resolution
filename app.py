@@ -113,6 +113,7 @@ display_mini_text("By uploading an image or URL you agree to our ","https://gith
 
 if image_file is not None or check:
   st.session_state.expandedval = False
+  st.session_state.checkval = False
   if check:
     image_file = 'extra/selfie3.jpeg'
     opencv_image= cv2.imread('extra/selfie3.jpeg')
@@ -122,7 +123,6 @@ if image_file is not None or check:
     file_bytes = np.asarray(bytearray(image_file.read()), dtype=np.uint8) #<class 'numpy.ndarray'>
     opencv_image = cv2.imdecode(file_bytes, 1) #<class 'numpy.ndarray'>
 
-  st.session_state.checkval = False
   [img_faces, num, boxes] = faceDetection(opencv_image)
   print("numero de rostros = "+ str(num))
   #st.write(boxes)
