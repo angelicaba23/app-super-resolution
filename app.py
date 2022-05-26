@@ -107,7 +107,7 @@ image_file = st.sidebar.file_uploader("Upload Image", type=["png","jpg","jpeg"])
 
 display_mini_text("By uploading an image or URL you agree to our ","https://github.com/angelicaba23/app-super-resolution/blob/dev/extra/termsofservice.md","Terms of Service",is_sidebar = True)
 
-if image_file is not None:
+if image_file:
 
   #save_image(image_file, image_file.name)
   #img_file = "uploaded_image/" + image_file.name
