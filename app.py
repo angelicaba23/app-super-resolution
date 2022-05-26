@@ -127,69 +127,70 @@ if image_file is not None or check:
   print("numero de rostros = "+ str(num))
   #st.write(boxes)
   #st.image(img_faces)
+
+  display_app_header(main_txt = "🛠️ Step 2",
+                sub_txt= "Edit Image",
+                is_sidebar=True)
+  list = []
+  filename = 'saved_state.json'
+
+  for boxes in boxes:
+    list.append({
+      "type": "rect",
+        "left": boxes[0],
+        "top": boxes[1],
+        "width": boxes[2]-boxes[0],
+        "height": boxes[3]-boxes[1],
+        "fill": "#00FFB350",
+        "stroke": "#00FFB3",
+        "strokeWidth": 3
+    })
+
+  # Verify updated list
+  #st.write(list)
+
+  listObj = {
+      "version": "4.4.0",
+      "objects": list  
+  }
+
+  # Verify updated listObj
+  #st.write(listObj)
+
+  with open(filename, 'w') as json_file:
+    json.dump(listObj, json_file, 
+                        indent=4,  
+                        separators=(',',': '))
+
+  with open(filename, "r") as f:   saved_state = json.load(f)
+  #st.write(saved_state)
+  
+  bg_image = Image.open(image_file)
+  #image_file = None
+  label_color = (
+      st.sidebar.color_picker("Annotation color: ", "#97fdf5") 
+  )  # for alpha from 00 to FF
+
+  tool_mode = st.sidebar.selectbox(
+    "Select faces tool:", ("Add", "Move & edit")
+  )
+  mode = "transform" if tool_mode=="Move & edit" else "rect"
+
+  canvas_result = st_canvas(
+      fill_color=label_color+ "50",
+      stroke_width=3,
+      stroke_color=label_color,
+      background_image=bg_image,
+      height=bg_image.height,
+      width=bg_image.width,
+      initial_drawing=saved_state,
+      drawing_mode=mode,
+      key="canvas_"+str(bg_image.height)+str(bg_image.width),
+  )
+
+  print("Canvas creado")
   if len(boxes) > 0:
-    display_app_header(main_txt = "🛠️ Step 2",
-                  sub_txt= "Edit Image",
-                  is_sidebar=True)
-    list = []
-    filename = 'saved_state.json'
-
-    for boxes in boxes:
-      list.append({
-        "type": "rect",
-          "left": boxes[0],
-          "top": boxes[1],
-          "width": boxes[2]-boxes[0],
-          "height": boxes[3]-boxes[1],
-          "fill": "#00FFB350",
-          "stroke": "#00FFB3",
-          "strokeWidth": 3
-      })
-
-    # Verify updated list
-    #st.write(list)
-
-    listObj = {
-        "version": "4.4.0",
-        "objects": list  
-    }
-
-    # Verify updated listObj
-    #st.write(listObj)
-
-    with open(filename, 'w') as json_file:
-      json.dump(listObj, json_file, 
-                          indent=4,  
-                          separators=(',',': '))
-
-    with open(filename, "r") as f:   saved_state = json.load(f)
-    #st.write(saved_state)
-    
-    bg_image = Image.open(image_file)
-    #image_file = None
-    label_color = (
-        st.sidebar.color_picker("Annotation color: ", "#97fdf5") 
-    )  # for alpha from 00 to FF
-
-    tool_mode = st.sidebar.selectbox(
-      "Select faces tool:", ("Add", "Move & edit")
-    )
-    mode = "transform" if tool_mode=="Move & edit" else "rect"
-
-    canvas_result = st_canvas(
-        fill_color=label_color+ "50",
-        stroke_width=3,
-        stroke_color=label_color,
-        background_image=bg_image,
-        height=bg_image.height,
-        width=bg_image.width,
-        initial_drawing=saved_state,
-        drawing_mode=mode,
-        key="canvas_"+str(bg_image.height)+str(bg_image.width),
-    )
-
     if canvas_result.json_data is not None:
-        print("Canvas creado")
         rst_objects = canvas_result.json_data["objects"]
         objects = pd.json_normalize(canvas_result.json_data["objects"]) # need to convert obj to str because PyArrow
         n = int(len(rst_objects))
