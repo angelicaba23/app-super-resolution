@@ -69,8 +69,8 @@ with col3:st.write(' ')
 # create ss object
 if "expandedval" not in st.session_state:
   st.session_state.expandedval = True
-if "checkval" not in st.session_state:
-  st.session_state.checkval = False
+
+check =False
 # Info
 with st.expander("What is this app?", expanded=st.session_state.expandedval):    
     st.write("""
@@ -78,7 +78,7 @@ with st.expander("What is this app?", expanded=st.session_state.expandedval):
             All you have to do is to upload a single photo, and follow the guidelines in the sidebar.\n
             This app uses Deep Learning (DL) to:
             * __Identify faces__: It returns the croped image (you can change it).
-            * __Increase face resolution__: It returns the image with a x2 scale.
+            * __Increase face resolution__: It returns the image whith a x2 scale.
             \n
             """)
     #test
@@ -93,7 +93,7 @@ with st.expander("What is this app?", expanded=st.session_state.expandedval):
 
     with colbtt1:st.write(' ')
     with colbtt2: 
-      st.session_state.checkval = st.checkbox("YES", value=st.session_state.checkval, on_change=st.write(st.session_state.checkval))
+      check = st.checkbox("YES", value=check)
     with colbtt3:st.write(' ')
 
 #st.markdown("""---""")
@@ -113,19 +113,18 @@ image_file = st.sidebar.file_uploader("Upload Image", type=["png","jpg","jpeg"])
 
 display_mini_text("By uploading an image or URL you agree to our ","https://github.com/angelicaba23/app-super-resolution/blob/dev/extra/termsofservice.md","Terms of Service",is_sidebar = True)
 
-if image_file is not None or st.session_state.checkval:
-  if st.session_state.checkval:
+if image_file is not None or check:
+  if check:
     image_file = 'extra/selfie3.jpeg'
     opencv_image= cv2.imread('extra/selfie3.jpeg')
   #save_image(image_file, image_file.name)
   #img_file = "uploaded_image/" + image_file.name
 
   else:
-    #check = False
+    check = False
     file_bytes = np.asarray(bytearray(image_file.read()), dtype=np.uint8) #<class 'numpy.ndarray'>
     opencv_image = cv2.imdecode(file_bytes, 1) #<class 'numpy.ndarray'>
     
-  st.session_state.checkval = False
   st.session_state.expandedval = False
   #check = False
   [img_faces, num, boxes] = faceDetection(opencv_image)
