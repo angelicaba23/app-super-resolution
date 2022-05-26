@@ -84,13 +84,13 @@ coltry1, coltry2, coltry3 = st.columns(3)
 
 with coltry1:st.write(' ')
 with coltry2:
-  display_app_header(main_txt = "WANNA TRY⁉️")
+  display_app_header(main_txt = "⏬ WANNA TRY⁉️ ⏬")
   st.image('extra/selfie3.jpeg')
 with coltry3:st.write(' ')
 
 with colbtt1:st.write(' ')
 with colbtt2: 
-  check = st.button("YES")
+  check = st.button("🆗")
 with colbtt3:st.write(' ')
 
 
