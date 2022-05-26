@@ -222,9 +222,9 @@ if image_file is not None or check:
 
             #-------CNN-----
             im_bgr = predictCNN(crop_image)
+            cv2.imwrite("results/restored_imgs/crop_img_0.png", im_bgr)
+            zf.write("results/restored_imgs/crop_img_0.png", f'cnn/crop_img_{str(i)}.png')
 
-            # Add multiple files to the zip
-          
             cols_srcnn[i].image(im_bgr)
 
             im_rgb = im_bgr[:, :, [2, 1, 0]] #numpy.ndarray
@@ -254,7 +254,7 @@ if image_file is not None or check:
               )
             # Add multiple files to the zip
             zf.write('results/restored_imgs/crop_img_0.png', f'gan/crop_img_{str(i)}.png')
-            zf.write(srt_enco, f'cnn/crop_img_{str(i)}.png')
+           
             
             print("img" + str(i))
             i += 1
