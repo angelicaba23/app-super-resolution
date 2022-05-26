@@ -17,10 +17,6 @@ from numpy import asarray
 
 import zipfile 
 
-# create ss object
-if 'data' not in st.session_state:
-    st.session_state.data = None
-
 # Page config
 #st.set_page_config(page_title="SuperResolution",layout="wide")
 # app design
@@ -67,9 +63,12 @@ with col3:st.write(' ')
 
 # Main panel setup
 #display_app_header(main_txt='Super Resolution', sub_txt='Upload, procces, download to get a new resolution')
+
+# create ss object
 if "expandedval" not in st.session_state:
   st.session_state.expandedval = True
-
+if 'checkval' not in st.session_state:
+    st.session_state.checkval = False
 # Info
 with st.expander("What is this app?", expanded=st.session_state.expandedval):    
     st.write("""
@@ -92,7 +91,7 @@ with st.expander("What is this app?", expanded=st.session_state.expandedval):
 
     with colbtt1:st.write(' ')
     with colbtt2: 
-      check = st.checkbox("🆗")
+      check = st.checkbox("🆗", value=st.session_state.checkval)
     with colbtt3:st.write(' ')
 
 #st.markdown("""---""")
