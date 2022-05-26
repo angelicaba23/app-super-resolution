@@ -63,13 +63,14 @@ with col2:st.image('extra/icon2.png')
 with col3:st.write(' ')
 
 
-
 # Main panel setup
 #display_app_header(main_txt='Super Resolution', sub_txt='Upload, procces, download to get a new resolution')
 
 # create ss object
 if "expandedval" not in st.session_state:
   st.session_state.expandedval = True
+
+
 # Info
 with st.expander("What is this app?", expanded=st.session_state.expandedval):    
     st.write("""
@@ -92,7 +93,7 @@ with st.expander("What is this app?", expanded=st.session_state.expandedval):
 
     with colbtt1:st.write(' ')
     with colbtt2: 
-      check = st.checkbox("🆗")
+      check = st.checkbox("🆗", key='ok')
     with colbtt3:st.write(' ')
 
 #st.markdown("""---""")
@@ -118,10 +119,12 @@ if image_file is not None or check:
     opencv_image= cv2.imread('extra/selfie3.jpeg')
   #save_image(image_file, image_file.name)
   #img_file = "uploaded_image/" + image_file.name
+
   else:
+    st.session_state["ok"] = False
     file_bytes = np.asarray(bytearray(image_file.read()), dtype=np.uint8) #<class 'numpy.ndarray'>
     opencv_image = cv2.imdecode(file_bytes, 1) #<class 'numpy.ndarray'>
-
+    
   st.session_state.expandedval = False
   #check = False
   [img_faces, num, boxes] = faceDetection(opencv_image)
