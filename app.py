@@ -62,7 +62,7 @@ with coltry1:st.write(' ')
 with coltry2:
   st.image('extra/selfie3.jpeg')
   with st.button("TRY"):
-    image_file = cv2.imread('selfie3.jpeg')
+    image_file = cv2.imread('extra/selfie3.jpeg')
 
 with coltry3:st.write(' ')
 
