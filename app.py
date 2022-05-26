@@ -107,7 +107,7 @@ image_file = st.sidebar.file_uploader("Upload Image", type=["png","jpg","jpeg"])
 
 display_mini_text("By uploading an image or URL you agree to our ","https://github.com/angelicaba23/app-super-resolution/blob/dev/extra/termsofservice.md","Terms of Service",is_sidebar = True)
 
-if image_file or check:
+if image_file is not None or check:
   coltry2:st.write(' ')
   colbtt2:st.write(' ')
   if check:
@@ -164,6 +164,7 @@ if image_file or check:
     #st.write(saved_state)
     
     bg_image = Image.open(image_file)
+    image_file = None
     label_color = (
         st.sidebar.color_picker("Annotation color: ", "#97fdf5") 
     )  # for alpha from 00 to FF
