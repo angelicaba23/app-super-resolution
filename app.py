@@ -213,7 +213,7 @@ with coltry3:st.write(' ')
 
 with colbtt1:st.write(' ')
 with colbtt2:
-  if st.button("TRY IT"): updateimg(asarray(cv2.imread('extra/selfie3.jpeg')),image_file)
+  if st.button("TRY IT"): updateimg(asarray(cv2.imread('extra/selfie3.jpeg')),'extra/selfie3.jpeg')
 with colbtt3:st.write(' ')
 
 
