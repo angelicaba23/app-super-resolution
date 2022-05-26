@@ -1,5 +1,4 @@
 from io import BufferedReader, BytesIO
-from turtle import color
 import streamlit as st
 from PIL import Image
 
