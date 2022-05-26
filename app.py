@@ -114,6 +114,7 @@ if image_file is not None or check:
   if check:
     image_file = 'extra/selfie3.jpeg'
     opencv_image= cv2.imread('extra/selfie3.jpeg')
+    check = False
   #save_image(image_file, image_file.name)
   #img_file = "uploaded_image/" + image_file.name
   else:
