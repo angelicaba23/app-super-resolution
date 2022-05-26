@@ -101,18 +101,12 @@ display_app_header(main_txt = "📤 Step 1",
                   #sub_txt= "Upload data",
                   is_sidebar=True)
 
-image_file = st.sidebar.file_uploader("Upload Image", type=["png","jpg","jpeg"])
+image_file = st.sidebar.file_uploader("Upload Image", type=["png","jpg","jpeg"]) #<class 'streamlit.uploaded_file_manager.UploadedFile'>
+
 display_mini_text("By uploading an image or URL you agree to our ","https://github.com/angelicaba23/app-super-resolution/blob/dev/extra/termsofservice.md","Terms of Service",is_sidebar = True)
 
-if image_file is not None:
 
-  #save_image(image_file, image_file.name)
-  #img_file = "uploaded_image/" + image_file.name
-
-  file_bytes = np.asarray(bytearray(image_file.read()), dtype=np.uint8)
-  opencv_image = cv2.imdecode(file_bytes, 1)
-  st.write(type(image_file),type(file_bytes), type(opencv_image))
-  
+def updateimg(opencv_image):
   [img_faces, num, boxes] = faceDetection(opencv_image)
   print("numero de rostros = "+ str(num))
   #st.write(boxes)
@@ -226,8 +220,8 @@ if image_file is not None:
             )
           print("img" + str(i))
           i += 1
-        for col in objects.select_dtypes(include=['object']).columns:
-            objects[col] = objects[col].astype("str")
+        #for col in objects.select_dtypes(include=['object']).columns:
+        #    objects[col] = objects[col].astype("str")
         #st.dataframe(objects)
 
         #if st.button("Procesar"):
@@ -235,3 +229,13 @@ if image_file is not None:
     
   else:
     st.write("NO PERSON DETECTED")
+
+if image_file is not None:
+
+  #save_image(image_file, image_file.name)
+  #img_file = "uploaded_image/" + image_file.name
+
+  file_bytes = np.asarray(bytearray(image_file.read()), dtype=np.uint8) #<class 'numpy.ndarray'>
+  opencv_image = cv2.imdecode(file_bytes, 1) #<class 'numpy.ndarray'>
+  st.write(type(image_file),type(file_bytes), type(opencv_image))
+  updateimg(opencv_image)
