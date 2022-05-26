@@ -53,6 +53,7 @@ styl = f"""
 st.markdown(styl, unsafe_allow_html=True)
 
 #main function
+@st.cache(suppress_st_warning=True)
 def updateimg(opencv_image,image_file):
   [img_faces, num, boxes] = faceDetection(opencv_image)
   print("numero de rostros = "+ str(num))
