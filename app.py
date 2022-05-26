@@ -31,6 +31,9 @@ set_bg_hack('extra/bq4.png')
 #style
 styl = f"""
 <style>
+  .st-bg {{
+    background-color: rgb(207 226 224 / 77%);
+  }}
 	.css-zn0oak{{
     background-color: rgb(207 226 224);
     padding: 3rem 1rem;
@@ -273,8 +276,8 @@ if image_file is not None or check:
       st.warning("Please select the face manually using the tools.")
       
   else:
-    st.warning("We have not detected faces in the image, please select the area manually using the tools.")
+    st.error("We have not detected faces in the image, please select the area manually using the tools.")
       
 else:
-  st.warning("Please upload a image to process")
+  st.error("Please upload a image to process")
     
