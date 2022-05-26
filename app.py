@@ -188,88 +188,87 @@ if image_file is not None or check:
 
   print("Canvas creado")
   if len(boxes) > 0:
-    if canvas_result.json_data is not None:
+    if canvas_result.json_data["objects"] is not None:
         rst_objects = canvas_result.json_data["objects"]
         objects = pd.json_normalize(canvas_result.json_data["objects"]) # need to convert obj to str because PyArrow
         n = int(len(rst_objects))
-        if n > 0:
-          cols = st.columns(n)
-          st.info("🪄 IMAGE PROCESSED BY THE METHOD SUPER RESOLUTION (CNN)")
-          cols_srcnn = st.columns(n)
-          st.success("🪄 IMAGE PROCESSED BY THE METHOD SUPER RESOLUTION + ENHANCEMENT (GAN)")
-          cols_srgan = st.columns(n)
-          i = 0
+        cols = st.columns(n)
+        st.info("🪄 IMAGE PROCESSED BY THE METHOD SUPER RESOLUTION (CNN)")
+        cols_srcnn = st.columns(n)
+        st.success("🪄 IMAGE PROCESSED BY THE METHOD SUPER RESOLUTION + ENHANCEMENT (GAN)")
+        cols_srgan = st.columns(n)
+        i = 0
 
-          zf = zipfile.ZipFile('imgs.zip', 'w')
+        zf = zipfile.ZipFile('imgs.zip', 'w')
 
-          folders = [
-              "gan/",
-              "cnn/",
-              ]
+        folders = [
+            "gan/",
+            "cnn/",
+            ]
 
-          for n in folders:
-              zfi = zipfile.ZipInfo(n)
-              zf.writestr(zfi, '')
+        for n in folders:
+            zfi = zipfile.ZipInfo(n)
+            zf.writestr(zfi, '')
 
-          for rst_objects in rst_objects:
-            rts_boxes = [rst_objects['left'],rst_objects['top'],rst_objects['width']+rst_objects['left'],rst_objects['height']+rst_objects['top']]
-            #st.write(rts_boxes)
-            crop_image = crop_object(bg_image, rts_boxes)
-            cols[i].image(crop_image)
+        for rst_objects in rst_objects:
+          rts_boxes = [rst_objects['left'],rst_objects['top'],rst_objects['width']+rst_objects['left'],rst_objects['height']+rst_objects['top']]
+          #st.write(rts_boxes)
+          crop_image = crop_object(bg_image, rts_boxes)
+          cols[i].image(crop_image)
 
-            #-------CNN-----
-            im_bgr = predictCNN(crop_image)
+          #-------CNN-----
+          im_bgr = predictCNN(crop_image)
 
-            cols_srcnn[i].image(im_bgr)
+          cols_srcnn[i].image(im_bgr)
 
-            im_rgb = im_bgr[:, :, [2, 1, 0]] #numpy.ndarray
-            cv2.imwrite("results/restored_imgs/crop_img_0.png", im_rgb)
-            zf.write("results/restored_imgs/crop_img_0.png", f'cnn/crop_img_{str(i)}.png')
-            ret, img_enco = cv2.imencode(".png", im_rgb)  #numpy.ndarray
-            srt_enco = img_enco.tobytes()   #bytes
-            img_BytesIO = BytesIO(srt_enco) #_io.BytesIO
-            img_BufferedReader = BufferedReader(img_BytesIO) #_io.BufferedReader
+          im_rgb = im_bgr[:, :, [2, 1, 0]] #numpy.ndarray
+          cv2.imwrite("results/restored_imgs/crop_img_0.png", im_rgb)
+          zf.write("results/restored_imgs/crop_img_0.png", f'cnn/crop_img_{str(i)}.png')
+          ret, img_enco = cv2.imencode(".png", im_rgb)  #numpy.ndarray
+          srt_enco = img_enco.tobytes()   #bytes
+          img_BytesIO = BytesIO(srt_enco) #_io.BytesIO
+          img_BufferedReader = BufferedReader(img_BytesIO) #_io.BufferedReader
 
-            cols_srcnn[i].download_button(
-              label="📥",
-              data=img_BufferedReader,
-              file_name="srcnn_img_"+str(i)+".png",
-              mime="image/png"
+          cols_srcnn[i].download_button(
+            label="📥",
+            data=img_BufferedReader,
+            file_name="srcnn_img_"+str(i)+".png",
+            mime="image/png"
+          )
+
+          #cols_srgan[i].image(predictSrgan(crop_image))
+          #cols_srgan[i].image(predictSrgan("crop_img_0.png"))
+          #img_gan=predictSrgan("crop_img_0.png")
+          img_gan = im_bgr
+          cols_srgan[i].image(img_gan)
+          with open("results/restored_imgs/crop_img_0.png", "rb") as file:
+            cols_srgan[i].download_button(
+            label="📥",
+            data=file,
+            file_name="srgan_img_"+str(i)+".png",
+            mime="image/png"
             )
+          # Add multiple files to the zip
+          zf.write('results/restored_imgs/crop_img_0.png', f'gan/crop_img_{str(i)}.png')
+          
+          
+          print("img" + str(i))
+          i += 1
+          
 
-            #cols_srgan[i].image(predictSrgan(crop_image))
-            #cols_srgan[i].image(predictSrgan("crop_img_0.png"))
-            #img_gan=predictSrgan("crop_img_0.png")
-            img_gan = im_bgr
-            cols_srgan[i].image(img_gan)
-            with open("results/restored_imgs/crop_img_0.png", "rb") as file:
-              cols_srgan[i].download_button(
+        # close the Zip File
+        zf.close()
+
+        display_app_header(main_txt = "🎉 Step 3",
+              sub_txt= "Download results",
+              is_sidebar=True)
+        with open("imgs.zip", "rb") as fp:
+          btn = st.sidebar.download_button(
               label="📥",
-              data=file,
-              file_name="srgan_img_"+str(i)+".png",
-              mime="image/png"
-              )
-            # Add multiple files to the zip
-            zf.write('results/restored_imgs/crop_img_0.png', f'gan/crop_img_{str(i)}.png')
-           
-            
-            print("img" + str(i))
-            i += 1
-            
-
-          # close the Zip File
-          zf.close()
-
-          display_app_header(main_txt = "🎉 Step 3",
-                sub_txt= "Download results",
-                is_sidebar=True)
-          with open("imgs.zip", "rb") as fp:
-            btn = st.sidebar.download_button(
-                label="📥",
-                data=fp,
-                file_name="imgs.zip",
-                mime="application/zip"
-            )
+              data=fp,
+              file_name="imgs.zip",
+              mime="application/zip"
+          )
 
   else:
     st.warning("We have not detected faces in the image, please select the area manually using the tools.")
