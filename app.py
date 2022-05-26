@@ -203,7 +203,7 @@ if image_file is not None or check:
           cols_srgan = st.columns(n)
           i = 0
 
-          zf = zipfile.ZipFile('test.zip', 'w')
+          zf = zipfile.ZipFile('imgs.zip', 'w')
 
           folders = [
               "gan/",
@@ -266,7 +266,7 @@ if image_file is not None or check:
           display_app_header(main_txt = "📥 Step 3",
                 sub_txt= "Download",
                 is_sidebar=True)
-          with open("extra/imgs.zip", "rb") as fp:
+          with open("imgs.zip", "rb") as fp:
             btn = st.download_button(
                 label="Download ZIP",
                 data=fp,
