@@ -79,16 +79,17 @@ with st.expander("What is this app?", expanded=False):
 #st.markdown("""---""")
     
 #test
+colbtt1, colbtt2, colbtt3 = st.columns(3)
 coltry1, coltry2, coltry3 = st.columns(3)
-colbtt1, colbtt2, colbtt3 = st.columns([4,1,4])
 
 with coltry1:st.write(' ')
 with coltry2:st.image('extra/selfie3.jpeg')
 with coltry3:st.write(' ')
 
 with colbtt1:st.write(' ')
-with colbtt2: check = st.checkbox("TRY IT")
-    
+with colbtt2: 
+  display_app_header(main_txt = "WANNA TRY⁉️")
+  check = st.button("TRY IT")
 with colbtt3:st.write(' ')
 
 
@@ -106,14 +107,15 @@ image_file = st.sidebar.file_uploader("Upload Image", type=["png","jpg","jpeg"])
 display_mini_text("By uploading an image or URL you agree to our ","https://github.com/angelicaba23/app-super-resolution/blob/dev/extra/termsofservice.md","Terms of Service",is_sidebar = True)
 
 if image_file or check:
+  coltry2:st.write(' ')
+  colbtt2:st.write(' ')
   if check:
     image_file = 'extra/selfie3.jpeg'
     opencv_image= cv2.imread('extra/selfie3.jpeg')
   #save_image(image_file, image_file.name)
   #img_file = "uploaded_image/" + image_file.name
   else:
-    coltry2:st.write(' ')
-    colbtt2:st.write(' ')
+    
     file_bytes = np.asarray(bytearray(image_file.read()), dtype=np.uint8) #<class 'numpy.ndarray'>
     opencv_image = cv2.imdecode(file_bytes, 1) #<class 'numpy.ndarray'>
 
