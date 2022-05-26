@@ -263,15 +263,23 @@ if image_file is not None or check:
           # close the Zip File
           zf.close()
 
-          display_app_header(main_txt = "📥 Step 3",
-                sub_txt= "Download",
+          zf = zipfile.ZipFile('test.zip', 'r')
+
+          for i in zf.infolist():
+            st.write(f"is_dir: {i.is_dir()}; filename: {i.filename}")
+
+          zf.close()
+
+          display_app_header(main_txt = "🎉 Step 3",
+                sub_txt= "Download results",
                 is_sidebar=True)
           with open("imgs.zip", "rb") as fp:
             btn = st.download_button(
-                label="Download ZIP",
+                label="📥",
                 data=fp,
                 file_name="imgs.zip",
-                mime="application/zip"
+                mime="application/zip",
+                sidebar=True
             )
 
   else:
