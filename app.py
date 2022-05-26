@@ -79,7 +79,7 @@ with st.expander("What is this app?", expanded=False):
 #st.markdown("""---""")
     
 #test
-colbtt1, colbtt2, colbtt3 = st.columns(3)
+colbtt1, colbtt2, colbtt3, colbtt4 = st.columns(4)
 coltry1, coltry2, coltry3 = st.columns(3)
 
 with coltry1:st.write(' ')
@@ -89,8 +89,9 @@ with coltry3:st.write(' ')
 with colbtt1:st.write(' ')
 with colbtt2: 
   display_app_header(main_txt = "WANNA TRY⁉️")
-  check = st.button("TRY IT")
-with colbtt3:st.write(' ')
+with colbtt3: 
+  check = st.checkbox("YES")
+with colbtt4:st.write(' ')
 
 
 
