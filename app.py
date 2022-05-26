@@ -88,7 +88,7 @@ with coltry3:st.write(' ')
 
 with colbtt1:st.write(' ')
 with colbtt2:
-  if st.button("TRY IT"):
+  if st.checkbox("TRY IT"):
     image_file = 'extra/selfie3.jpeg'
     opencv_image= cv2.imread('extra/selfie3.jpeg')
 with colbtt3:st.write(' ')
