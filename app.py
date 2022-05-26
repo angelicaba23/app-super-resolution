@@ -33,7 +33,11 @@ set_bg_hack('extra/bq4.png')
 #style
 styl = f"""
 <style>
-	.css-zn0oak .css-15euf4{{
+	.css-zn0oak{{
+    background-color: rgb(207 226 224);
+    padding: 3rem 1rem;
+	}}
+  .css-15euf4{{
     background-color: rgb(207 226 224);
     padding: 3rem 1rem;
 	}}
@@ -57,17 +61,7 @@ with col1:st.write(' ')
 with col2:st.image('extra/icon2.png')
 with col3:st.write(' ')
 
-coltry1, coltry2, coltry3 = st.columns(3)
-colbtt1, colbtt2, colbtt3 = st.columns([4,1,4])
 
-with coltry1:st.write(' ')
-with coltry2:st.image('extra/selfie3.jpeg')
-with coltry3:st.write(' ')
-
-with colbtt1:st.write(' ')
-with colbtt2:
-  if st.button("TRY"): image_file = cv2.imread('extra/selfie3.jpeg')
-with colbtt3:st.write(' ')
 
 # Main panel setup
 #display_app_header(main_txt='Super Resolution', sub_txt='Upload, procces, download to get a new resolution')
@@ -84,7 +78,18 @@ with st.expander("What is this app?", expanded=False):
             """)
 #st.markdown("""---""")
     
-#image_data_app()
+#test
+coltry1, coltry2, coltry3 = st.columns(3)
+colbtt1, colbtt2, colbtt3 = st.columns([4,1,4])
+
+with coltry1:st.write(' ')
+with coltry2:st.image('extra/selfie3.jpeg')
+with coltry3:st.write(' ')
+
+with colbtt1:st.write(' ')
+with colbtt2:
+  if st.button("TRY IT"): image_file = cv2.imread('extra/selfie3.jpeg')
+with colbtt3:st.write(' ')
 
 
 
