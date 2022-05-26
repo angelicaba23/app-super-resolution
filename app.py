@@ -67,7 +67,7 @@ with col3:st.write(' ')
 #display_app_header(main_txt='Super Resolution', sub_txt='Upload, procces, download to get a new resolution')
 
 # Info
-with st.expander("What is this app?", expanded=False):    
+with st.expander("What is this app?", expanded=True):    
     st.write("""
             This web-based application allows you to identify faces, resize and download images in just a few clicks.
             All you have to do is to upload a single photo, and follow the guidelines in the sidebar.\n
@@ -76,22 +76,23 @@ with st.expander("What is this app?", expanded=False):
             * __Increase face resolution__: It returns the image whith a x2 scale.
             \n
             """)
+    #test
+    coltry1, coltry2, coltry3 = st.columns(3)
+    colbtt1, colbtt2, colbtt3 = st.columns([4,1,4])
+
+    with coltry1:st.write(' ')
+    with coltry2:
+      display_app_header(main_txt = "⏬WANNA TRY?⏬")
+      st.image('extra/selfie3.jpeg')
+    with coltry3:st.write(' ')
+
+    with colbtt1:st.write(' ')
+    with colbtt2: 
+      check = st.checkbox("🆗")
+    with colbtt3:st.write(' ')
+
 #st.markdown("""---""")
     
-#test
-coltry1, coltry2, coltry3 = st.columns(3)
-colbtt1, colbtt2, colbtt3 = st.columns([4,1,4])
-
-with coltry1:st.write(' ')
-with coltry2:
-  display_app_header(main_txt = "⏬WANNA TRY?⏬")
-  st.image('extra/selfie3.jpeg')
-with coltry3:st.write(' ')
-
-with colbtt1:st.write(' ')
-with colbtt2: 
-  check = st.checkbox("🆗")
-with colbtt3:st.write(' ')
 
 
 
