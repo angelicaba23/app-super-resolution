@@ -15,6 +15,8 @@ from streamlit_drawable_canvas import st_canvas
 from helper_functions import *
 from numpy import asarray
 
+from zipfile import ZipFile
+
 # create ss object
 if 'data' not in st.session_state:
     st.session_state.data = None
@@ -238,16 +240,28 @@ if image_file is not None or check:
               )
             print("img" + str(i))
             i += 1
-          #for col in objects.select_dtypes(include=['object']).columns:
-          #    objects[col] = objects[col].astype("str")
-          #st.dataframe(objects)
 
-          #if st.button("Procesar"):
-          #  st.write("cargando")
+            zipObj = ZipFile('extra/imgs.zip', 'w')
+            # Add multiple files to the zip
+            zipObj.write('extra/bq.png')
+            zipObj.write('extra/bq2.png')
+            # close the Zip File
+            zipObj.close()
+
+            display_app_header(main_txt = "📥 Step 3",
+                  sub_txt= "Download",
+                  is_sidebar=True)
+            with open("extra/imgs.zip", "rb") as fp:
+              btn = st.download_button(
+                  label="Download ZIP",
+                  data=fp,
+                  file_name="imgs.zip",
+                  mime="application/zip"
+              )
+
   else:
     st.warning("We have not detected faces in the image, please select the area manually using the tools.")
       
 else:
   st.write("NO PERSON DETECTED")
-  st.warning("We have not detected faces in the image, please select the area manually using the tools.")
-      
+    
