@@ -67,9 +67,11 @@ with col3:st.write(' ')
 
 # Main panel setup
 #display_app_header(main_txt='Super Resolution', sub_txt='Upload, procces, download to get a new resolution')
+if "expandedval" not in st.session_state:
+  st.session_state.expandedval = True
 
 # Info
-with st.expander("What is this app?", expanded=True):    
+with st.expander("What is this app?", expanded=st.session_state.expandedval):    
     st.write("""
             This web-based application allows you to identify faces, resize and download images in just a few clicks.
             All you have to do is to upload a single photo, and follow the guidelines in the sidebar.\n
@@ -111,8 +113,7 @@ image_file = st.sidebar.file_uploader("Upload Image", type=["png","jpg","jpeg"])
 display_mini_text("By uploading an image or URL you agree to our ","https://github.com/angelicaba23/app-super-resolution/blob/dev/extra/termsofservice.md","Terms of Service",is_sidebar = True)
 
 if image_file is not None or check:
-  coltry2:st.write(' ')
-  colbtt2:st.write(' ')
+  st.session_state.expandedval = False
   if check:
     image_file = 'extra/selfie3.jpeg'
     opencv_image= cv2.imread('extra/selfie3.jpeg')
