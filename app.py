@@ -58,16 +58,16 @@ with col2:st.image('extra/icon2.png')
 with col3:st.write(' ')
 
 coltry1, coltry2, coltry3 = st.columns(3)
+colbtt1, colbtt2, colbtt3 = st.columns(3)
+
 with coltry1:st.write(' ')
-with coltry2:
-  st.image('extra/selfie3.jpeg')
-  colbtt1, colbtt2, colbtt3 = st.columns(3)
-  with colbtt1:st.write(' ')
-  with colbtt2:
-    if st.button("TRY"):
-      image_file = cv2.imread('extra/selfie3.jpeg')
-  with colbtt3:st.write(' ')
+with coltry2:st.image('extra/selfie3.jpeg')
 with coltry3:st.write(' ')
+
+with colbtt1:st.write(' ')
+with colbtt2:
+  if st.button("TRY"): image_file = cv2.imread('extra/selfie3.jpeg')
+with colbtt3:st.write(' ')
 
 # Main panel setup
 #display_app_header(main_txt='Super Resolution', sub_txt='Upload, procces, download to get a new resolution')
