@@ -111,7 +111,7 @@ if image_file is not None:
 
   file_bytes = np.asarray(bytearray(image_file.read()), dtype=np.uint8)
   opencv_image = cv2.imdecode(file_bytes, 1)
-  st.write(type(image_file),type(image_file), type(image_file))
+  st.write(type(image_file),type(file_bytes), type(opencv_image))
   
   [img_faces, num, boxes] = faceDetection(opencv_image)
   print("numero de rostros = "+ str(num))
