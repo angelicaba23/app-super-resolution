@@ -79,12 +79,12 @@ with st.expander("What is this app?", expanded=False):
 #st.markdown("""---""")
     
 #test
-colbtt1, colbtt2, colbtt3 = st.columns([4,1,4])
 coltry1, coltry2, coltry3 = st.columns(3)
+colbtt1, colbtt2, colbtt3 = st.columns([4,1,4])
 
 with coltry1:st.write(' ')
 with coltry2:
-  display_app_header(main_txt = "⏬ WANNA TRY⁉️ ⏬")
+  display_app_header(main_txt = "⏬WANNA TRY?⏬")
   st.image('extra/selfie3.jpeg')
 with coltry3:st.write(' ')
 
