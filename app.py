@@ -263,7 +263,7 @@ if image_file is not None or check:
           # close the Zip File
           zf.close()
 
-          zf = zipfile.ZipFile('test.zip', 'r')
+          zf = zipfile.ZipFile('imgs.zip', 'r')
 
           for i in zf.infolist():
             st.write(f"is_dir: {i.is_dir()}; filename: {i.filename}")
