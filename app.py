@@ -240,7 +240,6 @@ if image_file is not None or check:
               file_name="srgan_img_"+str(i)+".png",
               mime="image/png"
               )
-              zipObj.write(file)
 
             print("img" + str(i))
             i += 1
@@ -267,5 +266,5 @@ if image_file is not None or check:
     st.warning("We have not detected faces in the image, please select the area manually using the tools.")
       
 else:
-  st.write("NO PERSON DETECTED")
+  st.warning("Please upload a image to process")
     
