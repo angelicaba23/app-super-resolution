@@ -111,10 +111,11 @@ if image_file or check:
     opencv_image= cv2.imread('extra/selfie3.jpeg')
   #save_image(image_file, image_file.name)
   #img_file = "uploaded_image/" + image_file.name
-  coltry2:st.write(' ')
-  colbtt2:st.write(' ')
-  file_bytes = np.asarray(bytearray(image_file.read()), dtype=np.uint8) #<class 'numpy.ndarray'>
-  opencv_image = cv2.imdecode(file_bytes, 1) #<class 'numpy.ndarray'>
+  else:
+    coltry2:st.write(' ')
+    colbtt2:st.write(' ')
+    file_bytes = np.asarray(bytearray(image_file.read()), dtype=np.uint8) #<class 'numpy.ndarray'>
+    opencv_image = cv2.imdecode(file_bytes, 1) #<class 'numpy.ndarray'>
 
 
   [img_faces, num, boxes] = faceDetection(opencv_image)
