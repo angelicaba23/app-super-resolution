@@ -223,11 +223,11 @@ if image_file is not None or check:
             #-------CNN-----
             im_bgr = predictCNN(crop_image)
             cv2.imwrite("results/restored_imgs/crop_img_0.png", im_bgr)
-            zf.write("results/restored_imgs/crop_img_0.png", f'cnn/crop_img_{str(i)}.png')
 
             cols_srcnn[i].image(im_bgr)
 
             im_rgb = im_bgr[:, :, [2, 1, 0]] #numpy.ndarray
+            zf.write("results/restored_imgs/crop_img_0.png", f'cnn/crop_img_{str(i)}.png')
             ret, img_enco = cv2.imencode(".png", im_rgb)  #numpy.ndarray
             srt_enco = img_enco.tobytes()   #bytes
             img_BytesIO = BytesIO(srt_enco) #_io.BytesIO
