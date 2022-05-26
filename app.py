@@ -15,7 +15,7 @@ from streamlit_drawable_canvas import st_canvas
 from helper_functions import *
 from numpy import asarray
 
-from zipfile import ZipFile
+import zipfile 
 
 # create ss object
 if 'data' not in st.session_state:
@@ -203,7 +203,17 @@ if image_file is not None or check:
           cols_srgan = st.columns(n)
           i = 0
 
-          zipObj = ZipFile('extra/imgs.zip', 'w')
+          zf = zipfile.ZipFile('test.zip', 'w')
+
+          folders = [
+              "gan/",
+              "cnn/",
+              ]
+
+          for n in folders:
+              zfi = zipfile.ZipInfo(n)
+              zf.writestr(zfi, '')
+
           for rst_objects in rst_objects:
             rts_boxes = [rst_objects['left'],rst_objects['top'],rst_objects['width']+rst_objects['left'],rst_objects['height']+rst_objects['top']]
             #st.write(rts_boxes)
@@ -212,8 +222,12 @@ if image_file is not None or check:
 
             #-------CNN-----
             im_bgr = predictCNN(crop_image)
-            cols_srcnn[i].image(im_bgr)
+
+            # Add multiple files to the zip
+            zf.write(im_bgr, f'gan/crop_img_{str(i)}.png')
             
+            cols_srcnn[i].image(im_bgr)
+
             im_rgb = im_bgr[:, :, [2, 1, 0]] #numpy.ndarray
             ret, img_enco = cv2.imencode(".png", im_rgb)  #numpy.ndarray
             srt_enco = img_enco.tobytes()   #bytes
@@ -232,7 +246,7 @@ if image_file is not None or check:
             #img_gan=predictSrgan("crop_img_0.png")
             img_gan = im_bgr
             cols_srgan[i].image(img_gan)
-            with open("results/restored_imgs/crop_img_0_gan.png", "rb") as file:
+            with open("results/restored_imgs/crop_img_0.png", "rb") as file:
 
               cols_srgan[i].download_button(
               label="📥",
@@ -240,17 +254,15 @@ if image_file is not None or check:
               file_name="srgan_img_"+str(i)+".png",
               mime="image/png"
               )
-
+            # Add multiple files to the zip
+            zf.write('results/restored_imgs/crop_img_0.png', f'gan/crop_img_{str(i)}.png')
+            
             print("img" + str(i))
             i += 1
-
             
-            # Add multiple files to the zip
-            zipObj.write('results/restored_imgs/crop_img_0_gan.png')
-            zipObj.write('results/restored_imgs/crop_img_0_cnn.png')
-           
+
           # close the Zip File
-          zipObj.close()
+          zf.close()
 
           display_app_header(main_txt = "📥 Step 3",
                 sub_txt= "Download",
