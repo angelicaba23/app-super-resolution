@@ -57,7 +57,7 @@ st.markdown(styl, unsafe_allow_html=True)
 # set logo in sidebar using PIL
 logo = Image.open('extra/name.png')
 #st.sidebar.image(logo,use_column_width=True)
-col1, col2, col3 = st.columns(3)
+col1, col2, col3 = st.columns([1,2,1])
 with col1:st.write(' ')
 with col2:st.image('extra/icon2.png')
 with col3:st.write(' ')
@@ -123,7 +123,7 @@ if image_file is not None or check:
     opencv_image = cv2.imdecode(file_bytes, 1) #<class 'numpy.ndarray'>
 
   st.session_state.checkval = False
-  check = False
+  #check = False
   [img_faces, num, boxes] = faceDetection(opencv_image)
   print("numero de rostros = "+ str(num))
   #st.write(boxes)
