@@ -52,60 +52,7 @@ styl = f"""
 """
 st.markdown(styl, unsafe_allow_html=True)
 
-
-# set logo in sidebar using PIL
-logo = Image.open('extra/name.png')
-#st.sidebar.image(logo,use_column_width=True)
-col1, col2, col3 = st.columns(3)
-with col1:st.write(' ')
-with col2:st.image('extra/icon2.png')
-with col3:st.write(' ')
-
-
-
-# Main panel setup
-#display_app_header(main_txt='Super Resolution', sub_txt='Upload, procces, download to get a new resolution')
-
-# Info
-with st.expander("What is this app?", expanded=False):    
-    st.write("""
-            This web-based application allows you to identify faces, resize and download images in just a few clicks.
-            All you have to do is to upload a single photo, and follow the guidelines in the sidebar.\n
-            This app uses Deep Learning (DL) to:
-            * __Identify faces__: It returns the croped image (you can change it).
-            * __Increase face resolution__: It returns the image whith a x2 scale.
-            \n
-            """)
-#st.markdown("""---""")
-    
-#test
-coltry1, coltry2, coltry3 = st.columns(3)
-colbtt1, colbtt2, colbtt3 = st.columns([4,1,4])
-
-with coltry1:st.write(' ')
-with coltry2:st.image('extra/selfie3.jpeg')
-with coltry3:st.write(' ')
-
-with colbtt1:st.write(' ')
-with colbtt2:
-  if st.button("TRY IT"): image_file = cv2.imread('extra/selfie3.jpeg')
-with colbtt3:st.write(' ')
-
-
-
-#sidebar
-st.sidebar.image('extra/upload.png', use_column_width=True)
-#st.sidebar.app_section_button("[GitHub](https://github.com/angelicaba23/app-super-resolution)")
-
-display_app_header(main_txt = "📤 Step 1",
-                  #sub_txt= "Upload data",
-                  is_sidebar=True)
-
-image_file = st.sidebar.file_uploader("Upload Image", type=["png","jpg","jpeg"]) #<class 'streamlit.uploaded_file_manager.UploadedFile'>
-
-display_mini_text("By uploading an image or URL you agree to our ","https://github.com/angelicaba23/app-super-resolution/blob/dev/extra/termsofservice.md","Terms of Service",is_sidebar = True)
-
-
+#main function
 def updateimg(opencv_image):
   [img_faces, num, boxes] = faceDetection(opencv_image)
   print("numero de rostros = "+ str(num))
@@ -230,8 +177,61 @@ def updateimg(opencv_image):
   else:
     st.write("NO PERSON DETECTED")
 
-if image_file is not None:
 
+
+# set logo in sidebar using PIL
+logo = Image.open('extra/name.png')
+#st.sidebar.image(logo,use_column_width=True)
+col1, col2, col3 = st.columns(3)
+with col1:st.write(' ')
+with col2:st.image('extra/icon2.png')
+with col3:st.write(' ')
+
+
+# Main panel setup
+#display_app_header(main_txt='Super Resolution', sub_txt='Upload, procces, download to get a new resolution')
+
+# Info
+with st.expander("What is this app?", expanded=False):    
+    st.write("""
+            This web-based application allows you to identify faces, resize and download images in just a few clicks.
+            All you have to do is to upload a single photo, and follow the guidelines in the sidebar.\n
+            This app uses Deep Learning (DL) to:
+            * __Identify faces__: It returns the croped image (you can change it).
+            * __Increase face resolution__: It returns the image whith a x2 scale.
+            \n
+            """)
+#st.markdown("""---""")
+    
+#test
+coltry1, coltry2, coltry3 = st.columns(3)
+colbtt1, colbtt2, colbtt3 = st.columns([4,1,4])
+
+with coltry1:st.write(' ')
+with coltry2:st.image('extra/selfie3.jpeg')
+with coltry3:st.write(' ')
+
+with colbtt1:st.write(' ')
+with colbtt2:
+  if st.button("TRY IT"): updateimg(cv2.imread('extra/selfie3.jpeg'))
+with colbtt3:st.write(' ')
+
+
+#sidebar
+st.sidebar.image('extra/upload.png', use_column_width=True)
+#st.sidebar.app_section_button("[GitHub](https://github.com/angelicaba23/app-super-resolution)")
+
+display_app_header(main_txt = "📤 Step 1",
+                  #sub_txt= "Upload data",
+                  is_sidebar=True)
+
+image_file = st.sidebar.file_uploader("Upload Image", type=["png","jpg","jpeg"]) #<class 'streamlit.uploaded_file_manager.UploadedFile'>
+
+display_mini_text("By uploading an image or URL you agree to our ","https://github.com/angelicaba23/app-super-resolution/blob/dev/extra/termsofservice.md","Terms of Service",is_sidebar = True)
+
+
+if image_file is not None:
+  st.write(type(image_file))
   #save_image(image_file, image_file.name)
   #img_file = "uploaded_image/" + image_file.name
 
