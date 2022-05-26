@@ -82,7 +82,7 @@ with st.expander("What is this app?", expanded=True):
 
     with coltry1:st.write(' ')
     with coltry2:
-      display_app_header(main_txt = "⏬WANNA TRY?⏬")
+      display_app_header(main_txt = "WANNA TRY!?⤵️")
       st.image('extra/selfie3.jpeg')
     with coltry3:st.write(' ')
 
