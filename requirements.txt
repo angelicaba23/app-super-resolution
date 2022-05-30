@@ -3,9 +3,10 @@
 #-f https://download.pytorch.org/whl/torch_stable.html
 #torch==1.8.1+cpu
 #torchvision==0.9.1+cpu
---find-links https://download.pytorch.org/whl/torch_stable.html
-torch==1.7.1+cpu
-keras==2.9.0rc0
+#--find-links https://download.pytorch.org/whl/torch_stable.html
+torch --extra-index-url https://download.pytorch.org/whl/cpu
+torchvision --extra-index-url https://download.pytorch.org/whl/cpu
+keras==2.
 ##numpy==1.22.3
 Pillow==9.0.1
 scikit-image==0.19.2
