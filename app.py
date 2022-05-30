@@ -7,13 +7,10 @@ import json
 import cv2
 import numpy as np
 import os
-os.system("pip install torch")
-os.system("pip list")
-os.system("BASICSR_EXT=True pip install basicsr")
+from srgan import predictSrgan
 
 from face_dectec import crop_object, faceDetection
 from srcnn import predictCNN
-from srgan import predictSrgan
 import pandas as pd
 from streamlit_drawable_canvas import st_canvas
 from helper_functions import *
