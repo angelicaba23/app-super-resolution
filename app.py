@@ -21,7 +21,7 @@ from numpy import asarray
 
 import zipfile 
 
-os.system("/home/appuser/venv/bin/python -m pip install --upgrade pip")
+#os.system("/home/appuser/venv/bin/python -m pip install --upgrade pip")
 os.system("/home/appuser/venv/bin/python -m pip install basicsr")
 # Page config
 #st.set_page_config(page_title="SuperResolution",layout="wide")
