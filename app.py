@@ -6,6 +6,7 @@ from PIL import Image
 import json
 import cv2
 import numpy as np
+import os
 os.system("pip list")
 os.system("BASICSR_EXT=True pip install basicsr")
 
