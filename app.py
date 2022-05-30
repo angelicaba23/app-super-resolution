@@ -6,6 +6,8 @@ from PIL import Image
 import json
 import cv2
 import numpy as np
+os.system("pip list")
+os.system("BASICSR_EXT=True pip install basicsr")
 
 from face_dectec import crop_object, faceDetection
 from srcnn import predictCNN
@@ -17,7 +19,7 @@ from numpy import asarray
 
 import zipfile 
 
-os.system("BASICSR_EXT=True pip install basicsr")
+
 # Page config
 #st.set_page_config(page_title="SuperResolution",layout="wide")
 # app design
