@@ -15,7 +15,8 @@ os.system("conda info -e")
 os.system("conda env list")
 os.system("pip list")
 os.system("pip check")
-os.system("python3.8 -m pip install basicsr")
+os.system("pip install torch")
+os.system("BASICSR_EXT=True -m pip install basicsr")
 #BASICSR_EXT=True 
 from basicsr.utils import imwrite
 
