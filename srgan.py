@@ -7,7 +7,7 @@ import numpy as np
 import os
 import torch
 #https://github.com/sailfish009/BasicSR.git
-os.system("lsvirtualenv -b")
+os.system("sudo apt list --installed")
 os.system('locate -b "\activate" | grep "/home"')
 
 os.system("conda info --envs  # or ")
@@ -17,6 +17,7 @@ os.system("pip list")
 os.system("pip check")
 os.system("pip install torch")
 os.system("BASICSR_EXT=True -m pip install basicsr")
+os.system("pip list")
 #BASICSR_EXT=True 
 from basicsr.utils import imwrite
 

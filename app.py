@@ -7,7 +7,7 @@ import json
 import cv2
 import numpy as np
 import os
-os.system("lsvirtualenv -b")
+os.system("sudo apt list --installed")
 os.system("conda list")
 os.system('locate -b "\activate" | grep "/home"')
 
