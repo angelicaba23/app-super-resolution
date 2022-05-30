@@ -47,4 +47,4 @@ requests
 #torchvision
 #tqdm
 #yapf
-"git+https://github.com/XPixelGroup/BasicSR.git#basicsr"
+git+https://github.com/XPixelGroup/BasicSR.git#basicsr
