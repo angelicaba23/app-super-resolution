@@ -250,8 +250,8 @@ if image_file is not None or check:
 
       #cols_srgan[i].image(predictSrgan(crop_image))
       #cols_srgan[i].image(predictSrgan("crop_img_0.png"))
-      #img_gan=predictSrgan("crop_img_0.png")
-      img_gan = im_bgr
+      img_gan=predictSrgan("crop_img_0.png")
+      #img_gan = im_bgr
       cols_srgan[i].image(img_gan)
       with open("results/restored_imgs/crop_img_0.png", "rb") as file:
         cols_srgan[i].download_button(
