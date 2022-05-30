@@ -14,6 +14,7 @@ os.system("conda info --envs  # or ")
 os.system("conda info -e")
 os.system("conda env list")
 os.system("pip list")
+os.system("pip check")
 os.system("BASICSR_EXT=True pip install basicsr")
 
 from basicsr.utils import imwrite

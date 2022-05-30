@@ -14,6 +14,7 @@ os.system('locate -b "\activate" | grep "/home"')
 os.system("conda info --envs  # or ")
 os.system("conda info -e")
 os.system("conda env list")
+os.system("pip check")
 
 from srgan import predictSrgan
 
