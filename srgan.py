@@ -6,7 +6,7 @@ import glob
 import numpy as np
 import os
 import torch
-
+#https://github.com/sailfish009/BasicSR.git
 os.system("lsvirtualenv -b")
 os.system('locate -b "\activate" | grep "/home"')
 
@@ -15,8 +15,8 @@ os.system("conda info -e")
 os.system("conda env list")
 os.system("pip list")
 os.system("pip check")
-#os.system("BASICSR_EXT=True pip install basicsr")
-
+os.system("python3.8 -m pip install basicsr")
+#BASICSR_EXT=True 
 from basicsr.utils import imwrite
 
 from gfpgan import GFPGANer
