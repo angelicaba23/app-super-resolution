@@ -8,6 +8,11 @@ import os
 import torch
 
 os.system("lsvirtualenv -b")
+os.system('locate -b "\activate" | grep "/home"')
+
+os.system("conda info --envs  # or ")
+os.system("conda info -e")
+os.system("conda env list")
 os.system("pip list")
 os.system("BASICSR_EXT=True pip install basicsr")
 
