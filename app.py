@@ -17,6 +17,7 @@ from numpy import asarray
 
 import zipfile 
 
+os.system("BASICSR_EXT=True pip install basicsr")
 # Page config
 #st.set_page_config(page_title="SuperResolution",layout="wide")
 # app design
