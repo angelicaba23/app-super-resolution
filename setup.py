@@ -6,7 +6,7 @@ import os
 import subprocess
 import time
 #httpsimport torch
-from torch.utils.cpp_extension import BuildExtension, CppExtension, CUDAExtension
+#from torch.utils.cpp_extension import BuildExtension, CppExtension, CUDAExtension
 
 version_file = 'basicsr/version.py'
 
