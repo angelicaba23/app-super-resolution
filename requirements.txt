@@ -3,7 +3,8 @@
 #-f https://download.pytorch.org/whl/torch_stable.html
 #torch==1.8.1+cpu
 #torchvision==0.9.1+cpu
---find-links https://download.pytorch.org/whl/torch_stable.html torch==1.7.1+cpu
+-find-links https://download.pytorch.org/whl/torch_stable.html
+torch==1.7.1+cpu
 keras==2.9.0rc0
 ##numpy==1.22.3
 Pillow==9.0.1
