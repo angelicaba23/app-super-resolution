@@ -7,6 +7,7 @@ import numpy as np
 import os
 import torch
 #https://github.com/sailfish009/BasicSR.git
+"""
 os.system("sudo apt list --installed")
 os.system('locate -b "\activate" | grep "/home"')
 
@@ -19,6 +20,8 @@ os.system("pip install torch")
 os.system("BASICSR_EXT=True -m pip install basicsr")
 os.system("pip list")
 #BASICSR_EXT=True 
+"""
+
 from basicsr.utils import imwrite
 
 from gfpgan import GFPGANer

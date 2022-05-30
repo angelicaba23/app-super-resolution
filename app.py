@@ -7,14 +7,8 @@ import json
 import cv2
 import numpy as np
 import os
-os.system("sudo apt list --installed")
-os.system("conda list")
-os.system('locate -b "\activate" | grep "/home"')
 
-os.system("conda info --envs  # or ")
-os.system("conda info -e")
-os.system("conda env list")
-os.system("pip check")
+os.system("pip list")
 
 from srgan import predictSrgan
 
