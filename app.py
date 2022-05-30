@@ -8,7 +8,7 @@ import cv2
 import numpy as np
 import os
 os.system("lsvirtualenv -b")
-
+os.system("conda list")
 os.system('locate -b "\activate" | grep "/home"')
 
 os.system("conda info --envs  # or ")
