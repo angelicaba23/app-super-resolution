@@ -7,7 +7,7 @@ import numpy as np
 import os
 import torch
 
-#os.system("pip install torch")
+os.system("lsvirtualenv -b")
 os.system("pip list")
 os.system("BASICSR_EXT=True pip install basicsr")
 

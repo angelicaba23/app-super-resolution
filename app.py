@@ -7,6 +7,7 @@ import json
 import cv2
 import numpy as np
 import os
+os.system("lsvirtualenv -b")
 from srgan import predictSrgan
 
 from face_dectec import crop_object, faceDetection
