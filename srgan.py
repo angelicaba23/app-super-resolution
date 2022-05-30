@@ -21,7 +21,7 @@ os.system("BASICSR_EXT=True -m pip install basicsr")
 os.system("pip list")
 #BASICSR_EXT=True 
 """
-
+os.system('BASICSR_EXT=True python setup.py develop')
 from basicsr.utils import imwrite
 
 from gfpgan import GFPGANer
