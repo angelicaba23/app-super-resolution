@@ -30,6 +30,7 @@ from gfpgan import GFPGANer
 os.system("curl -LJO https://github.com/TencentARC/GFPGAN/releases/download/v0.1.0/GFPGANv1.pth")
 modelname ='GFPGANv1.pth'
 os.system("mv GFPGANv1.pth pretrained_models")
+print("--------ls pretrained_models---------")
 print(os.system("ls pretrained_models"))
 
 def predictSrgan(image_path):
