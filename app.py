@@ -9,6 +9,7 @@ import numpy as np
 import os
 
 os.system("pip list")
+os.system("/home/appuser/venv/bin/python -m pip install basicsr")
 
 from srgan import predictSrgan
 
@@ -22,7 +23,6 @@ from numpy import asarray
 import zipfile 
 
 #os.system("/home/appuser/venv/bin/python -m pip install --upgrade pip")
-os.system("/home/appuser/venv/bin/python -m pip install basicsr")
 # Page config
 #st.set_page_config(page_title="SuperResolution",layout="wide")
 # app design
