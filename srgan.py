@@ -27,11 +27,11 @@ from basicsr.utils import imwrite
 from gfpgan import GFPGANer
 
 #define main prediction function
-os.system("curl -LJO https://github.com/TencentARC/GFPGAN/releases/download/v0.1.0/GFPGANv1.pth")
-modelname ='GFPGANv1.pth'
-os.system("mv GFPGANv1.pth pretrained_models")
+#os.system("curl -LJO https://github.com/TencentARC/GFPGAN/releases/download/v0.1.0/GFPGANv1.pth")
+#modelname ='GFPGANv1.pth'
+#os.system("mv GFPGANv1.pth pretrained_models")
 print("--------ls pretrained_models---------")
-print(os.system("ls pretrained_models"))
+print(os.system("ls experiments/pretrained_models"))
 
 def predictSrgan(image_path):
     print(image_path, "image_path")
